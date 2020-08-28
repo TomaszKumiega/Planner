@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoList"
+        xmlns:resx="clr-namespace:ToDoList.WPF.Properties"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -37,6 +38,14 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+
+            <TextBlock x:Name="MondayWeekDayTextBlock" Grid.Column="0" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
+            <TextBlock x:Name="TuesdayWeekDayTextBlock" Grid.Column="1" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
+            <TextBlock x:Name="WednesdayWeekDayTextBlock" Grid.Column="2" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
+            <TextBlock x:Name="ThursdayWeekDayTextBlock" Grid.Column="3" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
+            <TextBlock x:Name="FridayWeekDayTextBlock" Grid.Column="4" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
+            <TextBlock x:Name="SaturdayWeekDayTextBlock" Grid.Column="5" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
+            <TextBlock x:Name="SundayWeekDayTextBlock" Grid.Column="6" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
         </Grid>
     </Grid>
 </Window>
