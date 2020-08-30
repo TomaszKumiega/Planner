@@ -17,14 +17,19 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="28"/>
-            <RowDefinition Height="35"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--Title Bar-->
         <Rectangle x:Name="RectangleTitleBarBackground" Fill="#202225" Grid.ColumnSpan="3" MouseDown="RectangleTitleBarBackground_MouseDown"/>
         <TextBlock x:Name="TextBlockTitleBar" Text="ToDoList" FontFamily="Segoe UI" Grid.Column="0" FontSize="22" Foreground="#949597" VerticalAlignment="Bottom" />
 
+        <!--Title Bar Shadow-->
+        <Rectangle x:Name="RectangleTitleBarShadow" Fill="#161719" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" />
+        
         <!--Title Bar Buttons Grid-->
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -65,7 +70,16 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+        <!--Menu Background-->
+        <Rectangle x:Name="RectangleTopBarBackground" Fill="#37393f" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+
+        <!--Menu Shadow-->
+        <Rectangle x:Name="RectangleTopBarShadow" Fill="#292b2f" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5"/>
+
+        <!--Main Panel Background-->
+        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" />
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -84,13 +98,13 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="MondayWeekDayTextBlock" Grid.Column="0" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
-            <TextBlock x:Name="TuesdayWeekDayTextBlock" Grid.Column="1" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
-            <TextBlock x:Name="WednesdayWeekDayTextBlock" Grid.Column="2" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
-            <TextBlock x:Name="ThursdayWeekDayTextBlock" Grid.Column="3" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
-            <TextBlock x:Name="FridayWeekDayTextBlock" Grid.Column="4" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
-            <TextBlock x:Name="SaturdayWeekDayTextBlock" Grid.Column="5" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
-            <TextBlock x:Name="SundayWeekDayTextBlock" Grid.Column="6" FontSize="14" FontWeight="Bold" Background="Aquamarine"></TextBlock>
+            <TextBlock x:Name="MondayWeekDayTextBlock" TextAlignment="Center" Grid.Column="0" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+            <TextBlock x:Name="TuesdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="1" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+            <TextBlock x:Name="WednesdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="2" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+            <TextBlock x:Name="ThursdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="3" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+            <TextBlock x:Name="FridayWeekDayTextBlock" TextAlignment="Center" Grid.Column="4" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+            <TextBlock x:Name="SaturdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="5" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+            <TextBlock x:Name="SundayWeekDayTextBlock" TextAlignment="Center" Grid.Column="6" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
         </Grid>
     </Grid>
 </Window>
