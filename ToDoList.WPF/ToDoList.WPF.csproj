@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icons\AddIcon.png" />
     <None Remove="icons\BackIcon.png" />
     <None Remove="icons\CloseIcon.png" />
     <None Remove="icons\ForwardIcon.png" />
@@ -30,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="icons\AddIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="icons\BackIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
