@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icons\BackIcon.png" />
     <None Remove="icons\CloseIcon.png" />
+    <None Remove="icons\ForwardIcon.png" />
     <None Remove="icons\MaximizeIcon.png" />
     <None Remove="icons\MinimizeIcon.png" />
   </ItemGroup>
@@ -28,7 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="icons\BackIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="icons\CloseIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="icons\ForwardIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="icons\MaximizeIcon.png">
