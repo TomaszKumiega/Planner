@@ -43,7 +43,7 @@
             </Grid.RowDefinitions>
 
             <!--Close Button-->
-            <Button x:Name="ButtonClose" Grid.Column="3" Grid.Row="0" Background="#202225" BorderThickness="0" Click="Close">
+            <Button x:Name="ButtonClose" Grid.Column="3" Grid.Row="0" Background="Transparent" BorderThickness="0" Click="Close">
                 <Image x:Name="ButtonCloseIcon">
                     <Image.Source>
                         <BitmapImage UriSource="./icons/CloseIcon.png"/>
@@ -52,7 +52,7 @@
             </Button>
 
             <!--Maximize Button-->
-            <Button x:Name="ButtonMaximize" Grid.Column="2" Grid.Row="1" Background="#202225" BorderThickness="0" Click="Maximize">
+            <Button x:Name="ButtonMaximize" Grid.Column="2" Grid.Row="1" Background="Transparent" BorderThickness="0" Click="Maximize">
                 <Image x:Name="ButtonMaximizeIcon">
                     <Image.Source>
                         <BitmapImage UriSource="./icons/MaximizeIcon.png"/>
@@ -61,7 +61,7 @@
             </Button>
 
             <!--Minimize Button-->
-            <Button x:Name="ButtonMinimize" Grid.Column="1" Grid.Row="0" Background="#202225" BorderThickness="0" Click="Minimize">
+            <Button x:Name="ButtonMinimize" Grid.Column="1" Grid.Row="0" Background="Transparent" BorderThickness="0" Click="Minimize">
                 <Image x:Name="ButtonMinimizeIcon">
                     <Image.Source>
                         <BitmapImage UriSource="./icons/MinimizeIcon.png"/>
@@ -72,6 +72,29 @@
 
         <!--Menu Background-->
         <Rectangle x:Name="RectangleTopBarBackground" Fill="#37393f" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+        
+        <!--Navigation Buttons-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="35"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BackButton" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left">
+                <Image>
+                    <Image.Source>
+                        <BitmapImage UriSource="./icons/BackIcon.png"/>
+                    </Image.Source>
+                </Image>
+            </Button>
+            <Button x:Name="ForwardButton" Grid.Column="1" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left">
+            <Image>
+                <Image.Source>
+                    <BitmapImage UriSource="./icons/ForwardIcon.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
+        </Grid>
+
 
         <!--Menu Shadow-->
         <Rectangle x:Name="RectangleTopBarShadow" Fill="#292b2f" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5"/>
@@ -98,6 +121,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
+            <!--Week Days TextBlocks-->
             <TextBlock x:Name="MondayWeekDayTextBlock" TextAlignment="Center" Grid.Column="0" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
             <TextBlock x:Name="TuesdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="1" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
             <TextBlock x:Name="WednesdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="2" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
@@ -105,6 +129,8 @@
             <TextBlock x:Name="FridayWeekDayTextBlock" TextAlignment="Center" Grid.Column="4" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
             <TextBlock x:Name="SaturdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="5" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
             <TextBlock x:Name="SundayWeekDayTextBlock" TextAlignment="Center" Grid.Column="6" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+        
+        
         </Grid>
     </Grid>
 </Window>
