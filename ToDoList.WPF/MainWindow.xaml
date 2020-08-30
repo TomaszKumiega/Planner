@@ -12,15 +12,60 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="28"/>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="2">
+        <!--Title Bar-->
+        <Rectangle x:Name="RectangleTitleBarBackground" Fill="#202225" Grid.ColumnSpan="3" MouseDown="RectangleTitleBarBackground_MouseDown"/>
+        <TextBlock x:Name="TextBlockTitleBar" Text="ToDoList" FontFamily="Segoe UI" Grid.Column="0" FontSize="22" Foreground="#949597" VerticalAlignment="Bottom" />
+
+        <!--Title Bar Buttons Grid-->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+            </Grid.RowDefinitions>
+
+            <!--Close Button-->
+            <Button x:Name="ButtonClose" Grid.Column="3" Grid.Row="0" Background="#202225" BorderThickness="0" Click="Close">
+                <Image x:Name="ButtonCloseIcon">
+                    <Image.Source>
+                        <BitmapImage UriSource="./icons/CloseIcon.png"/>
+                    </Image.Source>
+                </Image>
+            </Button>
+
+            <!--Maximize Button-->
+            <Button x:Name="ButtonMaximize" Grid.Column="2" Grid.Row="1" Background="#202225" BorderThickness="0" Click="Maximize">
+                <Image x:Name="ButtonMaximizeIcon">
+                    <Image.Source>
+                        <BitmapImage UriSource="./icons/MaximizeIcon.png"/>
+                    </Image.Source>
+                </Image>
+            </Button>
+
+            <!--Minimize Button-->
+            <Button x:Name="ButtonMinimize" Grid.Column="1" Grid.Row="0" Background="#202225" BorderThickness="0" Click="Minimize">
+                <Image x:Name="ButtonMinimizeIcon">
+                    <Image.Source>
+                        <BitmapImage UriSource="./icons/MinimizeIcon.png"/>
+                    </Image.Source>
+                </Image>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>

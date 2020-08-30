@@ -28,6 +28,44 @@ namespace ToDoList
             InitializeStrings();
         }
 
+        /// <summary>
+        /// Allows to drag window with a mouse with its left button down.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RectangleTitleBarBackground_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        /// <summary>
+        /// Minimizes the window.
+        /// </summary>
+        private void Minimize(object sender, EventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        /// <summary>
+        /// Maximizes the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Maximize(object sender, EventArgs e)
+        {
+            WindowState = (WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal);
+        }
+
+        /// <summary>
+        /// Shuts down the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Close(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void InitializeStrings()
         {
             MondayWeekDayTextBlock.Text=ToDoList.WPF.Properties.strings.monday;
