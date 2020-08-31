@@ -19,7 +19,7 @@ namespace ToDoList.ViewModel
         }
 
         /// <summary>
-        /// Changes CurrentlyDisplayedMonth to the next month
+        /// Changes <see cref="CurrentlyDisplayedMonth"/> to the next month
         /// </summary>
         public void NextMonth()
         {
@@ -27,10 +27,31 @@ namespace ToDoList.ViewModel
                 new DateTime(CurrentlyDisplayedMonth.Year + 1, 1, 0);
         }
 
+        /// <summary>
+        /// Changes <see cref="CurrentlyDisplayedMonth"/> to the previous month
+        /// </summary>
         public void PreviousMonth()
         {
             CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month > 1 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month - 1, 0) :
                 new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 0);
         }
+
+        //TODO:
+        /*
+        public void AddEvent()
+        {
+
+        }
+
+        public void CompleteEvent()
+        {
+
+        }
+
+        public void RemoveEvent()
+        {
+
+        }
+        */
     }
 }
