@@ -17,5 +17,14 @@ namespace ToDoList.ViewModel
         {
             
         }
+
+        /// <summary>
+        /// Changes CurrentlyDisplayedMonth to the next month
+        /// </summary>
+        public void NextMonth()
+        {
+            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month < 12 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month + 1, 0) :
+                new DateTime(CurrentlyDisplayedMonth.Year + 1, 1, 0);
+        }
     }
 }
