@@ -4,10 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.WPF", "ToDoList.WPF\ToDoList.WPF.csproj", "{7B0EB4F9-D942-4ED0-9AC2-1326DEDCD1E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{99811B29-5144-4AD3-885B-110EB9773008} = {99811B29-5144-4AD3-885B-110EB9773008}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.ViewModel", "ToDoList.ViewModel\ToDoList.ViewModel.csproj", "{99811B29-5144-4AD3-885B-110EB9773008}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.ViewModel", "ToDoList.ViewModel\ToDoList.ViewModel.csproj", "{99811B29-5144-4AD3-885B-110EB9773008}"
+	ProjectSection(ProjectDependencies) = postProject
+		{311A1A57-3A34-4C66-B398-BD120B5C4E31} = {311A1A57-3A34-4C66-B398-BD120B5C4E31}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Model", "ToDoList.Model\ToDoList.Model.csproj", "{311A1A57-3A34-4C66-B398-BD120B5C4E31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Model", "ToDoList.Model\ToDoList.Model.csproj", "{311A1A57-3A34-4C66-B398-BD120B5C4E31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
