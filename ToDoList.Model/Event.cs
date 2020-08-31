@@ -84,5 +84,24 @@ namespace ToDoList.Model
             EventDifficulty = eventDifficulty;
             RepetitionPattern = repetitionPattern;
         }
+
+        /// <summary>
+        /// Completes the event.
+        /// If event type is repetetive, returns the <see cref="Event"/> object with additional karma for event completion.
+        /// If event type is not repetetive, returns null.
+        /// </summary>
+        /// <returns></returns>
+        public Event CompleteEvent()
+        {
+            if (IsRepetetive == true)
+            {
+                this.Karma += 5;
+                return this;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
