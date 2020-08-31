@@ -26,5 +26,11 @@ namespace ToDoList.ViewModel
             CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month < 12 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month + 1, 0) :
                 new DateTime(CurrentlyDisplayedMonth.Year + 1, 1, 0);
         }
+
+        public void PreviousMonth()
+        {
+            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month > 1 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month - 1, 0) :
+                new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 0);
+        }
     }
 }
