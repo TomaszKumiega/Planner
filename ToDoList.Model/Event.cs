@@ -49,9 +49,8 @@ namespace ToDoList.Model
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
         public int Karma { get; private set; }
-        public bool IsRepetetive { get; private set; }
-        public DateTime DateTime { get; private set; }
-        public RepetitionPattern RepetitionPattern { get; private set; }
+        public DateTime ?DateTime { get; private set; }
+        public RepetitionPattern ?RepetitionPattern { get; private set; }
 
         /// <summary>
         /// Initializes new instance of <see cref="Event"/> class.
@@ -67,6 +66,7 @@ namespace ToDoList.Model
             EventType = eventType;
             EventDifficulty = eventDifficulty;
             DateTime = dateTime;
+            RepetitionPattern = null;
         }
 
         /// <summary>
@@ -83,6 +83,7 @@ namespace ToDoList.Model
             EventType = eventType;
             EventDifficulty = eventDifficulty;
             RepetitionPattern = repetitionPattern;
+            DateTime = null;
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace ToDoList.Model
         /// <returns></returns>
         public Event CompleteEvent()
         {
-            if (IsRepetetive == true)
+            if (RepetitionPattern != null)
             {
                 this.Karma += 5;
                 return this;
