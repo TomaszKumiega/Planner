@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ToDoList.Model
 {
+    [Table("Days")]
     public class Day
     {
+        [Key()]
+        public Guid Id { get; set; }
         public DateTime Date { get; }
         public List<Event> Events { get; }
 

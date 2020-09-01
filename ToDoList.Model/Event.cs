@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ToDoList.Model
@@ -43,8 +45,11 @@ namespace ToDoList.Model
         public int Month { get; set; }
     }
 
+    [Table("Events")]
     public class Event
     {
+        [Key()]
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
