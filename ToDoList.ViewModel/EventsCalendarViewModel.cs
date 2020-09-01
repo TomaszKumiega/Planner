@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using ToDoList.Model;
+using ToDoList.Model.Repositories;
 
 namespace ToDoList.ViewModel
 {
@@ -12,10 +14,11 @@ namespace ToDoList.ViewModel
         public List<Day> DisplayedDays { get; private set; }
         public List<Event> RepetetiveEvents { get; }
         public DateTime CurrentlySelectedDay { get; private set; }
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EventsCalendarViewModel()
+        public EventsCalendarViewModel(IUnitOfWork unitOfWork)
         {
-            
+            _unitOfWork = unitOfWork;   
         }
 
         /// <summary>
@@ -36,13 +39,36 @@ namespace ToDoList.ViewModel
                 new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 0);
         }
 
-        //TODO:
-        /*
-        public void AddEvent()
+        
+        public void CreateEvent(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime dateTime)
+        {
+            var e = new Event(name, eventType, eventDifficulty, dateTime);
+            var days = _unitOfWork.DayRepository.Find(x => x.Date.Date == dateTime.Date).ToList();
+
+            if(days.Any())
+            {
+                days[0].Events.Add(e);
+                _unitOfWork.SaveChanges();
+            }
+            else
+            {
+                var day = new Day(dateTime);
+                day.Events.Add(e);
+                _unitOfWork.DayRepository.Add(day);
+                _unitOfWork.SaveChanges();
+            }
+
+            LoadDisplayedDays();
+        }
+
+
+        private void LoadDisplayedDays()
         {
 
         }
 
+        //TODO:
+        /*
         public void CompleteEvent()
         {
 
