@@ -25,7 +25,7 @@ namespace ToDoList.Model.Repositories
         public void AddRange(IEnumerable<User> entities)
         {
             if (entities == null) throw new ArgumentNullException();
-            if (entities.Any()) throw new ArgumentException("No entities on the list");
+            if (!entities.Any()) throw new ArgumentException("No entities on the list");
 
             _context.Users.AddRange(entities);
             _context.SaveChangesAsync();
