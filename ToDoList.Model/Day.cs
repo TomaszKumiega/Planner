@@ -11,8 +11,8 @@ namespace ToDoList.Model
     {
         [Key()]
         public Guid Id { get; set; }
-        public DateTime Date { get; }
-        public List<Event> Events { get; }
+        public DateTime Date { get; set; }
+        public List<Event> Events { get; set; }
 
         public Day(DateTime date)
         {
