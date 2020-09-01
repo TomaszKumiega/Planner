@@ -20,7 +20,6 @@ namespace ToDoList.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Events.Add(entity);
-            _context.SaveChangesAsync();
         }
 
         public void AddRange(IEnumerable<Event> entities)
@@ -29,7 +28,6 @@ namespace ToDoList.Model.Repositories
             if (!entities.Any()) throw new ArgumentException("No entities on the list");
 
             _context.Events.AddRange(entities);
-            _context.SaveChangesAsync();
         }
 
         public IEnumerable<Event> Find(Expression<Func<Event, bool>> predicate)
@@ -56,7 +54,6 @@ namespace ToDoList.Model.Repositories
             if (events.Count != 0)
             {
                 _context.Events.Remove(events[0]);
-                _context.SaveChangesAsync();
             }
         }
 
@@ -65,7 +62,6 @@ namespace ToDoList.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Events.Remove(entity);
-            _context.SaveChangesAsync();
         }
 
         public void RemoveRange(IEnumerable<Event> entities)
@@ -74,7 +70,6 @@ namespace ToDoList.Model.Repositories
             if (!entities.Any()) throw new ArgumentException("No entities on the list");
 
             _context.Events.RemoveRange(entities);
-            _context.SaveChangesAsync();
         }
 
         public void Update(Event entity)
@@ -88,7 +83,6 @@ namespace ToDoList.Model.Repositories
             e.EventType = entity.EventType;
             e.DateTime = entity.DateTime;
 
-            _context.SaveChangesAsync();
         }
     }
 }

@@ -20,7 +20,6 @@ namespace ToDoList.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Days.Add(entity);
-            _context.SaveChangesAsync();
         }
 
         public void AddRange(IEnumerable<Day> entities)
@@ -29,7 +28,6 @@ namespace ToDoList.Model.Repositories
             if (!entities.Any()) throw new ArgumentException("No entities on the list");
 
             _context.Days.AddRange(entities);
-            _context.SaveChangesAsync();
         }
 
         public IEnumerable<Day> Find(Expression<Func<Day, bool>> predicate)
@@ -56,7 +54,6 @@ namespace ToDoList.Model.Repositories
             if (days.Count > 0)
             {
                 _context.Days.Remove(days[0]);
-                _context.SaveChangesAsync();
             }
         }
 
@@ -65,7 +62,6 @@ namespace ToDoList.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Days.Remove(entity);
-            _context.SaveChangesAsync();
         }
 
         public void RemoveRange(IEnumerable<Day> entities)
@@ -74,7 +70,6 @@ namespace ToDoList.Model.Repositories
             if (!entities.Any()) throw new ArgumentException("No entities on the list");
 
             _context.Days.RemoveRange(entities);
-            _context.SaveChangesAsync();
         }
 
         public void Update(Day entity)
@@ -83,8 +78,6 @@ namespace ToDoList.Model.Repositories
 
             day.Date = entity.Date;
             day.Events = entity.Events;
-
-            _context.SaveChangesAsync();
         }
     }
 }

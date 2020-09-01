@@ -19,7 +19,6 @@ namespace ToDoList.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Users.Add(entity);
-            _context.SaveChangesAsync();
         }
 
         public void AddRange(IEnumerable<User> entities)
@@ -28,7 +27,6 @@ namespace ToDoList.Model.Repositories
             if (!entities.Any()) throw new ArgumentException("No entities on the list");
 
             _context.Users.AddRange(entities);
-            _context.SaveChangesAsync();
         }
 
         public void Remove(Guid id)
@@ -38,7 +36,6 @@ namespace ToDoList.Model.Repositories
             if (users.Count != 0)
             {
                 _context.Users.Remove(users[0]);
-                _context.SaveChangesAsync();
             }
         }
 
@@ -47,7 +44,6 @@ namespace ToDoList.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Users.Remove(entity);
-            _context.SaveChangesAsync();
         }
 
         public IEnumerable<User> Find(Expression<Func<User, bool>> predicate)
@@ -70,7 +66,6 @@ namespace ToDoList.Model.Repositories
         public void RemoveRange(IEnumerable<User> entities)
         {
             _context.Users.RemoveRange(entities);
-            _context.SaveChangesAsync();
         }
 
         public void Update(User entity)
@@ -81,7 +76,6 @@ namespace ToDoList.Model.Repositories
             user.Karma = entity.Karma;
             user.Name = entity.Name;
 
-            _context.SaveChangesAsync();
         }
     }
 }
