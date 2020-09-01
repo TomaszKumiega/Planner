@@ -53,9 +53,9 @@ namespace ToDoList.Model
         public string Name { get; set; }
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
-        public int Karma { get; private set; }
-        public DateTime ?DateTime { get; private set; }
-        public RepetitionPattern ?RepetitionPattern { get; private set; }
+        public int Karma { get; set; }
+        public DateTime ?DateTime { get; set; }
+        public RepetitionPattern ?RepetitionPattern { get; set; }
 
         /// <summary>
         /// Initializes new instance of <see cref="Event"/> class.
