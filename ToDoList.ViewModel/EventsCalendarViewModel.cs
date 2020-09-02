@@ -62,6 +62,17 @@ namespace ToDoList.ViewModel
             LoadDisplayedDays();
         }
 
+
+        public void CreateEvent(string name, EventType eventType, EventDifficulty eventDifficulty, RepetitionPattern repetitionPattern)
+        {
+            var e = new Event(name, eventType, eventDifficulty, repetitionPattern);
+
+            _unitOfWork.EventRepository.Add(e);
+            _unitOfWork.SaveChanges();
+
+            LoadDisplayedDays();
+        }
+
         private void LoadDisplayedDays()
         {
 
