@@ -7,7 +7,6 @@ namespace ToDoList.Model.Repositories
     public interface IUnitOfWork
     {
         IRepository<User> UserRepository { get; }
-        IRepository<Day> DayRepository { get; }
         IRepository<Event> EventRepository { get; }
 
         int SaveChanges();

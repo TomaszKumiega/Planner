@@ -54,7 +54,7 @@ namespace ToDoList.Model
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
         public int Karma { get; set; }
-        public List<Day> Days { get; set; }
+        public List<DateTime> DateTimes { get; set; }
         public RepetitionPattern ?RepetitionPattern { get; set; }
 
         /// <summary>
@@ -65,15 +65,15 @@ namespace ToDoList.Model
         /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
         /// <param name="eventDifficulty"/>Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"></param>
         /// <param name="dateTime">Date and time of an event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, Day day)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime dateTime)
         {
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
             RepetitionPattern = null;
 
-            Days = new List<Day>();
-            Days.Add(day);
+            DateTimes = new List<DateTime>();
+            DateTimes.Add(dateTime);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace ToDoList.Model
             EventType = eventType;
             EventDifficulty = eventDifficulty;
             RepetitionPattern = repetitionPattern;
-            Days = new List<Day>();
+            DateTimes = new List<DateTime>();
         }
 
         /// <summary>

@@ -12,7 +12,6 @@ namespace ToDoList.Model
 
         }
 
-        public System.Data.Entity.DbSet<Day> Days { get; set; }
         public System.Data.Entity.DbSet<Event> Events { get; set; }
         public System.Data.Entity.DbSet<User> Users { get; set; }
 
