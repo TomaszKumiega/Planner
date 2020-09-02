@@ -42,11 +42,12 @@ namespace ToDoList.ViewModel
         
         public void CreateEvent(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime dateTime)
         {
-            var e = new Event(name, eventType, eventDifficulty, dateTime);
             var days = _unitOfWork.DayRepository.Find(x => x.Date.Date == dateTime.Date).ToList();
+            var e = new Event(name, eventType,eventDifficulty, days[0]);
 
-            if(days.Any())
+            if (days.Any())
             {
+
                 days[0].Events.Add(e);
                 _unitOfWork.SaveChanges();
             }
@@ -60,7 +61,6 @@ namespace ToDoList.ViewModel
 
             LoadDisplayedDays();
         }
-
 
         private void LoadDisplayedDays()
         {
