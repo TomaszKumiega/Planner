@@ -12,8 +12,8 @@ namespace ToDoList.ViewModel
         public User User { get; private set; }
         public DateTime CurrentlyDisplayedMonth { get; private set; }
         public List<Day> DisplayedDays { get; private set; }
-        public List<Event> RepetetiveEvents { get; }
         public DateTime CurrentlySelectedDay { get; private set; }
+
         private readonly IUnitOfWork _unitOfWork;
 
         public EventsCalendarViewModel(IUnitOfWork unitOfWork)
