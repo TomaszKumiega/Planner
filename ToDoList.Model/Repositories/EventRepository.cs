@@ -81,7 +81,6 @@ namespace ToDoList.Model.Repositories
             e.RepetitionPattern = entity.RepetitionPattern;
             e.EventDifficulty = entity.EventDifficulty;
             e.EventType = entity.EventType;
-            e.DateTime = entity.DateTime;
 
         }
     }
