@@ -67,15 +67,5 @@ namespace ToDoList.Model.Repositories
         {
             _context.Users.RemoveRange(entities);
         }
-
-        public void Update(User entity)
-        {
-            var user = _context.Users.Find(entity);
-
-            user.Id = entity.Id;
-            user.Karma = entity.Karma;
-            user.Name = entity.Name;
-
-        }
     }
 }

@@ -71,17 +71,6 @@ namespace ToDoList.Model.Repositories
 
             _context.Events.RemoveRange(entities);
         }
-
-        public void Update(Event entity)
-        {
-            var e = _context.Events.Find(entity);
-
-            e.Karma = entity.Karma;
-            e.Name = entity.Name;
-            e.RepetitionPattern = entity.RepetitionPattern;
-            e.EventDifficulty = entity.EventDifficulty;
-            e.EventType = entity.EventType;
-
-        }
+        
     }
 }
