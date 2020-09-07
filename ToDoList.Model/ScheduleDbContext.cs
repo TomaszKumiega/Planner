@@ -15,5 +15,11 @@ namespace ToDoList.Model
         public System.Data.Entity.DbSet<Event> Events { get; set; }
         public System.Data.Entity.DbSet<User> Users { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Event>()
+                .Property(x => x._RecurrencePattern).HasColumnName("RecurrencePattern");
+        }
+
     }
 }

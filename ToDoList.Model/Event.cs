@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json;
 
 namespace ToDoList.Model
 {
@@ -34,7 +35,14 @@ namespace ToDoList.Model
         public int Karma { get; set; }
         public DateTime ?DateTime { get; set; }
         public DateTime ?EndDateTime { get; set; }
-        public RecurrencePattern ?RecurrencePattern { get; set; }
+        internal string _RecurrencePattern { get; set; }
+
+        [NotMapped]
+        public RecurrencePattern RecurrencePattern
+        {
+            get => _RecurrencePattern == null ? null : JsonSerializer.Deserialize<RecurrencePattern>(_RecurrencePattern);
+            set => _RecurrencePattern = JsonSerializer.Serialize(value);
+        }
 
         /// <summary>
         /// Initializes new instance of <see cref="Event"/> class.
@@ -49,7 +57,6 @@ namespace ToDoList.Model
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
-            RecurrencePattern = null;
             DateTime = dateTime;
         }
 
@@ -67,7 +74,6 @@ namespace ToDoList.Model
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
-            RecurrencePattern = null;
             DateTime = dateTime;
             EndDateTime = endDateTime;
         }
@@ -80,12 +86,12 @@ namespace ToDoList.Model
         /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
         /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
         /// <param name="repetitionPattern">Repetition pattern specified in <see cref="ToDoList.Model.ReocurrencePatternType"/></param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, RecurrencePattern repetitionPattern)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, RecurrencePattern recurrencePattern)
         {
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
-            RecurrencePattern = repetitionPattern;
+            RecurrencePattern = recurrencePattern;
             DateTime = null;
             EndDateTime = null;
         }
