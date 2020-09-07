@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Graph;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,29 +23,6 @@ namespace ToDoList.Model
         NotPossible
     }
 
-    public enum RepetitionType
-    {
-        Daily,
-        Weekly,
-        AbsoluteMonthly,
-        RelativeMonthly,
-        AbsoluteYearly,
-        RelativeYearly
-    }
-
-    /// <summary>
-    /// Repetition pattern of an event
-    /// </summary>
-    public struct RepetitionPattern
-    {
-        public RepetitionType RepetitionType { get; set; }
-        public int Interval { get; set; }
-        public List<int> DaysOfWeek { get; set; }
-        public List<int> DayOfMonth { get; set; }
-        public List<int> WeekOfMonth { get; set; }
-        public int Month { get; set; }
-    }
-
     [Table("Events")]
     public class Event
     {
@@ -54,8 +32,9 @@ namespace ToDoList.Model
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
         public int Karma { get; set; }
-        public List<DateTime> DateTimes { get; set; }
-        public RepetitionPattern ?RepetitionPattern { get; set; }
+        public DateTime ?DateTime { get; set; }
+        public DateTime ?EndDateTime { get; set; }
+        public RecurrencePattern ?RecurrencePattern { get; set; }
 
         /// <summary>
         /// Initializes new instance of <see cref="Event"/> class.
@@ -70,10 +49,27 @@ namespace ToDoList.Model
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
-            RepetitionPattern = null;
+            RecurrencePattern = null;
+            DateTime = dateTime;
+        }
 
-            DateTimes = new List<DateTime>();
-            DateTimes.Add(dateTime);
+        /// <summary>
+        /// Initializes new instance of <see cref="Event"/> class.
+        /// Creates disposable version of an event with it's ending DateTime.
+        /// </summary>
+        /// <param name="name">Name of the event</param>
+        /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
+        /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
+        /// <param name="dateTime">Starting date and time of the event</param>
+        /// <param name="endDateTime">Ending date and time of the event</param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime dateTime, DateTime endDateTime)
+        {
+            Name = name;
+            EventType = eventType;
+            EventDifficulty = eventDifficulty;
+            RecurrencePattern = null;
+            DateTime = dateTime;
+            EndDateTime = endDateTime;
         }
 
         /// <summary>
@@ -83,14 +79,15 @@ namespace ToDoList.Model
         /// <param name="name">Name of the event</param>
         /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
         /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
-        /// <param name="repetitionPattern">Repetition pattern specified in <see cref="ToDoList.Model.RepetitionPattern"/></param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, RepetitionPattern repetitionPattern)
+        /// <param name="repetitionPattern">Repetition pattern specified in <see cref="ToDoList.Model.ReocurrencePatternType"/></param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, RecurrencePattern repetitionPattern)
         {
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
-            RepetitionPattern = repetitionPattern;
-            DateTimes = new List<DateTime>();
+            RecurrencePattern = repetitionPattern;
+            DateTime = null;
+            EndDateTime = null;
         }
 
         /// <summary>
@@ -101,7 +98,7 @@ namespace ToDoList.Model
         /// <returns></returns>
         public Event CompleteEvent()
         {
-            if (RepetitionPattern != null)
+            if (RecurrencePattern != null)
             {
                 this.Karma += 5;
                 return this;
@@ -110,6 +107,11 @@ namespace ToDoList.Model
             {
                 return null;
             }
+        }
+
+        public bool IsDateTimeMatchingRepetitionPattern(DateTime dateTime)
+        {
+            return false;
         }
     }
 }

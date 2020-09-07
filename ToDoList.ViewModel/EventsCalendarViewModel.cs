@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Microsoft.Graph;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoList.Model;
 using ToDoList.Model.Repositories;
+using Event = ToDoList.Model.Event;
+using EventType = ToDoList.Model.EventType;
+using User = ToDoList.Model.User;
 
 namespace ToDoList.ViewModel
 {
@@ -52,7 +56,7 @@ namespace ToDoList.ViewModel
         }
 
 
-        public void CreateEvent(string name, EventType eventType, EventDifficulty eventDifficulty, RepetitionPattern repetitionPattern)
+        public void CreateEvent(string name, EventType eventType, EventDifficulty eventDifficulty, RecurrencePattern repetitionPattern)
         {
             var e = new Event(name, eventType, eventDifficulty, repetitionPattern);
 
@@ -67,7 +71,7 @@ namespace ToDoList.ViewModel
             Schedule = new Dictionary<DateTime, List<Event>>();
             
             var days = GetCurrentlyDisplayedDays();
-            var repetetiveEvents = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.RepetitionPattern != null).ToList());
+            var repetetiveEvents = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.RecurrencePattern != null).ToList());
 
             foreach (var t in days)
             {
