@@ -123,6 +123,16 @@ namespace ToDoList.ViewModel
             _unitOfWork.SaveChanges();
         }
 
+        public void CompleteEvent(Event @event)
+        {
+            if (@event == null) throw new ArgumentNullException();
+
+            User.Karma += @event.Karma;
+
+            if (@event.RecurrencePattern == null) RemoveEvent(@event);
+            else @event.CompleteEvent();
+        }
+
         public void AddObserver(IObserver observer)
         {
             Observers.Add(observer);
@@ -138,13 +148,5 @@ namespace ToDoList.ViewModel
             foreach (var t in Observers) t.Update();
         }
 
-        //TODO:
-        /*
-        public void CompleteEvent()
-        {
-
-        }
-
-        */
     }
 }
