@@ -129,6 +129,15 @@ namespace ToDoList.ViewModel
             return listOfDays;
         }
 
+        public void RemoveEvent(Event @event)
+        {
+            var item = Schedule.First(x => x.Value.Contains(@event));
+            Schedule.Remove(item.Key);
+
+            _unitOfWork.EventRepository.Remove(@event);
+            _unitOfWork.SaveChanges();
+        }
+
         //TODO:
         /*
         public void CompleteEvent()
@@ -136,10 +145,6 @@ namespace ToDoList.ViewModel
 
         }
 
-        public void RemoveEvent()
-        {
-
-        }
         */
     }
 }
