@@ -126,10 +126,12 @@ namespace ToDoList.ViewModel
         {
             if (@event == null) throw new ArgumentNullException();
 
-            User.Karma += @event.Karma;
-
-            if (@event.RecurrencePattern == null) await RemoveEventAsync(@event);
-            else @event.CompleteEvent();
+            if (@event.RecurrencePattern == null)
+            {
+                @event.CompleteEvent(User);
+                await RemoveEventAsync(@event);
+            }
+            else @event.CompleteEvent(User);
         }
 
         public void AddObserver(IObserver observer)

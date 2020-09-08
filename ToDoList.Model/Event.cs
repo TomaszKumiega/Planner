@@ -12,7 +12,7 @@ namespace ToDoList.Model
     public enum EventType
     {
         Obligatory,
-        NotObligatory,
+        Voluntary,
         MustDo
     }
 
@@ -22,7 +22,7 @@ namespace ToDoList.Model
         Medium,
         Hard,
         VeryHard,
-        NotPossible
+        Impossible
     }
 
     [Table("Events")]
@@ -33,7 +33,8 @@ namespace ToDoList.Model
         public string Name { get; set; }
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
-        public int Karma { get; set; }
+        public int CompletionKarma { get; private set; }
+        public int FailureKarma { get; private set; }
         public DateTime ?StartDateTime { get; set; }
         public DateTime ?EndDateTime { get; set; }
         public bool AllDay { get; set; }
@@ -64,6 +65,7 @@ namespace ToDoList.Model
             EndDateTime = null;
             AllDay = allDay;
             _RecurrencePattern = null;
+            InitializeKarma();
         }
 
         /// <summary>
@@ -83,6 +85,7 @@ namespace ToDoList.Model
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
             AllDay = false;
+            InitializeKarma();
         }
 
         /// <summary>
@@ -105,6 +108,7 @@ namespace ToDoList.Model
             AllDay = allDay;
             EndDateTime = null;
             NumberOfOcurrences = null;
+            InitializeKarma();
         }
 
         /// <summary>
@@ -127,6 +131,7 @@ namespace ToDoList.Model
             EndDateTime = endDateTime;
             AllDay = false;
             NumberOfOcurrences = null;
+            InitializeKarma();
         }
 
         /// <summary>
@@ -150,6 +155,7 @@ namespace ToDoList.Model
             AllDay = allDay;
             EndDateTime = null;
             NumberOfOcurrences = numberOfOcurrences;
+            InitializeKarma();
         }
 
         /// <summary>
@@ -173,25 +179,107 @@ namespace ToDoList.Model
             EndDateTime = endDateTime;
             AllDay = false;
             NumberOfOcurrences = numberOfOcurrences;
+            InitializeKarma();
         }
 
-        //TODO: Remove CompleteEvent()
-        /// <summary>
-        /// Completes the event.
-        /// If event type is repetetive, returns the <see cref="Event"/> object with additional karma for event completion.
-        /// If event type is not repetetive, returns null.
-        /// </summary>
-        /// <returns></returns>
-        public Event CompleteEvent()
+        private void InitializeKarma()
         {
+            switch (EventType)
+            {
+                case EventType.Obligatory:
+                    {
+                        FailureKarma = Int32.Parse(KarmaEconomyResources.FailureObligatory);
+
+                        switch (EventDifficulty)
+                        {
+                            case EventDifficulty.Easy: 
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionEasy);  
+                                break;
+                            case EventDifficulty.Medium: 
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMedium);
+                                break;
+                            case EventDifficulty.Hard:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionHard);
+                                break;
+                            case EventDifficulty.VeryHard:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionVeryHard);
+                                break;
+                            case EventDifficulty.Impossible:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionImpossible);
+                                break;
+                        }
+
+                    }
+                    break;
+                case EventType.Voluntary:
+                    {
+                        FailureKarma = 0;
+
+                        switch (EventDifficulty)
+                        {
+                            case EventDifficulty.Easy:
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionEasy)/1.5)*2;
+                                break;
+                            case EventDifficulty.Medium:
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionMedium)/1.5)*2;
+                                break;
+                            case EventDifficulty.Hard:
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionHard)/1.5)*2;
+                                break;
+                            case EventDifficulty.VeryHard:
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionVeryHard)/1.5)*2;
+                                break;
+                            case EventDifficulty.Impossible:
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionImpossible)/1.5)*2;
+                                break;
+                        }
+                    }
+                    break;
+                case EventType.MustDo:
+                    {
+                        FailureKarma = Int32.Parse(KarmaEconomyResources.FailureMustDo);
+
+                        switch (EventDifficulty)
+                        {
+                            case EventDifficulty.Easy: 
+                                CompletionKarma = 0;
+                                break;
+                            case EventDifficulty.Medium:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo);
+                                break;
+                            case EventDifficulty.Hard:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo)*2;
+                                break;
+                            case EventDifficulty.VeryHard:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo)*4;
+                                break;
+                            case EventDifficulty.Impossible:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo)*8;
+                                break;
+                        }
+                    }
+                    break;
+            }
+        }
+
+        public void CompleteEvent(User user)
+        {
+            user.Karma += CompletionKarma;
+
+            if (NumberOfOcurrences.HasValue) NumberOfOcurrences--;
+
             if (RecurrencePattern != null)
             {
-                this.Karma += 5;
-                return this;
-            }
-            else
-            {
-                return null;
+                switch(EventType)
+                {
+                    case EventType.Obligatory: CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionObligatoryRecurringBonus);
+                        break;
+                    case EventType.Voluntary: CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionVoluntaryRecurringBonus);
+                        break;
+                    case EventType.MustDo: CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionMustDoRecurringBonus);
+                        break;
+                }
+
             }
         }
 
