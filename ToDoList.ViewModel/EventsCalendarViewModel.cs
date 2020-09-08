@@ -45,26 +45,7 @@ namespace ToDoList.ViewModel
         }
 
         
-        public void CreateEvent(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime dateTime)
-        {
-            var e = new Event(name, eventType,eventDifficulty, dateTime);
-
-            _unitOfWork.EventRepository.Add(e);
-            _unitOfWork.SaveChanges();
-
-            LoadScheduleAsync();
-        }
-
-
-        public void CreateEvent(string name, EventType eventType, EventDifficulty eventDifficulty, RecurrencePattern repetitionPattern)
-        {
-            var e = new Event(name, eventType, eventDifficulty, repetitionPattern);
-
-            _unitOfWork.EventRepository.Add(e);
-            _unitOfWork.SaveChanges();
-
-            LoadScheduleAsync();
-        }
+        //TODO: Add create event methods based on the fields on event creation window
 
         private async Task LoadScheduleAsync()
         {
