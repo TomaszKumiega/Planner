@@ -80,11 +80,11 @@ namespace ToDoList.ViewModel
                 //Finds all repetetive events that are going to happen on the day t
                 foreach (var k in repetetiveEvents)
                 {
-                    if (k.IsDateTimeMatchingRepetitionPattern(t)) listOfEvents.Add(k);
+                    if (k.IsDateTimeMatchingRecurrencePattern(t)) listOfEvents.Add(k);
                 }
             
                 // Finds all disposable events that are going to happen on the day t
-                listOfEvents.AddRange( await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.DateTime.Value.Date == t.Date).ToList()));
+                listOfEvents.AddRange( await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.StartDateTime.Value.Date == t.Date).ToList()));
 
                 Schedule.Add(t, listOfEvents);
             }
