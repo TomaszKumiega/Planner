@@ -14,13 +14,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoList.ViewModel.ObserverPattern;
 
 namespace ToDoList
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IObserver
     {
         public MainWindow()
         {
@@ -75,6 +76,11 @@ namespace ToDoList
             FridayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.friday;
             SaturdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.saturday;
             SundayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.sunday;
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }

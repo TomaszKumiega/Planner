@@ -6,24 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDoList.Model;
 using ToDoList.Model.Repositories;
+using ToDoList.ViewModel.ObserverPattern;
 using Event = ToDoList.Model.Event;
 using EventType = ToDoList.Model.EventType;
 using User = ToDoList.Model.User;
 
 namespace ToDoList.ViewModel
 {
-    public class EventsCalendarViewModel
+    public class EventsCalendarViewModel : IObservable
     {
         public User User { get; private set; }
         public DateTime CurrentlyDisplayedMonth { get; private set; }
         public Dictionary<DateTime, List<Event>> Schedule { get; private set; }
         public DateTime CurrentlySelectedDay { get; private set; }
 
+        public List<IObserver> Observers { get; }
+
         private readonly IUnitOfWork _unitOfWork;
 
         public EventsCalendarViewModel(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;   
+            _unitOfWork = unitOfWork;
+            Observers = new List<IObserver>();
         }
 
         /// <summary>
@@ -117,6 +121,21 @@ namespace ToDoList.ViewModel
 
             _unitOfWork.EventRepository.Remove(@event);
             _unitOfWork.SaveChanges();
+        }
+
+        public void AddObserver(IObserver observer)
+        {
+            Observers.Add(observer);
+        }
+
+        public void RemoveObserver(IObserver observer)
+        {
+            Observers.Remove(observer);
+        }
+
+        public void NotifyObservers()
+        {
+            foreach (var t in Observers) t.Update();
         }
 
         //TODO:

@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ToDoList.ViewModel\ToDoList.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
