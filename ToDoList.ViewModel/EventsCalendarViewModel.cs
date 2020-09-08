@@ -51,11 +51,11 @@ namespace ToDoList.ViewModel
         
         //TODO: Add create event methods based on the fields on event creation window
 
-        private async Task LoadScheduleAsync()
+        public async Task LoadScheduleAsync()
         {
             Schedule = new Dictionary<DateTime, List<Event>>();
-            
-            var days = GetCurrentlyDisplayedDays();
+
+            var days = await Task.Run(() => GetCurrentlyDisplayedDays());
             var repetetiveEvents = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.RecurrencePattern != null).ToList());
 
             foreach (var t in days)
@@ -114,22 +114,21 @@ namespace ToDoList.ViewModel
             return listOfDays;
         }
 
-        public void RemoveEvent(Event @event)
+        public async Task RemoveEventAsync(Event @event)
         {
-            var item = Schedule.First(x => x.Value.Contains(@event));
-            Schedule.Remove(item.Key);
-
             _unitOfWork.EventRepository.Remove(@event);
             _unitOfWork.SaveChanges();
+
+            await LoadScheduleAsync();
         }
 
-        public void CompleteEvent(Event @event)
+        public async Task CompleteEventAsync(Event @event)
         {
             if (@event == null) throw new ArgumentNullException();
 
             User.Karma += @event.Karma;
 
-            if (@event.RecurrencePattern == null) RemoveEvent(@event);
+            if (@event.RecurrencePattern == null) await RemoveEventAsync(@event);
             else @event.CompleteEvent();
         }
 
