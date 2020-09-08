@@ -36,7 +36,9 @@ namespace ToDoList.Model
         public int Karma { get; set; }
         public DateTime ?StartDateTime { get; set; }
         public DateTime ?EndDateTime { get; set; }
+        public bool AllDay { get; set; }
         internal string _RecurrencePattern { get; set; }
+        public int ?NumberOfOcurrences { get; set; }
 
         [NotMapped]
         public RecurrencePattern RecurrencePattern
@@ -52,13 +54,16 @@ namespace ToDoList.Model
         /// <param name="name">Name of the event</param>
         /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
         /// <param name="eventDifficulty"/>Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"></param>
-        /// <param name="dateTime">Date and time of an event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime dateTime)
+        /// <param name="startDateTime">Date and time of an event</param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay)
         {
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
-            StartDateTime = dateTime;
+            StartDateTime = startDateTime;
+            EndDateTime = null;
+            AllDay = allDay;
+            _RecurrencePattern = null;
         }
 
         /// <summary>
@@ -68,15 +73,60 @@ namespace ToDoList.Model
         /// <param name="name">Name of the event</param>
         /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
         /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
-        /// <param name="dateTime">Starting date and time of the event</param>
+        /// <param name="startDateTime">Starting date and time of the event</param>
         /// <param name="endDateTime">Ending date and time of the event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime dateTime, DateTime endDateTime)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime)
         {
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
-            StartDateTime = dateTime;
+            StartDateTime = startDateTime;
             EndDateTime = endDateTime;
+            AllDay = false;
+        }
+
+        /// <summary>
+        /// Initializes new instance of <see cref="Event"/> class.
+        /// Creates recurring event.
+        /// </summary>
+        /// <param name="name">Name of the event</param>
+        /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
+        /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
+        /// <param name="startDateTime">Starting date and time of the event</param>
+        /// <param name="allDay">Specifies if event should ignore startDateTime's time component</param>
+        /// <param name="recurrencePattern">Specifies when event should recur</param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern)
+        {
+            Name = name;
+            EventType = eventType;
+            EventDifficulty = eventDifficulty;
+            RecurrencePattern = recurrencePattern;
+            StartDateTime = startDateTime;
+            AllDay = allDay;
+            EndDateTime = null;
+            NumberOfOcurrences = null;
+        }
+
+        /// <summary>
+        /// Initializes new instance of <see cref="Event"/> class.
+        /// Creates recurring event.
+        /// </summary>
+        /// <param name="name">Name of the event</param>
+        /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
+        /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
+        /// <param name="startDateTime">Starting date and time of the event</param>
+        /// <param name="endDateTime">Ending date and time of the event</param>
+        /// <param name="recurrencePattern">/// <param name="recurrencePattern">Specifies when event should recur</param></param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern)
+        {
+            Name = name;
+            EventType = eventType;
+            EventDifficulty = eventDifficulty;
+            RecurrencePattern = recurrencePattern;
+            StartDateTime = startDateTime;
+            EndDateTime = endDateTime;
+            AllDay = false;
+            NumberOfOcurrences = null;
         }
 
         /// <summary>
@@ -86,15 +136,43 @@ namespace ToDoList.Model
         /// <param name="name">Name of the event</param>
         /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
         /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
-        /// <param name="repetitionPattern">Repetition pattern specified in <see cref="ToDoList.Model.ReocurrencePatternType"/></param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, RecurrencePattern recurrencePattern)
+        /// <param name="startDateTime">Starting date and time of the event</param>
+        /// <param name="allDay">Specifies if event should ignore startDateTime's time component</param>
+        /// <param name="recurrencePattern">Specifies when event should recur</param>
+        /// <param name="numberOfOcurrences">Number of ocurrences of the event</param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern, int numberOfOcurrences)
         {
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
             RecurrencePattern = recurrencePattern;
-            StartDateTime = null;
+            StartDateTime = startDateTime;
+            AllDay = allDay;
             EndDateTime = null;
+            NumberOfOcurrences = numberOfOcurrences;
+        }
+
+        /// <summary>
+        /// Initializes new instance of <see cref="Event"/> class.
+        /// Creates repetetive version of an event.
+        /// </summary>
+        /// <param name="name">Name of the event</param>
+        /// <param name="eventType">Event type specified in <see cref="ToDoList.Model.EventType"/></param>
+        /// <param name="eventDifficulty">Event difficulty specified in <see cref="ToDoList.Model.EventDifficulty"/></param>
+        /// <param name="startDateTime">Starting date and time of the event</param>
+        /// <param name="endDateTime">Ending date and time of the event</param>
+        /// <param name="recurrencePattern">Specifies when event should recur</param>
+        /// <param name="numberOfOcurrences">Number of ocurrences of the event</param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern, int numberOfOcurrences)
+        {
+            Name = name;
+            EventType = eventType;
+            EventDifficulty = eventDifficulty;
+            RecurrencePattern = recurrencePattern;
+            StartDateTime = startDateTime;
+            EndDateTime = endDateTime;
+            AllDay = false;
+            NumberOfOcurrences = numberOfOcurrences;
         }
 
         //TODO: Remove CompleteEvent()
