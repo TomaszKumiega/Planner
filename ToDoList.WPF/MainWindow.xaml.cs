@@ -26,7 +26,6 @@ namespace ToDoList
         public MainWindow()
         {
             InitializeComponent();
-            InitializeStrings();
         }
 
         /// <summary>
@@ -65,17 +64,6 @@ namespace ToDoList
         private void Close(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void InitializeStrings()
-        {
-            MondayWeekDayTextBlock.Text=ToDoList.WPF.Properties.strings.monday;
-            TuesdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.tuesday;
-            WednesdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.wednesday;
-            ThursdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.thursday;
-            FridayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.friday;
-            SaturdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.saturday;
-            SundayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.sunday;
         }
 
         public void Update()
