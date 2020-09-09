@@ -208,12 +208,12 @@ namespace ToDoList.ViewModel.ViewModels
             if ((int)date.DayOfWeek == 0) numberOfDaysFromPreviousMonth = 6;
             else numberOfDaysFromPreviousMonth = (int)date.DayOfWeek - 1;
 
-            date.AddDays(-numberOfDaysFromPreviousMonth);
+            date = date.AddDays(-numberOfDaysFromPreviousMonth);
 
             for (int i = 0; i < numberOfDaysFromPreviousMonth; i++)
             {
                 listOfDays.Add(date);
-                date.AddDays(1);
+                date = date.AddDays(1);
             }
 
             // Generate list of days from currently displayed month
@@ -222,14 +222,14 @@ namespace ToDoList.ViewModel.ViewModels
                 .ToList());
 
             // Generate days from next month to fill a gap at the end of the calendar
-            date.AddMonths(1);
+            date = date.AddMonths(1);
 
             var numberOfDaysFromNextMonth = 35 - listOfDays.Count;
 
             for (int i = 0; i < numberOfDaysFromNextMonth; i++)
             {
                 listOfDays.Add(date);
-                date.AddDays(1);
+                date = date.AddDays(1);
             }
 
             return listOfDays;
