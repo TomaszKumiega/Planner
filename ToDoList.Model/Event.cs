@@ -48,6 +48,11 @@ namespace ToDoList.Model
             set => _RecurrencePattern = JsonSerializer.Serialize(value);
         }
 
+        public Event()
+        {
+
+        }
+
         /// <summary>
         /// Initializes new instance of <see cref="Event"/> class.
         /// Creates disposable version of an event.

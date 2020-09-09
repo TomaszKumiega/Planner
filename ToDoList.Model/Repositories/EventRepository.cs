@@ -32,7 +32,8 @@ namespace ToDoList.Model.Repositories
 
         public IEnumerable<Event> Find(Expression<Func<Event, bool>> predicate)
         {
-            return _context.Events.Where(predicate).ToList();
+            var items = _context.Events.ToList();
+            return items.AsQueryable<Event>().Where<Event>(predicate).ToList();
         }
 
         public IEnumerable<Event> GetAll()
