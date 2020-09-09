@@ -171,6 +171,9 @@
   <data name="repeat" xml:space="preserve">
     <value>Repeat:</value>
   </data>
+  <data name="repeatEvery" xml:space="preserve">
+    <value>Repeat Every:</value>
+  </data>
   <data name="saturday" xml:space="preserve">
     <value>Saturday</value>
   </data>
