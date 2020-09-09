@@ -115,6 +115,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Daily.
+        /// </summary>
+        public static string daily {
+            get {
+                return ResourceManager.GetString("daily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to day(s).
         /// </summary>
         public static string days {
@@ -133,11 +142,38 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Difficulty:.
+        /// </summary>
+        public static string difficulty {
+            get {
+                return ResourceManager.GetString("difficulty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easy.
+        /// </summary>
+        public static string easy {
+            get {
+                return ResourceManager.GetString("easy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End:.
         /// </summary>
         public static string end {
             get {
                 return ResourceManager.GetString("end", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event Type:.
+        /// </summary>
+        public static string eventType {
+            get {
+                return ResourceManager.GetString("eventType", resourceCulture);
             }
         }
         
@@ -205,6 +241,24 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hard.
+        /// </summary>
+        public static string hard {
+            get {
+                return ResourceManager.GetString("hard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impossible.
+        /// </summary>
+        public static string Impossible {
+            get {
+                return ResourceManager.GetString("Impossible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to January.
         /// </summary>
         public static string january {
@@ -259,6 +313,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Medium.
+        /// </summary>
+        public static string medium {
+            get {
+                return ResourceManager.GetString("medium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mon.
         /// </summary>
         public static string mon {
@@ -277,11 +340,29 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Monthly.
+        /// </summary>
+        public static string monthly {
+            get {
+                return ResourceManager.GetString("monthly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to month(s).
         /// </summary>
         public static string months {
             get {
                 return ResourceManager.GetString("months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must Do.
+        /// </summary>
+        public static string mustDo {
+            get {
+                return ResourceManager.GetString("mustDo", resourceCulture);
             }
         }
         
@@ -309,6 +390,15 @@ namespace ToDoList.WPF.Properties {
         public static string november {
             get {
                 return ResourceManager.GetString("november", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obligatory.
+        /// </summary>
+        public static string obligatory {
+            get {
+                return ResourceManager.GetString("obligatory", resourceCulture);
             }
         }
         
@@ -475,6 +565,24 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Very Hard.
+        /// </summary>
+        public static string veryHard {
+            get {
+                return ResourceManager.GetString("veryHard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voluntary.
+        /// </summary>
+        public static string voluntary {
+            get {
+                return ResourceManager.GetString("voluntary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wed.
         /// </summary>
         public static string wed {
@@ -502,11 +610,29 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Weekly.
+        /// </summary>
+        public static string weekly {
+            get {
+                return ResourceManager.GetString("weekly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to week(s).
         /// </summary>
         public static string weeks {
             get {
                 return ResourceManager.GetString("weeks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yearly.
+        /// </summary>
+        public static string yearly {
+            get {
+                return ResourceManager.GetString("yearly", resourceCulture);
             }
         }
         

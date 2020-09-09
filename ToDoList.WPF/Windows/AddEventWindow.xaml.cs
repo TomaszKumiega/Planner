@@ -27,13 +27,23 @@ namespace ToDoList.WPF.Windows
 
         private void Initialize()
         {
+            EventTypeComboBox.Items.Add(ToDoList.WPF.Properties.Resources.obligatory);
+            EventTypeComboBox.Items.Add(ToDoList.WPF.Properties.Resources.voluntary);
+            EventTypeComboBox.Items.Add(ToDoList.WPF.Properties.Resources.mustDo);
+
+            DifficultyComboBox.Items.Add(ToDoList.WPF.Properties.Resources.easy);
+            DifficultyComboBox.Items.Add(ToDoList.WPF.Properties.Resources.medium);
+            DifficultyComboBox.Items.Add(ToDoList.WPF.Properties.Resources.hard);
+            DifficultyComboBox.Items.Add(ToDoList.WPF.Properties.Resources.veryHard);
+            DifficultyComboBox.Items.Add(ToDoList.WPF.Properties.Resources.Impossible);
+
             this.StartDatePicker.Value = DateTime.Now;
             this.EndDatePicker.Value = DateTime.Now;
 
-            this.RepeatComboBox.Items.Add("Daily");
-            this.RepeatComboBox.Items.Add("Weekly");
-            this.RepeatComboBox.Items.Add("Monthly");
-            this.RepeatComboBox.Items.Add("Yearly");
+            this.RepeatComboBox.Items.Add(ToDoList.WPF.Properties.Resources.daily);
+            this.RepeatComboBox.Items.Add(ToDoList.WPF.Properties.Resources.weekly);
+            this.RepeatComboBox.Items.Add(ToDoList.WPF.Properties.Resources.monthly);
+            this.RepeatComboBox.Items.Add(ToDoList.WPF.Properties.Resources.yearly);
 
             this.NeverRadioButton.IsChecked = true;
 
@@ -41,7 +51,6 @@ namespace ToDoList.WPF.Windows
             this.AfterIntegerUpDown.Value = 0;
 
             DisableRecurrenceControls();
-
         }
 
         /// <summary>

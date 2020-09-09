@@ -135,14 +135,26 @@
   <data name="august" xml:space="preserve">
     <value>August</value>
   </data>
+  <data name="daily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
   <data name="days" xml:space="preserve">
     <value>day(s)</value>
   </data>
   <data name="december" xml:space="preserve">
     <value>December</value>
   </data>
+  <data name="difficulty" xml:space="preserve">
+    <value>Difficulty:</value>
+  </data>
+  <data name="easy" xml:space="preserve">
+    <value>Easy</value>
+  </data>
   <data name="end" xml:space="preserve">
     <value>End:</value>
+  </data>
+  <data name="eventType" xml:space="preserve">
+    <value>Event Type:</value>
   </data>
   <data name="every" xml:space="preserve">
     <value>Every:</value>
@@ -165,6 +177,12 @@
   <data name="from" xml:space="preserve">
     <value>From:</value>
   </data>
+  <data name="hard" xml:space="preserve">
+    <value>Hard</value>
+  </data>
+  <data name="Impossible" xml:space="preserve">
+    <value>Impossible</value>
+  </data>
   <data name="january" xml:space="preserve">
     <value>January</value>
   </data>
@@ -183,14 +201,23 @@
   <data name="may" xml:space="preserve">
     <value>May</value>
   </data>
+  <data name="medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
   <data name="mon" xml:space="preserve">
     <value>Mon</value>
   </data>
   <data name="monday" xml:space="preserve">
     <value>Monday</value>
   </data>
+  <data name="monthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
   <data name="months" xml:space="preserve">
     <value>month(s)</value>
+  </data>
+  <data name="mustDo" xml:space="preserve">
+    <value>Must Do</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>Name:</value>
@@ -200,6 +227,9 @@
   </data>
   <data name="november" xml:space="preserve">
     <value>November</value>
+  </data>
+  <data name="obligatory" xml:space="preserve">
+    <value>Obligatory</value>
   </data>
   <data name="october" xml:space="preserve">
     <value>October</value>
@@ -255,6 +285,12 @@
   <data name="tuesday" xml:space="preserve">
     <value>Tuesday</value>
   </data>
+  <data name="veryHard" xml:space="preserve">
+    <value>Very Hard</value>
+  </data>
+  <data name="voluntary" xml:space="preserve">
+    <value>Voluntary</value>
+  </data>
   <data name="wed" xml:space="preserve">
     <value>Wed</value>
   </data>
@@ -264,8 +300,14 @@
   <data name="week" xml:space="preserve">
     <value>week</value>
   </data>
+  <data name="weekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
   <data name="weeks" xml:space="preserve">
     <value>week(s)</value>
+  </data>
+  <data name="yearly" xml:space="preserve">
+    <value>Yearly</value>
   </data>
   <data name="years" xml:space="preserve">
     <value>year(s)</value>
