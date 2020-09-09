@@ -76,6 +76,13 @@ namespace ToDoList.WPF.Windows
             Application.Current.Shutdown();
         }
 
+
+        private void AddEvent(object sender, EventArgs e)
+        {
+            var addEventWindow = new AddEventWindow(DataContext as IEventsCalendarViewModel);
+            addEventWindow.Show();
+        }
+
         /// <summary>
         /// Sets text property of MonthTextBlock
         /// </summary>
