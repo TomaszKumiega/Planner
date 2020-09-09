@@ -135,6 +135,9 @@
   <data name="august" xml:space="preserve">
     <value>August</value>
   </data>
+  <data name="days" xml:space="preserve">
+    <value>day(s)</value>
+  </data>
   <data name="december" xml:space="preserve">
     <value>December</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="monday" xml:space="preserve">
     <value>Monday</value>
+  </data>
+  <data name="months" xml:space="preserve">
+    <value>month(s)</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>Name:</value>
@@ -257,5 +263,11 @@
   </data>
   <data name="week" xml:space="preserve">
     <value>week</value>
+  </data>
+  <data name="weeks" xml:space="preserve">
+    <value>week(s)</value>
+  </data>
+  <data name="years" xml:space="preserve">
+    <value>year(s)</value>
   </data>
 </root>

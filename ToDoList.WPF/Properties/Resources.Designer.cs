@@ -115,6 +115,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to day(s).
+        /// </summary>
+        public static string days {
+            get {
+                return ResourceManager.GetString("days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to December.
         /// </summary>
         public static string december {
@@ -264,6 +273,15 @@ namespace ToDoList.WPF.Properties {
         public static string monday {
             get {
                 return ResourceManager.GetString("monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to month(s).
+        /// </summary>
+        public static string months {
+            get {
+                return ResourceManager.GetString("months", resourceCulture);
             }
         }
         
@@ -480,6 +498,24 @@ namespace ToDoList.WPF.Properties {
         public static string week {
             get {
                 return ResourceManager.GetString("week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to week(s).
+        /// </summary>
+        public static string weeks {
+            get {
+                return ResourceManager.GetString("weeks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to year(s).
+        /// </summary>
+        public static string years {
+            get {
+                return ResourceManager.GetString("years", resourceCulture);
             }
         }
     }

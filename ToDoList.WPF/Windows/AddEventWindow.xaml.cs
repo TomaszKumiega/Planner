@@ -40,6 +40,8 @@ namespace ToDoList.WPF.Windows
             this.RepeatEveryIntegerUpDown.Value = 0;
             this.AfterIntegerUpDown.Value = 0;
 
+            DisableRecurrenceControls();
+
         }
 
         /// <summary>
@@ -64,35 +66,86 @@ namespace ToDoList.WPF.Windows
 
         private void RepeatComboBox_SelectionChanged(object sender, EventArgs eventArgs)
         {
-            switch (this.RepeatComboBox.SelectedIndex)
+            switch (RepeatComboBox.SelectedIndex)
             {
                 case -1:
                     {
-
+                        DisableRecurrenceControls();
                     }
                     break;
                 case 0:
                     {
-
+                        DisableRecurrenceControls();
+                        EnableDailyRecurrenceControls();
                     }
                     break;
                 case 1:
                     {
-                        
+                        DisableRecurrenceControls();
+                        EnableDailyRecurrenceControls();
+                        EnableDaysOfWeekCheckBoxes();
+                        RecurrenceTextBlock.Text = ToDoList.WPF.Properties.Resources.weeks;
                     }
                     break;
                 case 2:
                     {
-
+                        DisableRecurrenceControls();
+                        EnableDailyRecurrenceControls();
+                        EnableDaysOfWeekCheckBoxes();
+                        WeekComboBox.IsEnabled = true;
+                        RecurrenceTextBlock.Text = ToDoList.WPF.Properties.Resources.months;
                     }
                     break;
                 case 3:
                     {
-
+                        DisableRecurrenceControls();
+                        EnableDailyRecurrenceControls();
+                        EnableDaysOfWeekCheckBoxes();
+                        WeekComboBox.IsEnabled = true;
+                        MonthComboBox.IsEnabled = true;
+                        RecurrenceTextBlock.Text = ToDoList.WPF.Properties.Resources.years;
                     }
                     break;
             }
+        }
 
+        private void DisableRecurrenceControls()
+        {
+                       
+            RepeatEveryIntegerUpDown.IsEnabled = false;
+            MondayCheckBox.IsEnabled = false;
+            TuesdayCheckBox.IsEnabled = false;
+            WednesdayCheckBox.IsEnabled = false;
+            ThursdayCheckBox.IsEnabled = false;
+            FridayCheckBox.IsEnabled = false;
+            SaturdayCheckBox.IsEnabled = false;
+            SundayCheckBox.IsEnabled = false;
+            WeekComboBox.IsEnabled = false;
+            MonthComboBox.IsEnabled = false;
+            NeverRadioButton.IsEnabled = false;
+            AfterRadioButton.IsEnabled = false;
+            AfterIntegerUpDown.IsEnabled = false;
+            RecurrenceTextBlock.Text = ToDoList.WPF.Properties.Resources.days;
+        }
+
+        private void EnableDailyRecurrenceControls()
+        {
+            RepeatEveryIntegerUpDown.IsEnabled = true;
+            NeverRadioButton.IsEnabled = true;
+            AfterRadioButton.IsEnabled = true;
+            AfterIntegerUpDown.IsEnabled = true;
+            RecurrenceTextBlock.Text = ToDoList.WPF.Properties.Resources.days;
+        }
+
+        private void EnableDaysOfWeekCheckBoxes()
+        {
+            MondayCheckBox.IsEnabled = true;
+            TuesdayCheckBox.IsEnabled = true;
+            WednesdayCheckBox.IsEnabled = true;
+            ThursdayCheckBox.IsEnabled = true;
+            FridayCheckBox.IsEnabled = true;
+            SaturdayCheckBox.IsEnabled = true;
+            SundayCheckBox.IsEnabled = true;
         }
     }
 }

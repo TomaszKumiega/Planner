@@ -50,7 +50,7 @@
         <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="30" Grid.ColumnSpan="2" />
 
         <!--Title Bar-->
-        <TextBlock x:Name="TitleTextBlock" Grid.Row="0" HorizontalAlignment="Left" FontFamily="Segoe UI" VerticalAlignment="Bottom" FontSize="22" Foreground="#949597" Text="{x:Static res:Resources.addEvent}"/>
+        <TextBlock x:Name="TitleTextBlock" Grid.Row="0" Margin="10,0,0,0" HorizontalAlignment="Left" FontFamily="Segoe UI" VerticalAlignment="Bottom" FontSize="22" Foreground="#949597" Text="{x:Static res:Resources.addEvent}"/>
         
         <!--Close Button-->
         <Button x:Name="ButtonClose" Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" Click="Close">
@@ -89,7 +89,7 @@
         <!--Repeat Every-->
         <TextBlock x:Name="RepeatEveryTextBlock" Grid.Row="12" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.every}"/>
         <tk:IntegerUpDown x:Name="RepeatEveryIntegerUpDown" Grid.Row="12" Grid.Column="1" Width="80" Height="25" Margin="20,0,0,0" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="RecurrenceTextBlock" Grid.Row="12" Grid.Column="1"  Width="200" Margin="110,0,0,0" HorizontalAlignment="Left" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="15" VerticalAlignment="Center" Text="week(s)"/>
+        <TextBlock x:Name="RecurrenceTextBlock" Grid.Row="12" Grid.Column="1"  Width="200" Margin="110,0,0,0" HorizontalAlignment="Left" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="15" VerticalAlignment="Center" Text="day(s)"/>
 
         <!--On-->
         <TextBlock x:Name="OnTextBlock" Grid.Row="14" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.on}"/>
