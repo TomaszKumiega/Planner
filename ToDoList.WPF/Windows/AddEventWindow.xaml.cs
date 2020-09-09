@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToDoList.ViewModel.ViewModels;
 
 namespace ToDoList.WPF.Windows
 {
@@ -17,9 +18,11 @@ namespace ToDoList.WPF.Windows
     /// </summary>
     public partial class AddEventWindow : Window
     {
-        public AddEventWindow()
+        public AddEventWindow(IEventsCalendarViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
+            Initialize();
         }
 
 
@@ -41,6 +44,18 @@ namespace ToDoList.WPF.Windows
         private void RectangleTitleBarBackground_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Initialize()
+        {
+            this.StartDatePicker.Value = DateTime.Now;
+            this.EndDatePicker.Value = DateTime.Now;
+
+            this.RepeatComboBox.Items.Add("Daily");
+            this.RepeatComboBox.Items.Add("Weekly");
+            this.RepeatComboBox.Items.Add("Monthly");
+            this.RepeatComboBox.Items.Add("Yearly");
+
         }
     }
 }
