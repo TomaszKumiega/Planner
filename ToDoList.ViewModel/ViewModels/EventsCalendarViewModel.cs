@@ -13,7 +13,7 @@ using Event = ToDoList.Model.Event;
 using EventType = ToDoList.Model.EventType;
 using User = ToDoList.Model.User;
 
-namespace ToDoList.ViewModel
+namespace ToDoList.ViewModel.ViewModels
 {
     public class EventsCalendarViewModel : IEventsCalendarViewModel, INotifyPropertyChanged
     {

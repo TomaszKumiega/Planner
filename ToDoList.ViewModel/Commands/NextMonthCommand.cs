@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using ToDoList.ViewModel.ViewModels;
 
 namespace ToDoList.ViewModel.Commands
 {

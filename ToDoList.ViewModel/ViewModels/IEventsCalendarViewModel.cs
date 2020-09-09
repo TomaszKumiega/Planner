@@ -5,7 +5,7 @@ using ToDoList.Model;
 using ToDoList.ViewModel.Commands;
 using ToDoList.ViewModel.ObserverPattern;
 
-namespace ToDoList.ViewModel
+namespace ToDoList.ViewModel.ViewModels
 {
     public interface IEventsCalendarViewModel : IObservable
     {

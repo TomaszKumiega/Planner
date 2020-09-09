@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using ToDoList.WPF;
+using ToDoList.WPF.Windows;
+using ToDoList.WPF.DIContainer;
 
 namespace ToDoList
 {

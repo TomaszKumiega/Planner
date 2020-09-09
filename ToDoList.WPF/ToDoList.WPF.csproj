@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="icons\AddIcon.png" />
-    <None Remove="icons\BackIcon.png" />
-    <None Remove="icons\CalendarIcon.png" />
-    <None Remove="icons\CloseIcon.png" />
-    <None Remove="icons\ForwardIcon.png" />
-    <None Remove="icons\MaximizeIcon.png" />
-    <None Remove="icons\MinimizeIcon.png" />
+    <None Remove="Icons\AddIcon.png" />
+    <None Remove="Icons\BackIcon.png" />
+    <None Remove="Icons\CalendarIcon.png" />
+    <None Remove="Icons\CloseIcon.png" />
+    <None Remove="Icons\ForwardIcon.png" />
+    <None Remove="Icons\MaximizeIcon.png" />
+    <None Remove="Icons\MinimizeIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,27 +43,31 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="icons\AddIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="icons\BackIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="icons\CalendarIcon.png">
+    <Resource Include="Icons\AddIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="icons\CloseIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Icons\BackIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="icons\ForwardIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Icons\CalendarIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="icons\MaximizeIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Icons\CloseIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="icons\MinimizeIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Icons\ForwardIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Icons\MaximizeIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\MinimizeIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UserControls\AddEventWindowControls\" />
   </ItemGroup>
 
 </Project>

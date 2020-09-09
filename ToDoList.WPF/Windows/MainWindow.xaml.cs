@@ -17,8 +17,9 @@ using System.Windows.Shapes;
 using ToDoList.ViewModel;
 using ToDoList.ViewModel.ObserverPattern;
 using ToDoList.WPF;
+using ToDoList.ViewModel.ViewModels;
 
-namespace ToDoList
+namespace ToDoList.WPF.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

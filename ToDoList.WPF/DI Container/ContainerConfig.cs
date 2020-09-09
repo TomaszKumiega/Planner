@@ -5,8 +5,10 @@ using System.Text;
 using ToDoList.Model;
 using ToDoList.Model.Repositories;
 using ToDoList.ViewModel;
+using ToDoList.WPF.Windows;
+using ToDoList.ViewModel.ViewModels;
 
-namespace ToDoList.WPF
+namespace ToDoList.WPF.DIContainer
 {
     public static class ContainerConfig
     {

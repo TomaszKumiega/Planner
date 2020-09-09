@@ -1,4 +1,4 @@
-﻿<Window x:Class="ToDoList.WPF.AddEventWindow"
+﻿<Window x:Class="ToDoList.WPF.Windows.AddEventWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -50,7 +50,7 @@
         <Button x:Name="ButtonClose" Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" Click="Close">
             <Image x:Name="ButtonCloseIcon">
                 <Image.Source>
-                    <BitmapImage UriSource="./icons/CloseIcon.png"/>
+                    <BitmapImage UriSource="pack://application:,,,/ToDoList.WPF;component/Icons/CloseIcon.png"/>
                 </Image.Source>
             </Image>
         </Button>
