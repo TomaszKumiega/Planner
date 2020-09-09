@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using ToDoList.Model;
 using ToDoList.ViewModel.Commands;
 using ToDoList.ViewModel.ObserverPattern;
+using Microsoft.Graph;
+using DayOfWeek = Microsoft.Graph.DayOfWeek;
+using Event = ToDoList.Model.Event;
+using User = ToDoList.Model.User;
 
 namespace ToDoList.ViewModel.ViewModels
 {
@@ -21,5 +25,6 @@ namespace ToDoList.ViewModel.ViewModels
         void NextMonth();
         void PreviousMonth();
         Task RemoveEventAsync(Event @event);
+        Task AddEventAsync(string name, int eventType, int eventDifficulty, DateTime startDateTime, DateTime ?endDateTime, bool allDay, int recurrenceType, int interval, List<DayOfWeek> daysOfWeek, int index, int month, int? occurrences);
     }
 }

@@ -9,6 +9,7 @@ using ToDoList.Model;
 using ToDoList.Model.Repositories;
 using ToDoList.ViewModel.Commands;
 using ToDoList.ViewModel.ObserverPattern;
+using DayOfWeek = Microsoft.Graph.DayOfWeek;
 using Event = ToDoList.Model.Event;
 using EventType = ToDoList.Model.EventType;
 using User = ToDoList.Model.User;
@@ -68,7 +69,101 @@ namespace ToDoList.ViewModel.ViewModels
         }
 
 
-        //TODO: Add create event methods based on the fields on event creation window
+        public async Task AddEventAsync(string name, int eventType, int eventDifficulty, DateTime startDateTime, DateTime? endDateTime, bool allDay, int recurrenceType, int interval, List<DayOfWeek> daysOfWeek, int index, int month, int? occurrences)
+        {
+            RecurrencePattern recurrencePattern = null;
+            Event @event = null;
+
+            switch(recurrenceType)
+            {
+                case -1:
+                    break;
+                case 1:
+                    {
+                        recurrencePattern = new RecurrencePattern();
+                        recurrencePattern.Interval = interval;
+                        recurrencePattern.Type = RecurrencePatternType.Daily;
+                    }
+                    break;
+                case 2:
+                    {
+                        recurrencePattern = new RecurrencePattern();
+                        recurrencePattern.Type = RecurrencePatternType.Weekly;
+                        recurrencePattern.Interval = interval;
+                        recurrencePattern.DaysOfWeek = daysOfWeek;
+                    }
+                    break;
+                case 3:
+                    {
+                        recurrencePattern = new RecurrencePattern();
+                        recurrencePattern.Interval = interval;
+                       
+                        if (index == -1)
+                        {
+                            recurrencePattern.Type = RecurrencePatternType.AbsoluteMonthly;
+                        }
+                        else
+                        {
+                            recurrencePattern.Type = RecurrencePatternType.RelativeMonthly;
+                            recurrencePattern.Index = (WeekIndex)index;
+                            recurrencePattern.DaysOfWeek = daysOfWeek;
+                        }
+                    }
+                    break;
+                case 4:
+                    {
+                        recurrencePattern = new RecurrencePattern();
+                        recurrencePattern.Interval = interval;
+                        
+                        if(index ==-1)
+                        {
+                            recurrencePattern.Type = RecurrencePatternType.AbsoluteYearly;
+                        }
+                        else
+                        {
+                            recurrencePattern.Type = RecurrencePatternType.RelativeYearly;
+                            recurrencePattern.Index = (WeekIndex)index;
+                            recurrencePattern.DaysOfWeek = daysOfWeek;
+                            recurrencePattern.Month = month;
+                        }
+                    }
+                    break;
+            }
+
+            if(endDateTime == null && recurrencePattern == null)
+            {
+                @event = new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay);
+            }
+            else if(endDateTime.HasValue  && recurrencePattern == null)
+            {
+                @event = new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value);
+            }
+            else if(endDateTime == null && recurrencePattern != null && occurrences == null)
+            {
+                @event = new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay, recurrencePattern);
+            }
+            else if(endDateTime.HasValue && recurrencePattern != null && occurrences == null)
+            {
+                @event = new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value, recurrencePattern);
+            }
+            else if(endDateTime == null && recurrencePattern != null && occurrences.HasValue)
+            {
+                @event = new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay, recurrencePattern, occurrences.Value);
+            }
+            else if(endDateTime.HasValue && recurrencePattern != null && occurrences.HasValue)
+            {
+                @event = new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value, recurrencePattern, occurrences.Value);
+            }
+
+            using(var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
+            {
+                unitOfWork.EventRepository.Add(@event);
+                unitOfWork.SaveChanges();
+            }
+
+            await LoadScheduleAsync();
+
+        }
 
         public async Task LoadScheduleAsync()
         {
@@ -97,6 +192,8 @@ namespace ToDoList.ViewModel.ViewModels
                     Schedule.Add(t, listOfEvents);
                 }
             }
+
+            NotifyObservers();
         }
 
         private List<DateTime> GetCurrentlyDisplayedDays()
