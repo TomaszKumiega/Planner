@@ -24,7 +24,7 @@ namespace ToDoList.ViewModel
         public List<IObserver> Observers { get; }
         public NextMonthCommand NextMonthCommand { get; private set; }
 
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
         public DateTime CurrentlyDisplayedMonth 
         { 
@@ -38,9 +38,9 @@ namespace ToDoList.ViewModel
         }
 
 
-        public EventsCalendarViewModel(IUnitOfWork unitOfWork)
+        public EventsCalendarViewModel(IUnitOfWorkFactory unitOfWorkFactory)
         {
-            _unitOfWork = unitOfWork;
+            _unitOfWorkFactory = unitOfWorkFactory;
             Observers = new List<IObserver>();
             CurrentlyDisplayedMonth = DateTime.Now;
             User = new User("DefaultUser");
@@ -73,22 +73,27 @@ namespace ToDoList.ViewModel
             Schedule = new Dictionary<DateTime, List<Event>>();
 
             var days = await Task.Run(() => GetCurrentlyDisplayedDays());
-            var repetetiveEvents = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.RecurrencePattern != null).ToList());
 
-            foreach (var t in days)
+            using (var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
             {
-                var listOfEvents = new List<Event>();
+                var repetetiveEvents = await Task.Run(() => unitOfWork.EventRepository.Find(x => x.RecurrencePattern != null).ToList());
 
-                //Finds all repetetive events that are going to happen on the day t
-                foreach (var k in repetetiveEvents)
+
+                foreach (var t in days)
                 {
-                    if (k.IsDateTimeMatchingRecurrencePattern(t)) listOfEvents.Add(k);
+                    var listOfEvents = new List<Event>();
+
+                    //Finds all repetetive events that are going to happen on the day t
+                    foreach (var k in repetetiveEvents)
+                    {
+                        if (k.IsDateTimeMatchingRecurrencePattern(t)) listOfEvents.Add(k);
+                    }
+
+                    // Finds all disposable events that are going to happen on the day t
+                    listOfEvents.AddRange(await Task.Run(() => unitOfWork.EventRepository.Find(x => x.StartDateTime.Value.Date == t.Date).ToList()));
+
+                    Schedule.Add(t, listOfEvents);
                 }
-
-                // Finds all disposable events that are going to happen on the day t
-                listOfEvents.AddRange(await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.StartDateTime.Value.Date == t.Date).ToList()));
-
-                Schedule.Add(t, listOfEvents);
             }
         }
 
@@ -133,8 +138,11 @@ namespace ToDoList.ViewModel
 
         public async Task RemoveEventAsync(Event @event)
         {
-            _unitOfWork.EventRepository.Remove(@event);
-            _unitOfWork.SaveChanges();
+            using (var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
+            {
+                unitOfWork.EventRepository.Remove(@event);
+                unitOfWork.SaveChanges();
+            }
 
             await LoadScheduleAsync();
         }

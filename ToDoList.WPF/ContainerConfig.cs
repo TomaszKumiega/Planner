@@ -17,7 +17,7 @@ namespace ToDoList.WPF
 
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<EventsCalendarViewModel>().As<IEventsCalendarViewModel>();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>();
             builder.RegisterType<ScheduleDbContext>().AsSelf();
             builder.RegisterType<MonthCalendar>().AsSelf();
 
