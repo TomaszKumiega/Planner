@@ -22,7 +22,8 @@ namespace ToDoList.ViewModel
         public Dictionary<DateTime, List<Event>> Schedule { get; private set; }
         public DateTime CurrentlySelectedDay { get; private set; }
         public List<IObserver> Observers { get; }
-        public NextMonthCommand NextMonthCommand { get; private set; }
+        public NextMonthCommand NextMonthCommand { get; }
+        public PreviousMonthCommand PreviousMonthCommand { get; }
 
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
@@ -45,6 +46,7 @@ namespace ToDoList.ViewModel
             CurrentlyDisplayedMonth = DateTime.Now;
             User = new User("DefaultUser");
             NextMonthCommand = new NextMonthCommand(this);
+            PreviousMonthCommand = new PreviousMonthCommand(this);
         }
 
         /// <summary>

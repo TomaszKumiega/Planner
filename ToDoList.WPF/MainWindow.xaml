@@ -84,7 +84,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="BackButton" Grid.Column="0" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left">
+            <Button x:Name="BackButton" Grid.Column="0" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Command="{Binding Path=PreviousMonthCommand}">
                 <Image>
                     <Image.Source>
                         <BitmapImage UriSource="./icons/BackIcon.png"/>
