@@ -1,11 +1,13 @@
 ﻿using Microsoft.Graph;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoList.Model;
 using ToDoList.Model.Repositories;
+using ToDoList.ViewModel.Commands;
 using ToDoList.ViewModel.ObserverPattern;
 using Event = ToDoList.Model.Event;
 using EventType = ToDoList.Model.EventType;
@@ -13,16 +15,28 @@ using User = ToDoList.Model.User;
 
 namespace ToDoList.ViewModel
 {
-    public class EventsCalendarViewModel : IEventsCalendarViewModel
+    public class EventsCalendarViewModel : IEventsCalendarViewModel, INotifyPropertyChanged
     {
+        private DateTime _currentlyDisplayedMonth;
         public User User { get; private set; }
-        public DateTime CurrentlyDisplayedMonth { get; private set; }
         public Dictionary<DateTime, List<Event>> Schedule { get; private set; }
         public DateTime CurrentlySelectedDay { get; private set; }
-
         public List<IObserver> Observers { get; }
+        public NextMonthCommand NextMonthCommand { get; private set; }
 
         private readonly IUnitOfWork _unitOfWork;
+
+        public DateTime CurrentlyDisplayedMonth 
+        { 
+            get => _currentlyDisplayedMonth;
+            
+            private set
+            {
+                _currentlyDisplayedMonth = value;
+                OnPropertyChanged("CurrentlyDisplayedMonth");
+            }
+        }
+
 
         public EventsCalendarViewModel(IUnitOfWork unitOfWork)
         {
@@ -30,6 +44,7 @@ namespace ToDoList.ViewModel
             Observers = new List<IObserver>();
             CurrentlyDisplayedMonth = DateTime.Now;
             User = new User("DefaultUser");
+            NextMonthCommand = new NextMonthCommand(this);
         }
 
         /// <summary>
@@ -37,8 +52,8 @@ namespace ToDoList.ViewModel
         /// </summary>
         public void NextMonth()
         {
-            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month < 12 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month + 1, 0) :
-                new DateTime(CurrentlyDisplayedMonth.Year + 1, 1, 0);
+            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month < 12 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month + 1, 1) :
+                new DateTime(CurrentlyDisplayedMonth.Year + 1, 1, 1);
         }
 
         /// <summary>
@@ -46,8 +61,8 @@ namespace ToDoList.ViewModel
         /// </summary>
         public void PreviousMonth()
         {
-            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month > 1 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month - 1, 0) :
-                new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 0);
+            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month > 1 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month - 1, 1) :
+                new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 1);
         }
 
 
@@ -150,6 +165,15 @@ namespace ToDoList.ViewModel
         {
             foreach (var t in Observers) t.Update();
         }
+
+        #region INotifyPropertyChanged members
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+        #endregion
 
     }
 }

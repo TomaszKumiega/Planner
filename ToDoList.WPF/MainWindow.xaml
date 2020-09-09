@@ -100,7 +100,7 @@
                 </Image>
             </Button>
 
-            <Button x:Name="ForwardButton" Grid.Column="2" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left">
+            <Button x:Name="ForwardButton" Grid.Column="2" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Command="{Binding Path=NextMonthCommand}">
                 <Image>
                     <Image.Source>
                         <BitmapImage UriSource="./icons/ForwardIcon.png"/>
