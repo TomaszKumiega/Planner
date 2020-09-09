@@ -19,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="Autofac.Configuration" Version="5.1.0" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>

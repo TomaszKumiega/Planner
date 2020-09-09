@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:ToDoList.WPF"
         xmlns:res="clr-namespace:ToDoList.WPF.Properties"
         mc:Ignorable="d"
@@ -57,12 +58,11 @@
         <!--StartDateTextBlock-->
         <TextBlock x:Name="StartDateTextBlock" Grid.Row="3" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.from}"/>
         <!--StartDatePicker-->
-        <DatePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="3" Width="300" HorizontalAlignment="Left" Margin="19,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
+        <tk:DateTimePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="3" Width="290"  HorizontalAlignment="Left" Margin="19,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
 
         <!--EndDateTextBlock-->
         <TextBlock x:Name="EndTextBlock" Grid.Row="4" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.to}"/>
         <!--EndDatePicker-->
-        <DatePicker x:Name="EndDatePicker" Grid.Column="1" Grid.Row="4" Width="300" HorizontalAlignment="Left" Margin="19,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
-
+        <tk:DateTimePicker x:Name="EndDatePicker" Grid.Column="1" Grid.Row="4" Width="290" HorizontalAlignment="Left" Margin="19,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
     </Grid>
 </Window>
