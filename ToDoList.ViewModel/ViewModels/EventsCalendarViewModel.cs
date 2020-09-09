@@ -124,7 +124,7 @@ namespace ToDoList.ViewModel.ViewModels
                             recurrencePattern.Type = RecurrencePatternType.RelativeYearly;
                             recurrencePattern.Index = (WeekIndex)index;
                             recurrencePattern.DaysOfWeek = daysOfWeek;
-                            recurrencePattern.Month = month;
+                            recurrencePattern.Month = month+1;
                         }
                     }
                     break;
