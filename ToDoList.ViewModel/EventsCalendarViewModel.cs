@@ -159,6 +159,7 @@ namespace ToDoList.ViewModel
             else @event.CompleteEvent(User);
         }
 
+        #region IObservable members
         public void AddObserver(IObserver observer)
         {
             Observers.Add(observer);
@@ -173,6 +174,7 @@ namespace ToDoList.ViewModel
         {
             foreach (var t in Observers) t.Update();
         }
+        #endregion
 
         #region INotifyPropertyChanged members
         public event PropertyChangedEventHandler PropertyChanged;
