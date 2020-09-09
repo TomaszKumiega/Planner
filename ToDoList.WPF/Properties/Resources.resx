@@ -120,6 +120,9 @@
   <data name="addEvent" xml:space="preserve">
     <value>Add Event</value>
   </data>
+  <data name="allDay" xml:space="preserve">
+    <value>All day</value>
+  </data>
   <data name="april" xml:space="preserve">
     <value>April</value>
   </data>

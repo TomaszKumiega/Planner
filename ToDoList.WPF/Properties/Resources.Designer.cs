@@ -70,6 +70,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All day.
+        /// </summary>
+        public static string allDay {
+            get {
+                return ResourceManager.GetString("allDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to April.
         /// </summary>
         public static string april {

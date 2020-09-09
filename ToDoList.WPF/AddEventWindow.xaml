@@ -50,19 +50,24 @@
         </Button>
 
 
-        <!--NameTextBlock-->
+        <!--Name-->
         <TextBlock x:Name="NameTextBlock" Grid.Row="2" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.name}"/>
-        <!--NameTextBox-->
         <TextBox x:Name="NameTextBox" Grid.Row="2" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Column="1" Width="280" Height="25"/>
 
-        <!--StartDateTextBlock-->
+        <!--StartDateTime-->
         <TextBlock x:Name="StartDateTextBlock" Grid.Row="3" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.from}"/>
-        <!--StartDatePicker-->
-        <tk:DateTimePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="3" Width="290"  HorizontalAlignment="Left" Margin="19,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
+        <tk:DateTimePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="3" Width="290"  HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
 
-        <!--EndDateTextBlock-->
+        <!--EndDateTime-->
         <TextBlock x:Name="EndTextBlock" Grid.Row="4" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.to}"/>
-        <!--EndDatePicker-->
-        <tk:DateTimePicker x:Name="EndDatePicker" Grid.Column="1" Grid.Row="4" Width="290" HorizontalAlignment="Left" Margin="19,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
+        <tk:DateTimePicker x:Name="EndDatePicker" Grid.Column="1" Grid.Row="4" Width="290" HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
+    
+        <!--AllDay-->
+        <TextBlock x:Name="AllDayTextBlock" Grid.Row="5" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.allDay}"/>
+        <CheckBox x:Name="AllDayCheckBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0">
+            <CheckBox.LayoutTransform>
+            <ScaleTransform ScaleX="1.7" ScaleY="1.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
     </Grid>
 </Window>

@@ -120,6 +120,9 @@
   <data name="addEvent" xml:space="preserve">
     <value>Dodaj Wydarzenie</value>
   </data>
+  <data name="allDay" xml:space="preserve">
+    <value>Cały dzień</value>
+  </data>
   <data name="april" xml:space="preserve">
     <value>Kwiecień</value>
   </data>
