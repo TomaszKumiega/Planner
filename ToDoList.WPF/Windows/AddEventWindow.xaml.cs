@@ -147,5 +147,17 @@ namespace ToDoList.WPF.Windows
             SaturdayCheckBox.IsEnabled = true;
             SundayCheckBox.IsEnabled = true;
         }
+
+        private void AllDayCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if(AllDayCheckBox.IsChecked.Value)
+            {
+                EndDatePicker.IsEnabled = false;
+            }
+            else
+            {
+                EndDatePicker.IsEnabled = true;
+            }
+        }
     }
 }

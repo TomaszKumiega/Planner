@@ -76,7 +76,7 @@
     
         <!--AllDay-->
         <TextBlock x:Name="AllDayTextBlock" Grid.Row="8" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.allDay}"/>
-        <CheckBox x:Name="AllDayCheckBox" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0">
+        <CheckBox x:Name="AllDayCheckBox" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0" Click="AllDayCheckBox_Click">
             <CheckBox.LayoutTransform>
             <ScaleTransform ScaleX="1.7" ScaleY="1.7" />
             </CheckBox.LayoutTransform>
