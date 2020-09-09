@@ -1,10 +1,7 @@
 ﻿using Microsoft.Graph;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
 
 namespace ToDoList.Model
@@ -39,7 +36,7 @@ namespace ToDoList.Model
         public DateTime ?EndDateTime { get; set; }
         public bool AllDay { get; set; }
         internal string _RecurrencePattern { get; set; }
-        public int ?NumberOfOcurrences { get; set; }
+        public int ?NumberOfOccurrences { get; set; }
 
         [NotMapped]
         public RecurrencePattern RecurrencePattern
@@ -112,7 +109,7 @@ namespace ToDoList.Model
             StartDateTime = startDateTime;
             AllDay = allDay;
             EndDateTime = null;
-            NumberOfOcurrences = null;
+            NumberOfOccurrences = null;
             InitializeKarma();
         }
 
@@ -135,7 +132,7 @@ namespace ToDoList.Model
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
             AllDay = false;
-            NumberOfOcurrences = null;
+            NumberOfOccurrences = null;
             InitializeKarma();
         }
 
@@ -149,8 +146,8 @@ namespace ToDoList.Model
         /// <param name="startDateTime">Starting date and time of the event</param>
         /// <param name="allDay">Specifies if event should ignore startDateTime's time component</param>
         /// <param name="recurrencePattern">Specifies when event should recur</param>
-        /// <param name="numberOfOcurrences">Number of ocurrences of the event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern, int numberOfOcurrences)
+        /// <param name="numberOfOccurrences">Number of ocurrences of the event</param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern, int numberOfOccurrences)
         {
             Name = name;
             EventType = eventType;
@@ -159,7 +156,7 @@ namespace ToDoList.Model
             StartDateTime = startDateTime;
             AllDay = allDay;
             EndDateTime = null;
-            NumberOfOcurrences = numberOfOcurrences;
+            NumberOfOccurrences = numberOfOccurrences;
             InitializeKarma();
         }
 
@@ -173,8 +170,8 @@ namespace ToDoList.Model
         /// <param name="startDateTime">Starting date and time of the event</param>
         /// <param name="endDateTime">Ending date and time of the event</param>
         /// <param name="recurrencePattern">Specifies when event should recur</param>
-        /// <param name="numberOfOcurrences">Number of ocurrences of the event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern, int numberOfOcurrences)
+        /// <param name="numberOfOccurrences">Number of ocurrences of the event</param>
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern, int numberOfOccurrences)
         {
             Name = name;
             EventType = eventType;
@@ -183,7 +180,7 @@ namespace ToDoList.Model
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
             AllDay = false;
-            NumberOfOcurrences = numberOfOcurrences;
+            NumberOfOccurrences = numberOfOccurrences;
             InitializeKarma();
         }
 
@@ -271,7 +268,7 @@ namespace ToDoList.Model
         {
             user.Karma += CompletionKarma;
 
-            if (NumberOfOcurrences.HasValue) NumberOfOcurrences--;
+            if (NumberOfOccurrences.HasValue) NumberOfOccurrences--;
 
             if (RecurrencePattern != null)
             {
