@@ -25,6 +25,17 @@ namespace ToDoList.WPF.Windows
             Initialize();
         }
 
+        private void Initialize()
+        {
+            this.StartDatePicker.Value = DateTime.Now;
+            this.EndDatePicker.Value = DateTime.Now;
+
+            this.RepeatComboBox.Items.Add("Daily");
+            this.RepeatComboBox.Items.Add("Weekly");
+            this.RepeatComboBox.Items.Add("Monthly");
+            this.RepeatComboBox.Items.Add("Yearly");
+
+        }
 
         /// <summary>
         /// Closes the window
@@ -46,15 +57,36 @@ namespace ToDoList.WPF.Windows
             DragMove();
         }
 
-        private void Initialize()
+        private void RepeatComboBox_SelectionChanged(object sender, EventArgs eventArgs)
         {
-            this.StartDatePicker.Value = DateTime.Now;
-            this.EndDatePicker.Value = DateTime.Now;
+            switch (this.RepeatComboBox.SelectedIndex)
+            {
+                case -1:
+                    {
 
-            this.RepeatComboBox.Items.Add("Daily");
-            this.RepeatComboBox.Items.Add("Weekly");
-            this.RepeatComboBox.Items.Add("Monthly");
-            this.RepeatComboBox.Items.Add("Yearly");
+                    }
+                    break;
+                case 0:
+                    {
+
+                    }
+                    break;
+                case 1:
+                    {
+                        
+                    }
+                    break;
+                case 2:
+                    {
+
+                    }
+                    break;
+                case 3:
+                    {
+
+                    }
+                    break;
+            }
 
         }
     }

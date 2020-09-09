@@ -78,7 +78,7 @@
         
         <!--Repeat-->
         <TextBlock x:Name="RepeatTextBlock" Grid.Row="10" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeat}"/>
-        <ComboBox x:Name="RepeatComboBox" Grid.Row="10" Grid.Column="1" Foreground="#252527" Height="25" Width="290" Margin="20,0,0,0" HorizontalAlignment="Left"/>
+        <ComboBox x:Name="RepeatComboBox" Grid.Row="10" Grid.Column="1" Foreground="#252527" Height="25" Width="290" Margin="20,0,0,0" HorizontalAlignment="Left" SelectionChanged="RectangleTitleBarBackground_MouseDown"/>
         
         <!--Repeat Every-->
         <TextBlock x:Name="RepeatEveryTextBlock" Grid.Row="12" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeatEvery}"/>
