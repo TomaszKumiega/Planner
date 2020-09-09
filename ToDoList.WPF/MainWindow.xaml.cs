@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoList.ViewModel;
 using ToDoList.ViewModel.ObserverPattern;
+using ToDoList.WPF;
 
 namespace ToDoList
 {
@@ -23,9 +25,17 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window, IObserver
     {
-        public MainWindow()
+        private MonthCalendar MonthCalendar { get; }
+        public MainWindow(EventsCalendarViewModel viewModel, MonthCalendar monthCalendar)
         {
             InitializeComponent();
+            viewModel.AddObserver(this);
+            DataContext = viewModel;
+            MonthCalendar = monthCalendar;
+            Grid.SetColumn(MonthCalendar, 0);
+            Grid.SetRow(MonthCalendar, 4);
+            Grid.SetColumnSpan(MonthCalendar, 2);
+            RootGrid.Children.Add(MonthCalendar);
         }
 
         /// <summary>
