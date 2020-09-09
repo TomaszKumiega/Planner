@@ -117,14 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="april" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="august" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="december" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="february" xml:space="preserve">
+    <value>February</value>
+  </data>
   <data name="friday" xml:space="preserve">
     <value>Friday</value>
+  </data>
+  <data name="january" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="july" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="june" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="march" xml:space="preserve">
+    <value>March</value>
+  </data>
+  <data name="may" xml:space="preserve">
+    <value>May</value>
   </data>
   <data name="monday" xml:space="preserve">
     <value>Monday</value>
   </data>
+  <data name="november" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="october" xml:space="preserve">
+    <value>October</value>
+  </data>
   <data name="saturday" xml:space="preserve">
     <value>Saturday</value>
+  </data>
+  <data name="september" xml:space="preserve">
+    <value>September</value>
   </data>
   <data name="sunday" xml:space="preserve">
     <value>Sunday</value>
