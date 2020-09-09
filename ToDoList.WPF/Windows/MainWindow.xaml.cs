@@ -80,7 +80,10 @@ namespace ToDoList.WPF.Windows
         private void AddEvent(object sender, EventArgs e)
         {
             var addEventWindow = new AddEventWindow(DataContext as IEventsCalendarViewModel);
+            this.IsEnabled = false;
             addEventWindow.Show();
+
+            addEventWindow.Closed += (s, e) =>  this.IsEnabled = true;
         }
 
         /// <summary>
