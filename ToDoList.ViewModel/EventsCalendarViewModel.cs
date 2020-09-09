@@ -28,6 +28,7 @@ namespace ToDoList.ViewModel
         {
             _unitOfWork = unitOfWork;
             Observers = new List<IObserver>();
+            CurrentlyDisplayedMonth = DateTime.Now;
         }
 
         /// <summary>
