@@ -16,15 +16,21 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -35,7 +41,7 @@
 
         <!--Backgrounds-->
         <Rectangle x:Name="RectangleTitleBarBackground" Fill="#37393f" Grid.ColumnSpan="2"  MouseDown="RectangleTitleBarBackground_MouseDown"/>
-        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="14" Grid.ColumnSpan="2" />
+        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="20" Grid.ColumnSpan="2" />
 
         <!--Title Bar-->
         <TextBlock x:Name="TitleTextBlock" Grid.Row="0" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="15" Foreground="#949597" Text="{x:Static res:Resources.addEvent}"/>
@@ -55,28 +61,28 @@
         <TextBox x:Name="NameTextBox" Grid.Row="2" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Column="1" Width="280" Height="25"/>
 
         <!--StartDateTime-->
-        <TextBlock x:Name="StartDateTextBlock" Grid.Row="3" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.from}"/>
-        <tk:DateTimePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="3" Width="290"  HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
+        <TextBlock x:Name="StartDateTextBlock" Grid.Row="4" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.from}"/>
+        <tk:DateTimePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="4" Width="290"  HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
 
         <!--EndDateTime-->
-        <TextBlock x:Name="EndTextBlock" Grid.Row="4" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.to}"/>
-        <tk:DateTimePicker x:Name="EndDatePicker" Grid.Column="1" Grid.Row="4" Width="290" HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
+        <TextBlock x:Name="EndTextBlock" Grid.Row="6" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.to}"/>
+        <tk:DateTimePicker x:Name="EndDatePicker" Grid.Column="1" Grid.Row="6" Width="290" HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
     
         <!--AllDay-->
-        <TextBlock x:Name="AllDayTextBlock" Grid.Row="5" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.allDay}"/>
-        <CheckBox x:Name="AllDayCheckBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0">
+        <TextBlock x:Name="AllDayTextBlock" Grid.Row="8" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.allDay}"/>
+        <CheckBox x:Name="AllDayCheckBox" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0">
             <CheckBox.LayoutTransform>
             <ScaleTransform ScaleX="1.7" ScaleY="1.7" />
             </CheckBox.LayoutTransform>
         </CheckBox>
         
         <!--Repeat-->
-        <TextBlock x:Name="RepeatTextBlock" Grid.Row="6" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeat}"/>
-        <ComboBox x:Name="RepeatComboBox" Grid.Row="6" Grid.Column="1" Foreground="#252527" Height="25" Width="290" Margin="20,0,0,0" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="RepeatTextBlock" Grid.Row="10" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeat}"/>
+        <ComboBox x:Name="RepeatComboBox" Grid.Row="10" Grid.Column="1" Foreground="#252527" Height="25" Width="290" Margin="20,0,0,0" HorizontalAlignment="Left"/>
         
         <!--Repeat Every-->
-        <TextBlock x:Name="RepeatEveryTextBlock" Grid.Row="7" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeatEvery}"/>
-        <tk:IntegerUpDown x:Name="RepeatEveryIntegerUpDown" Grid.Row="7" Grid.Column="1" Width="70" Height="25" Margin="20,0,0,0" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="RecurrenceTextBlock" Grid.Row="7" Grid.Column="1"  Width="200" Margin="100,0,0,0" HorizontalAlignment="Left" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="15" VerticalAlignment="Center" Text="week(s)"/>
+        <TextBlock x:Name="RepeatEveryTextBlock" Grid.Row="12" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeatEvery}"/>
+        <tk:IntegerUpDown x:Name="RepeatEveryIntegerUpDown" Grid.Row="12" Grid.Column="1" Width="70" Height="25" Margin="20,0,0,0" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="RecurrenceTextBlock" Grid.Row="12" Grid.Column="1"  Width="200" Margin="100,0,0,0" HorizontalAlignment="Left" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="15" VerticalAlignment="Center" Text="week(s)"/>
     </Grid>
 </Window>
