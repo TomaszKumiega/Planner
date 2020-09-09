@@ -20,7 +20,9 @@ namespace ToDoList.Model
         /// <param name="name"></param>
         public User(string name)
         {
+            Id = Guid.NewGuid();
             Name = name;
+            Karma = 0;
         }
     }
 }

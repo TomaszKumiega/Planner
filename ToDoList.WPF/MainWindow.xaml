@@ -120,7 +120,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock x:Name="KarmaLabelTextBlock" Grid.Column="0" FontFamily="Segoe UI" FontSize="25" Foreground="#949597" Text="Karma:" />
-            <TextBlock x:Name="KarmaValueTextBlock" Margin="5,0,5,0" Grid.Column="1" FontFamily="Segoe UI" FontSize="25" Foreground="#949597" Text="0"/>
+            <TextBlock x:Name="KarmaValueTextBlock" Margin="5,0,5,0" Grid.Column="1" FontFamily="Segoe UI" FontSize="25" Foreground="#949597" Text="{Binding Path=User.Karma}"/>
         </Grid>
 
         <!--Menu Shadow-->
