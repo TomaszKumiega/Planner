@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="icons\AddIcon.png" />
     <None Remove="icons\BackIcon.png" />
+    <None Remove="icons\CalendarIcon.png" />
     <None Remove="icons\CloseIcon.png" />
     <None Remove="icons\ForwardIcon.png" />
     <None Remove="icons\MaximizeIcon.png" />
@@ -40,6 +41,9 @@
     </Resource>
     <Resource Include="icons\BackIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="icons\CalendarIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="icons\CloseIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
