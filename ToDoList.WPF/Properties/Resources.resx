@@ -135,6 +135,9 @@
   <data name="friday" xml:space="preserve">
     <value>Friday</value>
   </data>
+  <data name="from" xml:space="preserve">
+    <value>From:</value>
+  </data>
   <data name="january" xml:space="preserve">
     <value>January</value>
   </data>
@@ -154,7 +157,7 @@
     <value>Monday</value>
   </data>
   <data name="name" xml:space="preserve">
-    <value>Name</value>
+    <value>Name:</value>
   </data>
   <data name="november" xml:space="preserve">
     <value>November</value>

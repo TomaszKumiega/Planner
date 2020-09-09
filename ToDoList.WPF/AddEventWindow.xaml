@@ -27,16 +27,20 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
         <!--Backgrounds-->
-        <Rectangle x:Name="RectangleTitleBarBackground" Fill="#37393f" MouseDown="RectangleTitleBarBackground_MouseDown"/>
-        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="14" />
+        <Rectangle x:Name="RectangleTitleBarBackground" Fill="#37393f" Grid.ColumnSpan="2"  MouseDown="RectangleTitleBarBackground_MouseDown"/>
+        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="14" Grid.ColumnSpan="2" />
 
         <!--Title Bar-->
         <TextBlock x:Name="TitleTextBlock" Grid.Row="0" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="15" Foreground="#949597" Text="{x:Static res:Resources.addEvent}"/>
         
         <!--Close Button-->
-        <Button x:Name="ButtonClose" Grid.Row="0" Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" Click="Close">
+        <Button x:Name="ButtonClose" Grid.Row="0" Grid.Column="1" Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" Click="Close">
             <Image x:Name="ButtonCloseIcon">
                 <Image.Source>
                     <BitmapImage UriSource="./icons/CloseIcon.png"/>
@@ -44,16 +48,16 @@
             </Image>
         </Button>
 
-        <Grid x:Name="NameGrid" Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <!--NameTextBlock-->
-            <TextBlock x:Name="NameTextBlock" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.name}"/>
-            <!--NameTextBox-->
-            <TextBox x:Name="NameTextBox" Grid.Column="1" Width="280" Height="25"/>
-        </Grid>
+        <!--NameTextBlock-->
+        <TextBlock x:Name="NameTextBlock" Grid.Row="2" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.name}"/>
+        <!--NameTextBox-->
+        <TextBox x:Name="NameTextBox" Grid.Row="2" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Column="1" Width="280" Height="25"/>
+
+        <!--StartDateTextBlock-->
+        <TextBlock x:Name="FromTextBlock" Grid.Row="3" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.from}"/>
+        <!--StartDatePicker-->
+        <DatePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="3" Width="300" HorizontalAlignment="Left" Margin="19,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
+
     </Grid>
 </Window>
