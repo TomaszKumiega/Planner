@@ -26,7 +26,7 @@ namespace ToDoList
     public partial class MainWindow : Window, IObserver
     {
         private MonthCalendar MonthCalendar { get; }
-        public MainWindow(EventsCalendarViewModel viewModel, MonthCalendar monthCalendar)
+        public MainWindow(IEventsCalendarViewModel viewModel, MonthCalendar monthCalendar)
         {
             InitializeComponent();
             viewModel.AddObserver(this);

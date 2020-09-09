@@ -13,7 +13,7 @@ using User = ToDoList.Model.User;
 
 namespace ToDoList.ViewModel
 {
-    public class EventsCalendarViewModel : IObservable
+    public class EventsCalendarViewModel : IEventsCalendarViewModel
     {
         public User User { get; private set; }
         public DateTime CurrentlyDisplayedMonth { get; private set; }
@@ -49,7 +49,7 @@ namespace ToDoList.ViewModel
                 new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 0);
         }
 
-        
+
         //TODO: Add create event methods based on the fields on event creation window
 
         public async Task LoadScheduleAsync()
@@ -68,9 +68,9 @@ namespace ToDoList.ViewModel
                 {
                     if (k.IsDateTimeMatchingRecurrencePattern(t)) listOfEvents.Add(k);
                 }
-            
+
                 // Finds all disposable events that are going to happen on the day t
-                listOfEvents.AddRange( await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.StartDateTime.Value.Date == t.Date).ToList()));
+                listOfEvents.AddRange(await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.StartDateTime.Value.Date == t.Date).ToList()));
 
                 Schedule.Add(t, listOfEvents);
             }
@@ -90,7 +90,7 @@ namespace ToDoList.ViewModel
 
             date.AddDays(-numberOfDaysFromPreviousMonth);
 
-            for (int i=0;i<numberOfDaysFromPreviousMonth;i++)
+            for (int i = 0; i < numberOfDaysFromPreviousMonth; i++)
             {
                 listOfDays.Add(date);
                 date.AddDays(1);
@@ -106,12 +106,12 @@ namespace ToDoList.ViewModel
 
             var numberOfDaysFromNextMonth = 35 - listOfDays.Count;
 
-            for (int i=0; i<numberOfDaysFromNextMonth;i++)
+            for (int i = 0; i < numberOfDaysFromNextMonth; i++)
             {
                 listOfDays.Add(date);
                 date.AddDays(1);
             }
-            
+
             return listOfDays;
         }
 
