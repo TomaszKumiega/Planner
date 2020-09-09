@@ -9,7 +9,7 @@
         WindowStyle="None"
         BorderThickness="0"
         AllowsTransparency="True"
-        Title="AddEventWindow" Height="450" Width="300">
+        Title="AddEventWindow" Height="450" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -43,5 +43,17 @@
                 </Image.Source>
             </Image>
         </Button>
+
+        <Grid x:Name="NameGrid" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--NameTextBlock-->
+            <TextBlock x:Name="NameTextBlock" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.name}"/>
+            <!--NameTextBox-->
+            <TextBox x:Name="NameTextBox" Grid.Column="1" Width="280" Height="25"/>
+        </Grid>
     </Grid>
 </Window>

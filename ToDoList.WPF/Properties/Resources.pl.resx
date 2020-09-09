@@ -153,6 +153,9 @@
   <data name="monday" xml:space="preserve">
     <value>Poniedziałek</value>
   </data>
+  <data name="name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
   <data name="november" xml:space="preserve">
     <value>Listopad</value>
   </data>
