@@ -60,6 +60,7 @@ namespace ToDoList.Model
         /// <param name="startDateTime">Date and time of an event</param>
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay)
         {
+            Id = Guid.NewGuid();
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -81,6 +82,7 @@ namespace ToDoList.Model
         /// <param name="endDateTime">Ending date and time of the event</param>
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime)
         {
+            Id = Guid.NewGuid();
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -102,6 +104,7 @@ namespace ToDoList.Model
         /// <param name="recurrencePattern">Specifies when event should recur</param>
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern)
         {
+            Id = Guid.NewGuid();
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -125,6 +128,7 @@ namespace ToDoList.Model
         /// <param name="recurrencePattern">/// <param name="recurrencePattern">Specifies when event should recur</param></param>
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern)
         {
+            Id = Guid.NewGuid();
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -149,6 +153,7 @@ namespace ToDoList.Model
         /// <param name="numberOfOccurrences">Number of ocurrences of the event</param>
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern, int numberOfOccurrences)
         {
+            Id = Guid.NewGuid();
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -173,6 +178,7 @@ namespace ToDoList.Model
         /// <param name="numberOfOccurrences">Number of ocurrences of the event</param>
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern, int numberOfOccurrences)
         {
+            Id = Guid.NewGuid();
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
