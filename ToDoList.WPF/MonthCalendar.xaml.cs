@@ -27,13 +27,13 @@ namespace ToDoList.WPF
 
         private void InitializeStrings()
         {
-            MondayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.monday;
-            TuesdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.tuesday;
-            WednesdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.wednesday;
-            ThursdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.thursday;
-            FridayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.friday;
-            SaturdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.saturday;
-            SundayWeekDayTextBlock.Text = ToDoList.WPF.Properties.strings.sunday;
+            MondayWeekDayTextBlock.Text = ToDoList.WPF.Properties.Resources.monday;
+            TuesdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.Resources.tuesday;
+            WednesdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.Resources.wednesday;
+            ThursdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.Resources.thursday;
+            FridayWeekDayTextBlock.Text = ToDoList.WPF.Properties.Resources.friday;
+            SaturdayWeekDayTextBlock.Text = ToDoList.WPF.Properties.Resources.saturday;
+            SundayWeekDayTextBlock.Text = ToDoList.WPF.Properties.Resources.sunday;
         }
 
         public void Update()

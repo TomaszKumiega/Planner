@@ -22,24 +22,24 @@ namespace ToDoList.WPF.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class strings {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal strings() {
+        internal Resources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ToDoList.WPF.Properties.strings", typeof(strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ToDoList.WPF.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ToDoList.WPF.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,18 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Event.
+        /// </summary>
+        public static string addEvent {
+            get {
+                return ResourceManager.GetString("addEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to April.
         /// </summary>
-        internal static string april {
+        public static string april {
             get {
                 return ResourceManager.GetString("april", resourceCulture);
             }
@@ -72,7 +81,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to August.
         /// </summary>
-        internal static string august {
+        public static string august {
             get {
                 return ResourceManager.GetString("august", resourceCulture);
             }
@@ -81,7 +90,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to December.
         /// </summary>
-        internal static string december {
+        public static string december {
             get {
                 return ResourceManager.GetString("december", resourceCulture);
             }
@@ -90,7 +99,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to February.
         /// </summary>
-        internal static string february {
+        public static string february {
             get {
                 return ResourceManager.GetString("february", resourceCulture);
             }
@@ -99,7 +108,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Friday.
         /// </summary>
-        internal static string friday {
+        public static string friday {
             get {
                 return ResourceManager.GetString("friday", resourceCulture);
             }
@@ -108,7 +117,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to January.
         /// </summary>
-        internal static string january {
+        public static string january {
             get {
                 return ResourceManager.GetString("january", resourceCulture);
             }
@@ -117,7 +126,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to July.
         /// </summary>
-        internal static string july {
+        public static string july {
             get {
                 return ResourceManager.GetString("july", resourceCulture);
             }
@@ -126,7 +135,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to June.
         /// </summary>
-        internal static string june {
+        public static string june {
             get {
                 return ResourceManager.GetString("june", resourceCulture);
             }
@@ -135,7 +144,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to March.
         /// </summary>
-        internal static string march {
+        public static string march {
             get {
                 return ResourceManager.GetString("march", resourceCulture);
             }
@@ -144,7 +153,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to May.
         /// </summary>
-        internal static string may {
+        public static string may {
             get {
                 return ResourceManager.GetString("may", resourceCulture);
             }
@@ -153,7 +162,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Monday.
         /// </summary>
-        internal static string monday {
+        public static string monday {
             get {
                 return ResourceManager.GetString("monday", resourceCulture);
             }
@@ -162,7 +171,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
-        internal static string november {
+        public static string november {
             get {
                 return ResourceManager.GetString("november", resourceCulture);
             }
@@ -171,7 +180,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to October.
         /// </summary>
-        internal static string october {
+        public static string october {
             get {
                 return ResourceManager.GetString("october", resourceCulture);
             }
@@ -180,7 +189,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Saturday.
         /// </summary>
-        internal static string saturday {
+        public static string saturday {
             get {
                 return ResourceManager.GetString("saturday", resourceCulture);
             }
@@ -189,7 +198,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to September.
         /// </summary>
-        internal static string september {
+        public static string september {
             get {
                 return ResourceManager.GetString("september", resourceCulture);
             }
@@ -198,7 +207,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Sunday.
         /// </summary>
-        internal static string sunday {
+        public static string sunday {
             get {
                 return ResourceManager.GetString("sunday", resourceCulture);
             }
@@ -207,7 +216,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Thursday.
         /// </summary>
-        internal static string thursday {
+        public static string thursday {
             get {
                 return ResourceManager.GetString("thursday", resourceCulture);
             }
@@ -216,7 +225,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Tuesday.
         /// </summary>
-        internal static string tuesday {
+        public static string tuesday {
             get {
                 return ResourceManager.GetString("tuesday", resourceCulture);
             }
@@ -225,7 +234,7 @@ namespace ToDoList.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Wednesday.
         /// </summary>
-        internal static string wednesday {
+        public static string wednesday {
             get {
                 return ResourceManager.GetString("wednesday", resourceCulture);
             }
