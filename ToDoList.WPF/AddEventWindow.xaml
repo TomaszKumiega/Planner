@@ -11,6 +11,23 @@
         Title="AddEventWindow" Height="450" Width="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <Rectangle x:Name="RectangleTitleBarBackground" Fill="#37393f" MouseDown="RectangleTitleBarBackground_MouseDown"/>
+        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="14" />
     </Grid>
 </Window>
