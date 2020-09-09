@@ -123,6 +123,9 @@
   <data name="addEvent" xml:space="preserve">
     <value>Add Event</value>
   </data>
+  <data name="after" xml:space="preserve">
+    <value>After</value>
+  </data>
   <data name="allDay" xml:space="preserve">
     <value>All day</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="december" xml:space="preserve">
     <value>December</value>
+  </data>
+  <data name="end" xml:space="preserve">
+    <value>End:</value>
   </data>
   <data name="february" xml:space="preserve">
     <value>February</value>
@@ -165,11 +171,17 @@
   <data name="name" xml:space="preserve">
     <value>Name:</value>
   </data>
+  <data name="never" xml:space="preserve">
+    <value>Never</value>
+  </data>
   <data name="november" xml:space="preserve">
     <value>November</value>
   </data>
   <data name="october" xml:space="preserve">
     <value>October</value>
+  </data>
+  <data name="ocurrences" xml:space="preserve">
+    <value>ocurrence(s)</value>
   </data>
   <data name="repeat" xml:space="preserve">
     <value>Repeat:</value>

@@ -79,6 +79,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to After.
+        /// </summary>
+        public static string after {
+            get {
+                return ResourceManager.GetString("after", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All day.
         /// </summary>
         public static string allDay {
@@ -111,6 +120,15 @@ namespace ToDoList.WPF.Properties {
         public static string december {
             get {
                 return ResourceManager.GetString("december", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End:.
+        /// </summary>
+        public static string end {
+            get {
+                return ResourceManager.GetString("end", resourceCulture);
             }
         }
         
@@ -205,6 +223,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Never.
+        /// </summary>
+        public static string never {
+            get {
+                return ResourceManager.GetString("never", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         public static string november {
@@ -219,6 +246,15 @@ namespace ToDoList.WPF.Properties {
         public static string october {
             get {
                 return ResourceManager.GetString("october", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ocurrence(s).
+        /// </summary>
+        public static string ocurrences {
+            get {
+                return ResourceManager.GetString("ocurrences", resourceCulture);
             }
         }
         

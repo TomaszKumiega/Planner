@@ -10,10 +10,16 @@
         WindowStyle="None"
         BorderThickness="0"
         AllowsTransparency="True"
-        Title="AddEventWindow" Height="450" Width="480">
+        Title="AddEventWindow" Height="570" Width="480">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="10"/>
@@ -41,7 +47,7 @@
 
         <!--Backgrounds-->
         <Rectangle x:Name="RectangleTitleBarBackground" Fill="#37393f" Grid.ColumnSpan="2"  MouseDown="RectangleTitleBarBackground_MouseDown"/>
-        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="20" Grid.ColumnSpan="2" />
+        <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="30" Grid.ColumnSpan="2" />
 
         <!--Title Bar-->
         <TextBlock x:Name="TitleTextBlock" Grid.Row="0" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="15" Foreground="#949597" Text="{x:Static res:Resources.addEvent}"/>
@@ -65,7 +71,7 @@
         <tk:DateTimePicker x:Name="StartDatePicker" Grid.Column="1" Grid.Row="4" Width="290"  HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
 
         <!--EndDateTime-->
-        <TextBlock x:Name="EndTextBlock" Grid.Row="6" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.to}"/>
+        <TextBlock x:Name="EndDateTextBlock" Grid.Row="6" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.to}"/>
         <tk:DateTimePicker x:Name="EndDatePicker" Grid.Column="1" Grid.Row="6" Width="290" HorizontalAlignment="Left" Margin="21,0,0,0" Height="25" FontFamily="Segoe UI" FontSize="14" BorderThickness="0" Foreground="#252527"/>
     
         <!--AllDay-->
@@ -78,16 +84,37 @@
         
         <!--Repeat-->
         <TextBlock x:Name="RepeatTextBlock" Grid.Row="10" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeat}"/>
-        <ComboBox x:Name="RepeatComboBox" Grid.Row="10" Grid.Column="1" Foreground="#252527" Height="25" Width="290" Margin="20,0,0,0" HorizontalAlignment="Left" SelectionChanged="RectangleTitleBarBackground_MouseDown"/>
+        <ComboBox x:Name="RepeatComboBox" Grid.Row="10" Grid.Column="1" Foreground="#252527" Height="25" Width="290" Margin="20,0,0,0" HorizontalAlignment="Left" SelectionChanged="RepeatComboBox_SelectionChanged"/>
         
         <!--Repeat Every-->
         <TextBlock x:Name="RepeatEveryTextBlock" Grid.Row="12" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeatEvery}"/>
         <tk:IntegerUpDown x:Name="RepeatEveryIntegerUpDown" Grid.Row="12" Grid.Column="1" Width="70" Height="25" Margin="20,0,0,0" HorizontalAlignment="Left"/>
         <TextBlock x:Name="RecurrenceTextBlock" Grid.Row="12" Grid.Column="1"  Width="200" Margin="100,0,0,0" HorizontalAlignment="Left" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="15" VerticalAlignment="Center" Text="week(s)"/>
-    
+
+        <!--End-->
+        <TextBlock x:Name="EndTextBlock" Grid.Row="14" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.end}"/>
+        <RadioButton x:Name="NeverRadioButton" Grid.Row="14" Grid.Column="1" VerticalAlignment="Center" Margin="19,0,0,0">
+            <RadioButton.LayoutTransform>
+                <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
+            </RadioButton.LayoutTransform>
+        </RadioButton>
+        <TextBlock x:Name="NeverTextBlock" Grid.Row="14" Grid.Column="1" Margin="50,0,0,0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Left" Text="{x:Static res:Resources.never}"/>
+         
+        <RadioButton x:Name="AfterRadioButton" Grid.Row="16" Grid.Column="1" VerticalAlignment="Center" Margin="19,0,0,0">
+            <RadioButton.LayoutTransform>
+                <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
+            </RadioButton.LayoutTransform>
+        </RadioButton>
+        <TextBlock x:Name="AfterTextBlock" Grid.Row="16" Grid.Column="1" Margin="50,0,0,0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Left" Text="{x:Static res:Resources.after}"/>
+
+        <tk:IntegerUpDown x:Name="AfterIntegerUpDown" Grid.Row="16" Grid.Column="1" Width="70" Height="25" Margin="100,0,0,0" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="OcurrencesTextBlock" Grid.Row="16" Grid.Column="1" Margin="180,0,0,0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Left" Text="{x:Static res:Resources.ocurrences}"/>
+        
         <!--Finish Button-->
-        <Button x:Name="FinishButton" Grid.Row="19" Grid.Column="1" Padding="15,0,15,0" Height="30" HorizontalAlignment="Right" Margin="0,0,35,0">
+        <Button x:Name="FinishButton" Grid.Row="25" Grid.Column="1" Padding="15,0,15,0" Height="30" HorizontalAlignment="Right" Margin="0,0,35,0">
             <TextBlock Foreground="#252527" FontFamily="Segoe UI" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold" Text="{x:Static res:Resources.add}"/>
         </Button>
+        
+        
     </Grid>
 </Window>
