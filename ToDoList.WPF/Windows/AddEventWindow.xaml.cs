@@ -35,6 +35,11 @@ namespace ToDoList.WPF.Windows
             this.RepeatComboBox.Items.Add("Monthly");
             this.RepeatComboBox.Items.Add("Yearly");
 
+            this.NeverRadioButton.IsChecked = true;
+
+            this.RepeatEveryIntegerUpDown.Value = 0;
+            this.AfterIntegerUpDown.Value = 0;
+
         }
 
         /// <summary>
