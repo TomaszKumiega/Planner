@@ -141,8 +141,20 @@
   <data name="end" xml:space="preserve">
     <value>Zakończ:</value>
   </data>
+  <data name="every" xml:space="preserve">
+    <value>W każdy:</value>
+  </data>
   <data name="february" xml:space="preserve">
     <value>Luty</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value>Pierwszy</value>
+  </data>
+  <data name="fourth" xml:space="preserve">
+    <value>Czwarty</value>
+  </data>
+  <data name="fr" xml:space="preserve">
+    <value>pt</value>
   </data>
   <data name="friday" xml:space="preserve">
     <value>Piątek</value>
@@ -159,11 +171,17 @@
   <data name="june" xml:space="preserve">
     <value>Czerwiec</value>
   </data>
+  <data name="last" xml:space="preserve">
+    <value>Ostatni</value>
+  </data>
   <data name="march" xml:space="preserve">
     <value>Marzec</value>
   </data>
   <data name="may" xml:space="preserve">
     <value>Maj</value>
+  </data>
+  <data name="mon" xml:space="preserve">
+    <value>pon</value>
   </data>
   <data name="monday" xml:space="preserve">
     <value>Poniedziałek</value>
@@ -183,17 +201,32 @@
   <data name="ocurrences" xml:space="preserve">
     <value>wystąpieniach</value>
   </data>
+  <data name="of" xml:space="preserve">
+    <value />
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>W</value>
+  </data>
   <data name="repeat" xml:space="preserve">
     <value>Powtarzaj:</value>
   </data>
   <data name="repeatEvery" xml:space="preserve">
     <value>Powtarzaj co:</value>
   </data>
+  <data name="sat" xml:space="preserve">
+    <value>sob</value>
+  </data>
   <data name="saturday" xml:space="preserve">
     <value>Sobota</value>
   </data>
+  <data name="second" xml:space="preserve">
+    <value>Drugi</value>
+  </data>
   <data name="september" xml:space="preserve">
     <value>Wrzesień</value>
+  </data>
+  <data name="sun" xml:space="preserve">
+    <value>nd</value>
   </data>
   <data name="sunday" xml:space="preserve">
     <value>Niedziela</value>
@@ -201,13 +234,28 @@
   <data name="teusday" xml:space="preserve">
     <value>Wtorek</value>
   </data>
+  <data name="th" xml:space="preserve">
+    <value>czw</value>
+  </data>
+  <data name="third" xml:space="preserve">
+    <value>Trzeci</value>
+  </data>
   <data name="thursday" xml:space="preserve">
     <value>Czwartek</value>
   </data>
   <data name="to" xml:space="preserve">
     <value>Do:</value>
   </data>
+  <data name="tue" xml:space="preserve">
+    <value>wt</value>
+  </data>
+  <data name="wed" xml:space="preserve">
+    <value>śr</value>
+  </data>
   <data name="wednesday" xml:space="preserve">
     <value>Środa</value>
+  </data>
+  <data name="week" xml:space="preserve">
+    <value>tydzień</value>
   </data>
 </root>

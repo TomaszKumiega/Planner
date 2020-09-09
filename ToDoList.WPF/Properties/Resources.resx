@@ -141,8 +141,20 @@
   <data name="end" xml:space="preserve">
     <value>End:</value>
   </data>
+  <data name="every" xml:space="preserve">
+    <value>Every:</value>
+  </data>
   <data name="february" xml:space="preserve">
     <value>February</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="fourth" xml:space="preserve">
+    <value>Fourth</value>
+  </data>
+  <data name="fr" xml:space="preserve">
+    <value>Fr</value>
   </data>
   <data name="friday" xml:space="preserve">
     <value>Friday</value>
@@ -159,11 +171,17 @@
   <data name="june" xml:space="preserve">
     <value>June</value>
   </data>
+  <data name="last" xml:space="preserve">
+    <value>Last</value>
+  </data>
   <data name="march" xml:space="preserve">
     <value>March</value>
   </data>
   <data name="may" xml:space="preserve">
     <value>May</value>
+  </data>
+  <data name="mon" xml:space="preserve">
+    <value>Mon</value>
   </data>
   <data name="monday" xml:space="preserve">
     <value>Monday</value>
@@ -183,20 +201,41 @@
   <data name="ocurrences" xml:space="preserve">
     <value>ocurrence(s)</value>
   </data>
+  <data name="of" xml:space="preserve">
+    <value>Of:</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>On:</value>
+  </data>
   <data name="repeat" xml:space="preserve">
     <value>Repeat:</value>
   </data>
   <data name="repeatEvery" xml:space="preserve">
     <value>Repeat Every:</value>
   </data>
+  <data name="sat" xml:space="preserve">
+    <value>Sat</value>
+  </data>
   <data name="saturday" xml:space="preserve">
     <value>Saturday</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value>Second</value>
   </data>
   <data name="september" xml:space="preserve">
     <value>September</value>
   </data>
+  <data name="sun" xml:space="preserve">
+    <value>Sun</value>
+  </data>
   <data name="sunday" xml:space="preserve">
     <value>Sunday</value>
+  </data>
+  <data name="th" xml:space="preserve">
+    <value>Th</value>
+  </data>
+  <data name="third" xml:space="preserve">
+    <value>Third</value>
   </data>
   <data name="thursday" xml:space="preserve">
     <value>Thursday</value>
@@ -204,10 +243,19 @@
   <data name="to" xml:space="preserve">
     <value>To:</value>
   </data>
+  <data name="tue" xml:space="preserve">
+    <value>Tue</value>
+  </data>
   <data name="tuesday" xml:space="preserve">
     <value>Tuesday</value>
   </data>
+  <data name="wed" xml:space="preserve">
+    <value>Wed</value>
+  </data>
   <data name="wednesday" xml:space="preserve">
     <value>Wednesday</value>
+  </data>
+  <data name="week" xml:space="preserve">
+    <value>week</value>
   </data>
 </root>

@@ -133,11 +133,47 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Every:.
+        /// </summary>
+        public static string every {
+            get {
+                return ResourceManager.GetString("every", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to February.
         /// </summary>
         public static string february {
             get {
                 return ResourceManager.GetString("february", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First.
+        /// </summary>
+        public static string first {
+            get {
+                return ResourceManager.GetString("first", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fourth.
+        /// </summary>
+        public static string fourth {
+            get {
+                return ResourceManager.GetString("fourth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fr.
+        /// </summary>
+        public static string fr {
+            get {
+                return ResourceManager.GetString("fr", resourceCulture);
             }
         }
         
@@ -187,6 +223,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last.
+        /// </summary>
+        public static string last {
+            get {
+                return ResourceManager.GetString("last", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to March.
         /// </summary>
         public static string march {
@@ -201,6 +246,15 @@ namespace ToDoList.WPF.Properties {
         public static string may {
             get {
                 return ResourceManager.GetString("may", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mon.
+        /// </summary>
+        public static string mon {
+            get {
+                return ResourceManager.GetString("mon", resourceCulture);
             }
         }
         
@@ -259,6 +313,24 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Of:.
+        /// </summary>
+        public static string of {
+            get {
+                return ResourceManager.GetString("of", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On:.
+        /// </summary>
+        public static string on {
+            get {
+                return ResourceManager.GetString("on", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat:.
         /// </summary>
         public static string repeat {
@@ -277,11 +349,29 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sat.
+        /// </summary>
+        public static string sat {
+            get {
+                return ResourceManager.GetString("sat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saturday.
         /// </summary>
         public static string saturday {
             get {
                 return ResourceManager.GetString("saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second.
+        /// </summary>
+        public static string second {
+            get {
+                return ResourceManager.GetString("second", resourceCulture);
             }
         }
         
@@ -295,11 +385,38 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sun.
+        /// </summary>
+        public static string sun {
+            get {
+                return ResourceManager.GetString("sun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sunday.
         /// </summary>
         public static string sunday {
             get {
                 return ResourceManager.GetString("sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Th.
+        /// </summary>
+        public static string th {
+            get {
+                return ResourceManager.GetString("th", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Third.
+        /// </summary>
+        public static string third {
+            get {
+                return ResourceManager.GetString("third", resourceCulture);
             }
         }
         
@@ -322,6 +439,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tue.
+        /// </summary>
+        public static string tue {
+            get {
+                return ResourceManager.GetString("tue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tuesday.
         /// </summary>
         public static string tuesday {
@@ -331,11 +457,29 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wed.
+        /// </summary>
+        public static string wed {
+            get {
+                return ResourceManager.GetString("wed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wednesday.
         /// </summary>
         public static string wednesday {
             get {
                 return ResourceManager.GetString("wednesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to week.
+        /// </summary>
+        public static string week {
+            get {
+                return ResourceManager.GetString("week", resourceCulture);
             }
         }
     }
