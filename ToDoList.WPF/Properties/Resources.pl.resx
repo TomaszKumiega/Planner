@@ -180,6 +180,9 @@
   <data name="thursday" xml:space="preserve">
     <value>Czwartek</value>
   </data>
+  <data name="to" xml:space="preserve">
+    <value>Do:</value>
+  </data>
   <data name="wednesday" xml:space="preserve">
     <value>Środa</value>
   </data>

@@ -177,6 +177,9 @@
   <data name="thursday" xml:space="preserve">
     <value>Thursday</value>
   </data>
+  <data name="to" xml:space="preserve">
+    <value>To:</value>
+  </data>
   <data name="tuesday" xml:space="preserve">
     <value>Tuesday</value>
   </data>

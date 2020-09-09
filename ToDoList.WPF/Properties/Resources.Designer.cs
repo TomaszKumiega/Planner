@@ -241,6 +241,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To:.
+        /// </summary>
+        public static string to {
+            get {
+                return ResourceManager.GetString("to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tuesday.
         /// </summary>
         public static string tuesday {
