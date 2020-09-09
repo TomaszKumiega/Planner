@@ -22,6 +22,17 @@ namespace ToDoList.WPF
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Closes the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Close(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         /// <summary>
         /// Allows to drag window with a mouse with its left button down.
         /// </summary>

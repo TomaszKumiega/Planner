@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoList.WPF"
+        xmlns:res="clr-namespace:ToDoList.WPF.Properties"
         mc:Ignorable="d"
         WindowStyle="None"
         BorderThickness="0"
@@ -11,7 +12,7 @@
         Title="AddEventWindow" Height="450" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -27,7 +28,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!--Backgrounds-->
         <Rectangle x:Name="RectangleTitleBarBackground" Fill="#37393f" MouseDown="RectangleTitleBarBackground_MouseDown"/>
         <Rectangle x:Name="RectangleMainPanelBackground" Fill="#60636b" Grid.Row="1" Grid.RowSpan="14" />
+
+        <!--Title Bar-->
+        <TextBlock x:Name="TitleTextBlock" Grid.Row="0" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="15" Foreground="#949597" Text="{x:Static res:Resources.addEvent}"/>
+        
+        <!--Close Button-->
+        <Button x:Name="ButtonClose" Grid.Row="0" Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" Click="Close">
+            <Image x:Name="ButtonCloseIcon">
+                <Image.Source>
+                    <BitmapImage UriSource="./icons/CloseIcon.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
     </Grid>
 </Window>
