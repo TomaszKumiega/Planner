@@ -214,6 +214,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Repeat:.
+        /// </summary>
+        public static string repeat {
+            get {
+                return ResourceManager.GetString("repeat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saturday.
         /// </summary>
         public static string saturday {

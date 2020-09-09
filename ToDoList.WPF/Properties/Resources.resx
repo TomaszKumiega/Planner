@@ -168,6 +168,9 @@
   <data name="october" xml:space="preserve">
     <value>October</value>
   </data>
+  <data name="repeat" xml:space="preserve">
+    <value>Repeat:</value>
+  </data>
   <data name="saturday" xml:space="preserve">
     <value>Saturday</value>
   </data>

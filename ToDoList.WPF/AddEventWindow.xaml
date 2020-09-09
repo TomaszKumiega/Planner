@@ -69,5 +69,9 @@
             <ScaleTransform ScaleX="1.7" ScaleY="1.7" />
             </CheckBox.LayoutTransform>
         </CheckBox>
+        
+        <!--Repeat-->
+        <TextBlock x:Name="RepeatTextBlock" Grid.Row="6" Grid.Column="0" Foreground="#CDCDCD" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" TextAlignment="Right" Text="{x:Static res:Resources.repeat}"/>
+        <ComboBox x:Name="RepeatComboBox" Grid.Row="6" Grid.Column="1" Foreground="#252527" Height="25" Width="290" Margin="20,0,0,0" HorizontalAlignment="Left"/>
     </Grid>
 </Window>
