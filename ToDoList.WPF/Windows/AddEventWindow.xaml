@@ -207,7 +207,7 @@
         
         
         <!--Finish Button-->
-        <Button x:Name="FinishButton" Grid.Row="29" Grid.Column="1" Padding="15,0,15,0" Height="30" HorizontalAlignment="Right" Margin="0,0,25,0">
+        <Button x:Name="FinishButton" Grid.Row="29" Grid.Column="1" Padding="15,0,15,0" Height="30" HorizontalAlignment="Right" Margin="0,0,25,0" Click="FinishButton_Click">
             <TextBlock Foreground="#252527" FontFamily="Segoe UI" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold" Text="{x:Static res:Resources.add}"/>
         </Button>
         

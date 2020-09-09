@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ToDoList.ViewModel.ViewModels;
+using Microsoft.Graph;
+using DayOfWeek = Microsoft.Graph.DayOfWeek;
 
 namespace ToDoList.WPF.Windows
 {
@@ -167,6 +169,53 @@ namespace ToDoList.WPF.Windows
             {
                 EndDatePicker.IsEnabled = true;
             }
+        }
+
+        /// <summary>
+        /// Validates input and updates UI to let user know about invalid fields.
+        /// </summary>
+        /// <returns>Is input valid</returns>
+        private bool ValidateInput()
+        {
+            return false;
+        }
+
+        private async void FinishButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ValidateInput()) return;
+
+            var name = NameTextBox.Text;
+            var eventType = EventTypeComboBox.SelectedIndex;
+            var difficulty = DifficultyComboBox.SelectedIndex;
+            var startDateTime = StartDatePicker.Value;
+            bool allDay =  AllDayCheckBox.IsChecked.Value;
+            DateTime? endDateTime;
+
+            if (AllDayCheckBox.IsChecked.Value) endDateTime = null;
+            else endDateTime = EndDatePicker.Value;
+
+            var recurrenceType = RepeatComboBox.SelectedIndex;
+            var interval = RepeatEveryIntegerUpDown.Value;
+            var listOfDays = new List<DayOfWeek>();
+
+            if (MondayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Monday);
+            if (TuesdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Tuesday);
+            if (WednesdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Wednesday);
+            if (ThursdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Thursday);
+            if (FridayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Friday);
+            if (SaturdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Saturday);
+            if (SundayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Sunday);
+
+            var index = WeekComboBox.SelectedIndex;
+            var month = MonthComboBox.SelectedIndex;
+            
+            int? occurrences = null;
+
+            if (AfterRadioButton.IsChecked.Value) occurrences = AfterIntegerUpDown.Value;
+
+            await (DataContext as IEventsCalendarViewModel).AddEventAsync(name, eventType, difficulty, startDateTime.Value, endDateTime, allDay, recurrenceType, interval.Value, listOfDays, index, month, occurrences);
+
+            this.Close();
         }
     }
 }
