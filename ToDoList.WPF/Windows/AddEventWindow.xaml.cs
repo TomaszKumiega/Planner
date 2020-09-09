@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using ToDoList.ViewModel.ViewModels;
 using Microsoft.Graph;
 using DayOfWeek = Microsoft.Graph.DayOfWeek;
+using System.Text.RegularExpressions;
 
 namespace ToDoList.WPF.Windows
 {
@@ -177,7 +178,122 @@ namespace ToDoList.WPF.Windows
         /// <returns>Is input valid</returns>
         private bool ValidateInput()
         {
-            return false;
+            // Name
+            bool isNameValid = true;
+            var name = NameTextBox.Text;
+            var listOfInvalidCharacters = new List<char>();
+            Regex regex = new Regex(@"^[A-Z0-9_-]+$", RegexOptions.IgnoreCase);
+
+            if (String.IsNullOrWhiteSpace(name) || !regex.IsMatch(name))
+            {
+                NameTextBlock.Foreground = Brushes.MediumOrchid;
+                isNameValid = false;
+            }
+
+            // Event Type
+            bool isEventTypeValid = true;
+            var eventSelectedIndex = EventTypeComboBox.SelectedIndex;
+            
+            if(eventSelectedIndex == -1)
+            {
+                EventTypeTextBlock.Foreground = Brushes.MediumOrchid;
+                isEventTypeValid = false;
+            
+            }
+
+            // Difficulty
+            bool isDifficultyValid = true;
+            var difficultySelectedIndex = DifficultyComboBox.SelectedIndex;
+
+            if(difficultySelectedIndex == -1)
+            {
+                DifficultyTextBlock.Foreground = Brushes.MediumOrchid;
+                isDifficultyValid = false;
+            }
+
+            // StartDate
+            bool isStartDateValid = true;
+            var startDate = StartDatePicker.Value;
+
+            if(startDate.HasValue)
+            {
+                if(DateTime.Compare(startDate.Value, DateTime.Now) < 0)
+                {
+                    StartDateTextBlock.Foreground = Brushes.MediumOrchid;
+                    isStartDateValid = false;
+                }
+            }
+            else isStartDateValid = false;
+
+            // EndDate and allDay
+            bool isEndDateValid = true;
+            var endDate = EndDatePicker.Value;
+            var allDay = AllDayCheckBox.IsChecked;
+
+            if(!allDay.Value && !endDate.HasValue)
+            {
+                EndDateTextBlock.Foreground = Brushes.MediumOrchid;
+                isEndDateValid = false;
+            }
+            else if(!allDay.Value && endDate.HasValue)
+            {
+                if (DateTime.Compare(endDate.Value, DateTime.Now) < 0 || DateTime.Compare(endDate.Value, startDate.Value) < 0)
+                {
+                    EndDateTextBlock.Foreground = Brushes.MediumOrchid;
+                    isEndDateValid = false;
+                }
+            }
+
+            // Interval
+            bool isIntervalValid = true;
+
+            if(RepeatComboBox.SelectedIndex != -1 && RepeatEveryIntegerUpDown.Value < 1)
+            {
+                RepeatEveryTextBlock.Foreground = Brushes.MediumOrchid;
+                isIntervalValid = false;
+            }
+
+
+            // WeekDays
+            bool isWeekDaysValid = true;
+
+            if(!MondayCheckBox.IsChecked.Value && !TuesdayCheckBox.IsChecked.Value && !WednesdayCheckBox.IsChecked.Value && !ThursdayCheckBox.IsChecked.Value &&
+                !FridayCheckBox.IsChecked.Value && !SaturdayCheckBox.IsChecked.Value && !SundayCheckBox.IsChecked.Value && RepeatComboBox.SelectedIndex > 0)
+            {
+                OnTextBlock.Foreground = Brushes.MediumOrchid;
+                isWeekDaysValid = false;
+            }
+
+            // Index
+            bool isIndexValid = true;
+
+            if(WeekComboBox.SelectedIndex == -1 && RepeatComboBox.SelectedIndex > 1)
+            {
+                EveryTextBlock.Foreground = Brushes.MediumOrchid;
+                isIndexValid = false;
+            }
+
+            // Month
+            bool isMonthValid = true;
+
+            if(MonthComboBox.SelectedIndex == -1 && RepeatComboBox.SelectedIndex > 2)
+            {
+                OfTextBlock.Foreground = Brushes.MediumOrchid;
+                isMonthValid = false;
+            }
+
+            // After
+            bool isAfterValid = true;
+
+            if(AfterRadioButton.IsChecked.Value && AfterIntegerUpDown.Value < 1)
+            {
+                EndTextBlock.Foreground = Brushes.MediumOrchid;
+                isAfterValid = false;
+            }
+
+
+            return isNameValid && isEventTypeValid && isDifficultyValid && isStartDateValid && isEndDateValid && isIntervalValid && isWeekDaysValid
+                && isIndexValid && isMonthValid && isAfterValid;
         }
 
         private async void FinishButton_Click(object sender, RoutedEventArgs e)
