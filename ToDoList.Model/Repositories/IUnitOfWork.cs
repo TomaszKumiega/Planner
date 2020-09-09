@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ToDoList.Model.Repositories
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<User> UserRepository { get; }
         IRepository<Event> EventRepository { get; }

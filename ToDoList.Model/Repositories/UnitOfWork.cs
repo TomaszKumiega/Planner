@@ -22,5 +22,10 @@ namespace ToDoList.Model.Repositories
         {
             return _dbContext.SaveChanges();
         }
+
+        public void Dispose()
+        {
+            _dbContext.Dispose();
+        }
     }
 }
