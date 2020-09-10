@@ -66,8 +66,4 @@
     </Resource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UserControls\AddEventWindowControls\" />
-  </ItemGroup>
-
 </Project>
