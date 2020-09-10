@@ -178,6 +178,8 @@ namespace ToDoList.WPF.Windows
         /// <returns>Is input valid</returns>
         private bool ValidateInput()
         {
+            SetTextBlocksForegroundsToDefault();
+
             // Name
             bool isNameValid = true;
             var name = NameTextBox.Text;
@@ -294,6 +296,21 @@ namespace ToDoList.WPF.Windows
 
             return isNameValid && isEventTypeValid && isDifficultyValid && isStartDateValid && isEndDateValid && isIntervalValid && isWeekDaysValid
                 && isIndexValid && isMonthValid && isAfterValid;
+        }
+
+        private void SetTextBlocksForegroundsToDefault()
+        {
+            NameTextBlock.Foreground = Brushes.WhiteSmoke;
+            EventTypeTextBlock.Foreground = Brushes.WhiteSmoke;
+            DifficultyTextBlock.Foreground = Brushes.WhiteSmoke;
+            StartDateTextBlock.Foreground = Brushes.WhiteSmoke;
+            EndDateTextBlock.Foreground = Brushes.WhiteSmoke;
+            RepeatTextBlock.Foreground = Brushes.WhiteSmoke;
+            OnTextBlock.Foreground = Brushes.WhiteSmoke;
+            EveryTextBlock.Foreground = Brushes.WhiteSmoke;
+            RepeatEveryTextBlock.Foreground = Brushes.WhiteSmoke;
+            OfTextBlock.Foreground = Brushes.WhiteSmoke;
+            EndTextBlock.Foreground = Brushes.WhiteSmoke;
         }
 
         private async void FinishButton_Click(object sender, RoutedEventArgs e)
