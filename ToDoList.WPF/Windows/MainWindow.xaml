@@ -9,8 +9,9 @@
         WindowStyle="None"
         BorderThickness="0"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="CanResize"
+        ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid x:Name="RootGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
