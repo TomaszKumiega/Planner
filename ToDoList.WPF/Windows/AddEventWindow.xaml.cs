@@ -293,9 +293,13 @@ namespace ToDoList.WPF.Windows
                 isAfterValid = false;
             }
 
-
-            return isNameValid && isEventTypeValid && isDifficultyValid && isStartDateValid && isEndDateValid && isIntervalValid && isWeekDaysValid
-                && isIndexValid && isMonthValid && isAfterValid;
+            if(!(isNameValid && isEventTypeValid && isDifficultyValid && isStartDateValid && isEndDateValid && isIntervalValid && isWeekDaysValid
+                && isIndexValid && isMonthValid && isAfterValid))
+            {
+                InputInvalidTextBlock.Visibility = Visibility.Visible;
+                return false;
+            }
+            else return true;
         }
 
         private void SetTextBlocksForegroundsToDefault()
@@ -311,6 +315,8 @@ namespace ToDoList.WPF.Windows
             RepeatEveryTextBlock.Foreground = Brushes.WhiteSmoke;
             OfTextBlock.Foreground = Brushes.WhiteSmoke;
             EndTextBlock.Foreground = Brushes.WhiteSmoke;
+
+            InputInvalidTextBlock.Visibility = Visibility.Hidden;
         }
 
         private async void FinishButton_Click(object sender, RoutedEventArgs e)

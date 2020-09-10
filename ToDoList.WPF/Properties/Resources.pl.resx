@@ -183,6 +183,9 @@
   <data name="Impossible" xml:space="preserve">
     <value>Niemożliwe</value>
   </data>
+  <data name="inputInvalid" xml:space="preserve">
+    <value>Niepoprawne dane, wypełnij lub zmień oznaczone pola.</value>
+  </data>
   <data name="january" xml:space="preserve">
     <value>Styczeń</value>
   </data>

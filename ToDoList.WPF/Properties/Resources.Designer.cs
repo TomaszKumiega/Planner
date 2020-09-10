@@ -259,6 +259,15 @@ namespace ToDoList.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid input, fill or change highlighted fields..
+        /// </summary>
+        public static string inputInvalid {
+            get {
+                return ResourceManager.GetString("inputInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to January.
         /// </summary>
         public static string january {
