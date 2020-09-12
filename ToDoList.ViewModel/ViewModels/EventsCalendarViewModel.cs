@@ -240,8 +240,14 @@ namespace ToDoList.ViewModel.ViewModels
         {
             using (var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
             {
-                unitOfWork.EventRepository.Remove(@event);
-                unitOfWork.SaveChanges();
+                var events = unitOfWork.EventRepository.Find(x => x.Id.Equals(@event.Id)).ToList();
+                if (events.Any())
+                {
+                    var actualEvent = events[0];
+                    unitOfWork.EventRepository.Remove(actualEvent);
+                    unitOfWork.SaveChanges();
+                }
+                else return;
             }
 
             await LoadScheduleAsync();
@@ -256,7 +262,11 @@ namespace ToDoList.ViewModel.ViewModels
                 @event.CompleteEvent(User);
                 await RemoveEventAsync(@event);
             }
-            else @event.CompleteEvent(User);
+            else
+            {
+                @event.CompleteEvent(User);
+                await LoadScheduleAsync();
+            }
         }
 
         #region IObservable members
