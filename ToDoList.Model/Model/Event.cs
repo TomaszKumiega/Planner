@@ -1,5 +1,6 @@
 ﻿using Microsoft.Graph;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
@@ -37,6 +38,14 @@ namespace ToDoList.Model
         public bool AllDay { get; set; }
         internal string _RecurrencePattern { get; set; }
         public int ?NumberOfOccurrences { get; set; }
+        internal string _DaysCompleted { get; set; }
+        
+        [NotMapped]
+        public List<DateTime> DaysCompleted 
+        {
+            get => _DaysCompleted == null ? null : JsonSerializer.Deserialize<List<DateTime>>(_DaysCompleted); 
+            set => _DaysCompleted = JsonSerializer.Serialize(value); 
+        }
 
         [NotMapped]
         public RecurrencePattern RecurrencePattern
@@ -47,7 +56,7 @@ namespace ToDoList.Model
 
         public Event()
         {
-
+            DaysCompleted = new List<DateTime>();
         }
 
         /// <summary>
@@ -68,6 +77,7 @@ namespace ToDoList.Model
             EndDateTime = null;
             AllDay = allDay;
             _RecurrencePattern = null;
+            DaysCompleted = new List<DateTime>();
             InitializeKarma();
         }
 
@@ -89,6 +99,7 @@ namespace ToDoList.Model
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
             AllDay = false;
+            DaysCompleted = new List<DateTime>();
             InitializeKarma();
         }
 
@@ -113,6 +124,7 @@ namespace ToDoList.Model
             AllDay = allDay;
             EndDateTime = null;
             NumberOfOccurrences = null;
+            DaysCompleted = new List<DateTime>();
             InitializeKarma();
         }
 
@@ -137,6 +149,7 @@ namespace ToDoList.Model
             EndDateTime = endDateTime;
             AllDay = false;
             NumberOfOccurrences = null;
+            DaysCompleted = new List<DateTime>();
             InitializeKarma();
         }
 
@@ -162,6 +175,7 @@ namespace ToDoList.Model
             AllDay = allDay;
             EndDateTime = null;
             NumberOfOccurrences = numberOfOccurrences;
+            DaysCompleted = new List<DateTime>();
             InitializeKarma();
         }
 
@@ -187,7 +201,15 @@ namespace ToDoList.Model
             EndDateTime = endDateTime;
             AllDay = false;
             NumberOfOccurrences = numberOfOccurrences;
+            DaysCompleted = new List<DateTime>();
             InitializeKarma();
+        }
+
+        private void AddCompletedDay(DateTime day)
+        {
+            var list = DaysCompleted;
+            list.Add(day);
+            DaysCompleted = list;
         }
 
         private void InitializeKarma()
@@ -289,6 +311,12 @@ namespace ToDoList.Model
                 }
 
             }
+        }
+
+        public void CompleteEvent(User user, DateTime dateTime)
+        {
+            AddCompletedDay(dateTime);
+            CompleteEvent(user);
         }
 
 

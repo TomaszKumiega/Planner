@@ -19,6 +19,8 @@ namespace ToDoList.Model
         {
             modelBuilder.Entity<Event>()
                 .Property(x => x._RecurrencePattern).HasColumnName("RecurrencePattern");
+            modelBuilder.Entity<Event>()
+                .Property(x => x._DaysCompleted).HasColumnName("DaysCompleted");
         }
 
     }

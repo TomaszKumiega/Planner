@@ -20,7 +20,7 @@ namespace ToDoList.ViewModel.ViewModels
         NextMonthCommand NextMonthCommand { get; }
         PreviousMonthCommand PreviousMonthCommand { get; }
 
-        Task CompleteEventAsync(Event @event);
+        Task CompleteEventAsync(Event @event, int displayedDay);
         Task LoadScheduleAsync();
         void NextMonth();
         void PreviousMonth();

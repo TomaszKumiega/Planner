@@ -184,11 +184,11 @@ namespace ToDoList.ViewModel.ViewModels
                     //Finds all repetetive events that are going to happen on the day t
                     foreach (var k in repetetiveEvents)
                     {
-                        if (k.IsDateTimeMatchingRecurrencePattern(t)) listOfEvents.Add(k);
+                        if (k.IsDateTimeMatchingRecurrencePattern(t) && k.DaysCompleted.Find(x => x.Date.Equals(t.Date)) == default(DateTime)) listOfEvents.Add(k);
                     }
 
                     // Finds all disposable events that are going to happen on the day t
-                    listOfEvents.AddRange(await Task.Run(() => unitOfWork.EventRepository.Find(x => x.StartDateTime.Value.Date == t.Date).ToList()));
+                    listOfEvents.AddRange(await Task.Run(() => unitOfWork.EventRepository.Find(x => x.StartDateTime.Value.Date == t.Date && x.RecurrencePattern == null).ToList()));
 
                     Schedule.Add(t, listOfEvents);
                 }
@@ -253,7 +253,7 @@ namespace ToDoList.ViewModel.ViewModels
             await LoadScheduleAsync();
         }
 
-        public async Task CompleteEventAsync(Event @event)
+        public async Task CompleteEventAsync(Event @event, int displayedDay)
         {
             if (@event == null) throw new ArgumentNullException();
 
@@ -272,7 +272,9 @@ namespace ToDoList.ViewModel.ViewModels
                     }
                     else
                     {
-                        actualEvent.CompleteEvent(User);
+                        var day = Schedule.ElementAt(displayedDay).Key;
+                        actualEvent.CompleteEvent(User, day);
+                        unitOfWork.SaveChanges();
                         await LoadScheduleAsync();
                     }
                 }

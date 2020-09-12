@@ -36,7 +36,12 @@ namespace ToDoList.WPF.UserControls
 
         private async void CompleteEventButton_Click(object sender, RoutedEventArgs e)
         {
-            await _viewModel.CompleteEventAsync(DataContext as Event);
+            var column = Grid.GetColumn((this.Parent as ItemsControl).Parent as ScrollViewer);
+            var row = Grid.GetRow((this.Parent as ItemsControl).Parent as ScrollViewer) -1;
+
+            var day = (row * 7) + (column + 1) - 1;
+
+            await _viewModel.CompleteEventAsync(DataContext as Event, day);
         }
 
         private async void RemoveEventButton_Click(object sender, RoutedEventArgs e)
