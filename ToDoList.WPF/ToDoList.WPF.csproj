@@ -10,10 +10,18 @@
     <None Remove="Icons\AddIcon.png" />
     <None Remove="Icons\BackIcon.png" />
     <None Remove="Icons\CalendarIcon.png" />
+    <None Remove="Icons\CheckmarkIcon.png" />
     <None Remove="Icons\CloseIcon.png" />
+    <None Remove="Icons\DeleteIcon.png" />
     <None Remove="Icons\ForwardIcon.png" />
     <None Remove="Icons\MaximizeIcon.png" />
     <None Remove="Icons\MinimizeIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\CheckmarkIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +62,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\CloseIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\DeleteIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\ForwardIcon.png">

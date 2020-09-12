@@ -34,6 +34,7 @@ namespace ToDoList.WPF.Windows
             viewModel.AddObserver(this);
             DataContext = viewModel;
             MonthCalendar = monthCalendar;
+            MonthCalendar.DataContext = viewModel;
 
             Initialize();
         }
