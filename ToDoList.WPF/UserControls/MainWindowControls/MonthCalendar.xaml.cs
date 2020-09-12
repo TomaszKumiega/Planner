@@ -23,13 +23,17 @@ namespace ToDoList.WPF
     public partial class MonthCalendar : UserControl, IObserver
     {
         private readonly IUserControlFactory _controlFactory;
+        private List<ItemsControl> _itemsControls;
         public MonthCalendar(IEventsCalendarViewModel viewModel, IUserControlFactory userControlFactory)
         {
             InitializeComponent();
-            InitializeStrings();
+
+            _itemsControls = new List<ItemsControl>();
             DataContext = viewModel;
             _controlFactory = userControlFactory;
             viewModel.AddObserver(this);
+
+            InitializeStrings();
             InitializeGridLines();
             InitializeDayItemsControls();
             InitializeDayTextBlocks();
@@ -62,14 +66,19 @@ namespace ToDoList.WPF
             {
                 for(int t=0;t<7;t++)
                 {
+                    var scrollBar = new ScrollViewer();
                     var itemControl = new ItemsControl();
 
-                    Grid.SetColumn(itemControl, t);
-                    Grid.SetRow(itemControl, i + 1);
+                    Grid.SetColumn(scrollBar, t);
+                    Grid.SetRow(scrollBar, i + 1);
+
+                    scrollBar.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                    scrollBar.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
 
                     itemControl.Name = "Day" + ((i * 7) + (t + 1) - 1).ToString() + "ItemsControl";
-
-                    RootGrid.Children.Add(itemControl);
+                    scrollBar.Content = itemControl;
+                    _itemsControls.Add(itemControl);
+                    RootGrid.Children.Add(scrollBar);
                 }
             }
         }
@@ -86,16 +95,11 @@ namespace ToDoList.WPF
                 {
                     var eventsControl = _controlFactory.GetEventUserControl((DataContext as IEventsCalendarViewModel), e);
 
-                    foreach (var controls in RootGrid.Children)
+                    foreach (var itemsControl in _itemsControls)
                     {
-                        var itemsControl = controls as ItemsControl;
-
-                        if (itemsControl != null)
+                        if (itemsControl.Name == ("Day" + i.ToString() + "ItemsControl"))
                         {
-                            if (itemsControl.Name == ("Day" + i.ToString() + "ItemsControl"))
-                            {
-                                itemsControl.Items.Add(eventsControl);
-                            }
+                            itemsControl.Items.Add(eventsControl);
                         }
                     }
                 }
@@ -116,17 +120,13 @@ namespace ToDoList.WPF
                     textBlock.Text = viewModel.Schedule.ElementAt((i * 7) + (t + 1) - 1).Key.Day.ToString();
                     textBlock.Name = "Day" + ((i * 7) + (t + 1) - 1).ToString() + "TextBlock";
 
-                    foreach (var controls in RootGrid.Children)
+                    foreach (var itemsControl in _itemsControls)
                     {
-                        var itemsControl = controls as ItemsControl;
-
-                        if (itemsControl != null)
+                        if (itemsControl.Name == "Day" + ((i * 7) + (t + 1) - 1).ToString() + "ItemsControl")
                         {
-                            if (itemsControl.Name == "Day" + ((i * 7) + (t + 1) - 1).ToString() + "ItemsControl")
-                            {
-                                itemsControl.Items.Add(textBlock);
-                            }
+                            itemsControl.Items.Add(textBlock);
                         }
+                        
                     }
                 }
             }
@@ -134,14 +134,9 @@ namespace ToDoList.WPF
        
         private void ClearItemsControls()
         {
-            foreach (var control in RootGrid.Children)
-            {
-                var itemsControl = control as ItemsControl;
-
-                if(itemsControl != null)
-                {
-                    itemsControl.Items.Clear();
-                }
+            foreach (var itemsControl in _itemsControls)
+            { 
+                itemsControl.Items.Clear();    
             }
         }
 
