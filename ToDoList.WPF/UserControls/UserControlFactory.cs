@@ -10,7 +10,7 @@ namespace ToDoList.WPF.UserControls
     {
         public MonthCalendar GetMonthCalendar(IEventsCalendarViewModel viewModel)
         {
-            return new MonthCalendar(viewModel);
+            return new MonthCalendar(viewModel, this);
         }
 
         public EventUserControl GetEventUserControl(IEventsCalendarViewModel viewModel, Event @event)

@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ToDoList.ViewModel.ObserverPattern;
 using ToDoList.ViewModel.ViewModels;
+using ToDoList.WPF.UserControls;
 
 namespace ToDoList.WPF
 {
@@ -21,20 +22,62 @@ namespace ToDoList.WPF
     /// </summary>
     public partial class MonthCalendar : UserControl, IObserver
     {
-        public MonthCalendar(IEventsCalendarViewModel viewModel)
+        private readonly IUserControlFactory _controlFactory;
+        public MonthCalendar(IEventsCalendarViewModel viewModel, IUserControlFactory userControlFactory)
         {
             InitializeComponent();
             InitializeStrings();
             DataContext = viewModel;
+            _controlFactory = userControlFactory;
             viewModel.AddObserver(this);
+            InitializeDayItemsControls();
             InitializeDayTextBlocks();
+        }
+
+        private void InitializeDayItemsControls()
+        {
+            for(int i=0; i<5; i++)
+            {
+                for(int t=0;t<7;t++)
+                {
+                    var itemControl = new ItemsControl();
+
+                    Grid.SetColumn(itemControl, t);
+                    Grid.SetRow(itemControl, i + 1);
+
+                    itemControl.Name = "Day" + ((i * 7) + (t + 1) - 1).ToString() + "ItemsControl";
+
+                    RootGrid.Children.Add(itemControl);
+                }
+            }
         }
 
         private void LoadEvents()
         {
             var viewModel = (DataContext as IEventsCalendarViewModel);
             
-            
+            for(int i=0; i<35; i++)
+            {
+                var events = (DataContext as IEventsCalendarViewModel).Schedule.ElementAt(i).Value;
+
+                foreach (var e in events)
+                {
+                    var eventsControl = _controlFactory.GetEventUserControl((DataContext as IEventsCalendarViewModel), e);
+
+                    foreach (var controls in RootGrid.Children)
+                    {
+                        var itemsControl = controls as ItemsControl;
+
+                        if (itemsControl != null)
+                        {
+                            if (itemsControl.Name == ("Day" + i.ToString() + "ItemsControl"))
+                            {
+                                itemsControl.Items.Add(eventsControl);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void InitializeDayTextBlocks()
@@ -43,50 +86,39 @@ namespace ToDoList.WPF
             
             for (int i = 0; i < 5; i++)
             {
-                var tb = new TextBlock();
-                int t = 0;
-                Grid.SetColumn(tb, 0);
-                Grid.SetRow(tb, i+1);
-
-                tb.FontSize = 18;
-                tb.Foreground = Brushes.WhiteSmoke;
-                tb.Text = viewModel.Schedule.ElementAt(i*7).Key.Day.ToString();
-                tb.Name = "Day" + ((i * 7) + (t + 1) - 1).ToString() + "TextBlock";
-                RootGrid.Children.Add(tb);
-
-                for(;t<7;t++)
+                for(int t=0;t<7;t++)
                 {
                     var textBlock = new TextBlock();
-
-                    Grid.SetColumn(textBlock, t);
-                    Grid.SetRow(textBlock,i+1);
-
                     textBlock.FontSize = 18;
                     textBlock.Foreground = Brushes.WhiteSmoke;
                     textBlock.Text = viewModel.Schedule.ElementAt((i * 7) + (t + 1) - 1).Key.Day.ToString();
                     textBlock.Name = "Day" + ((i * 7) + (t + 1) - 1).ToString() + "TextBlock";
-                    RootGrid.Children.Add(textBlock);
+
+                    foreach (var controls in RootGrid.Children)
+                    {
+                        var itemsControl = controls as ItemsControl;
+
+                        if (itemsControl != null)
+                        {
+                            if (itemsControl.Name == "Day" + ((i * 7) + (t + 1) - 1).ToString() + "ItemsControl")
+                            {
+                                itemsControl.Items.Add(textBlock);
+                            }
+                        }
+                    }
                 }
             }
         }
        
-        private void LoadDays()
+        private void ClearItemsControls()
         {
-            foreach (var t in RootGrid.Children)
+            foreach (var control in RootGrid.Children)
             {
-                var tb = t as TextBlock;
-                if (tb != null)
+                var itemsControl = control as ItemsControl;
+
+                if(itemsControl != null)
                 {
-                    if (tb.Name.StartsWith("Day"))
-                    {
-                        for (int i = 0; i < 35; i++)
-                        {
-                            if (tb.Name.StartsWith("Day" + i.ToString()))
-                            {
-                                tb.Text = (DataContext as IEventsCalendarViewModel).Schedule.ElementAt(i).Key.Day.ToString();
-                            }
-                        }
-                    }
+                    itemsControl.Items.Clear();
                 }
             }
         }
@@ -104,8 +136,9 @@ namespace ToDoList.WPF
 
         public void Update()
         {
+            ClearItemsControls();
+            InitializeDayTextBlocks();
             LoadEvents();
-            LoadDays();
         }
 
     }
