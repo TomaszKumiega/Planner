@@ -30,8 +30,30 @@ namespace ToDoList.WPF
             DataContext = viewModel;
             _controlFactory = userControlFactory;
             viewModel.AddObserver(this);
+            InitializeGridLines();
             InitializeDayItemsControls();
             InitializeDayTextBlocks();
+            LoadEvents();
+        }
+
+        private void InitializeGridLines()
+        {
+            for(int i=0; i<5; i++)
+            {
+                for(int k=0; k<7; k++)
+                {
+                    var rect = new Rectangle();
+                    rect.Fill = Brushes.Transparent;
+                    rect.Stroke = Brushes.WhiteSmoke;
+                    rect.StrokeThickness = 0.5;
+
+                    Grid.SetColumn(rect, k);
+                    Grid.SetRow(rect, i+1);
+
+                    RootGrid.Children.Add(rect);
+                }
+            }
+            
         }
 
         private void InitializeDayItemsControls()
