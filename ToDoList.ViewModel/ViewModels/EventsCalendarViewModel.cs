@@ -48,6 +48,7 @@ namespace ToDoList.ViewModel.ViewModels
             User = new User("DefaultUser");
             NextMonthCommand = new NextMonthCommand(this);
             PreviousMonthCommand = new PreviousMonthCommand(this);
+            Task.Run(() => LoadScheduleAsync()).Wait();
         }
 
         /// <summary>
