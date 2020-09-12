@@ -111,7 +111,7 @@ namespace ToDoList.WPF
                 for(int t=0;t<7;t++)
                 {
                     var textBlock = new TextBlock();
-                    textBlock.FontSize = 18;
+                    textBlock.FontSize = 14;
                     textBlock.Foreground = Brushes.WhiteSmoke;
                     textBlock.Text = viewModel.Schedule.ElementAt((i * 7) + (t + 1) - 1).Key.Day.ToString();
                     textBlock.Name = "Day" + ((i * 7) + (t + 1) - 1).ToString() + "TextBlock";
