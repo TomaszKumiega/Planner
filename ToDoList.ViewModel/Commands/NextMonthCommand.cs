@@ -22,10 +22,10 @@ namespace ToDoList.ViewModel.Commands
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             _viewModel.NextMonth();
-            _viewModel.LoadScheduleAsync();
+            await _viewModel.LoadScheduleAsync();
             _viewModel.NotifyObservers();
         }
     }
