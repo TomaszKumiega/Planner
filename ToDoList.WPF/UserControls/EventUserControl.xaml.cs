@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoList.Model;
+using ToDoList.ViewModel.ViewModels;
 
 namespace ToDoList.WPF.UserControls
 {
@@ -18,19 +20,28 @@ namespace ToDoList.WPF.UserControls
     /// </summary>
     public partial class EventUserControl : UserControl
     {
-        public EventUserControl()
+        private IEventsCalendarViewModel _viewModel;
+        public EventUserControl(IEventsCalendarViewModel viewModel, Event @event)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = @event;
+            SetBackground();
         }
 
-        private void CompleteEventButton_Click(object sender, RoutedEventArgs e)
+        private void SetBackground()
         {
-
+            //TODO
         }
 
-        private void RemoveEventButton_Click(object sender, RoutedEventArgs e)
+        private async void CompleteEventButton_Click(object sender, RoutedEventArgs e)
         {
+            await _viewModel.CompleteEventAsync(DataContext as Event);
+        }
 
+        private async void RemoveEventButton_Click(object sender, RoutedEventArgs e)
+        {
+            await _viewModel.RemoveEventAsync(DataContext as Event);
         }
     }
 }

@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <Rectangle x:Name="BackgroundRectangle" Grid.Column="0" Grid.ColumnSpan="4" />
-        <TextBlock x:Name="EventNameTextBlock" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" Text="Event"/>
+        <TextBlock x:Name="EventNameTextBlock" Grid.Column="0" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="18" VerticalAlignment="Center" Text="{Binding Name}"/>
         <Button x:Name="RemoveEventButton" Grid.Column="2" Height="30" Width="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Click="RemoveEventButton_Click">
             <Image>
                 <Image.Source>
