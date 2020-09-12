@@ -257,15 +257,25 @@ namespace ToDoList.ViewModel.ViewModels
         {
             if (@event == null) throw new ArgumentNullException();
 
-            if (@event.RecurrencePattern == null)
+            using (var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
             {
-                @event.CompleteEvent(User);
-                await RemoveEventAsync(@event);
-            }
-            else
-            {
-                @event.CompleteEvent(User);
-                await LoadScheduleAsync();
+                var events = unitOfWork.EventRepository.Find(x => x.Id == @event.Id).ToList();
+                
+                if (events.Any())
+                {
+                    var actualEvent = events[0];
+
+                    if (actualEvent.RecurrencePattern == null)
+                    {
+                        actualEvent.CompleteEvent(User);
+                        await RemoveEventAsync(actualEvent);
+                    }
+                    else
+                    {
+                        actualEvent.CompleteEvent(User);
+                        await LoadScheduleAsync();
+                    }
+                }
             }
         }
 
