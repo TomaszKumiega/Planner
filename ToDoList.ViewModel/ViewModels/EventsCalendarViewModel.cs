@@ -79,14 +79,14 @@ namespace ToDoList.ViewModel.ViewModels
             {
                 case -1:
                     break;
-                case 1:
+                case 0:
                     {
                         recurrencePattern = new RecurrencePattern();
                         recurrencePattern.Interval = interval;
                         recurrencePattern.Type = RecurrencePatternType.Daily;
                     }
                     break;
-                case 2:
+                case 1:
                     {
                         recurrencePattern = new RecurrencePattern();
                         recurrencePattern.Type = RecurrencePatternType.Weekly;
@@ -94,7 +94,7 @@ namespace ToDoList.ViewModel.ViewModels
                         recurrencePattern.DaysOfWeek = daysOfWeek;
                     }
                     break;
-                case 3:
+                case 2:
                     {
                         recurrencePattern = new RecurrencePattern();
                         recurrencePattern.Interval = interval;
@@ -111,7 +111,7 @@ namespace ToDoList.ViewModel.ViewModels
                         }
                     }
                     break;
-                case 4:
+                case 3:
                     {
                         recurrencePattern = new RecurrencePattern();
                         recurrencePattern.Interval = interval;
