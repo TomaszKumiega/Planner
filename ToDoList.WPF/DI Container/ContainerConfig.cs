@@ -7,6 +7,7 @@ using ToDoList.Model.Repositories;
 using ToDoList.ViewModel;
 using ToDoList.WPF.Windows;
 using ToDoList.ViewModel.ViewModels;
+using ToDoList.WPF.UserControls;
 
 namespace ToDoList.WPF.DIContainer
 {
@@ -21,7 +22,7 @@ namespace ToDoList.WPF.DIContainer
             builder.RegisterType<EventsCalendarViewModel>().As<IEventsCalendarViewModel>();
             builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>();
             builder.RegisterType<ScheduleDbContext>().AsSelf();
-            builder.RegisterType<MonthCalendar>().AsSelf();
+            builder.RegisterType<UserControlFactory>().As<IUserControlFactory>();
 
             return builder.Build();
         }

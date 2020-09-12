@@ -18,6 +18,7 @@ using ToDoList.ViewModel;
 using ToDoList.ViewModel.ObserverPattern;
 using ToDoList.WPF;
 using ToDoList.ViewModel.ViewModels;
+using ToDoList.WPF.UserControls;
 
 namespace ToDoList.WPF.Windows
 {
@@ -27,14 +28,13 @@ namespace ToDoList.WPF.Windows
     public partial class MainWindow : Window, IObserver
     {
         private MonthCalendar MonthCalendar { get; }
-        public MainWindow(IEventsCalendarViewModel viewModel, MonthCalendar monthCalendar)
+        public MainWindow(IEventsCalendarViewModel viewModel, IUserControlFactory controlFactory)
         {
             InitializeComponent();
 
             viewModel.AddObserver(this);
             DataContext = viewModel;
-            MonthCalendar = monthCalendar;
-            MonthCalendar.DataContext = viewModel;
+            MonthCalendar = controlFactory.GetMonthCalendar(viewModel);
 
             Initialize();
         }
