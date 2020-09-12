@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Planner.WPF.MonthCalendar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Planner.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid x:Name="RootGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Week Days TextBlocks-->
+        <TextBlock x:Name="MondayWeekDayTextBlock" TextAlignment="Center" Grid.Column="0" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+        <TextBlock x:Name="TuesdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="1" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+        <TextBlock x:Name="WednesdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="2" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+        <TextBlock x:Name="ThursdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="3" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+        <TextBlock x:Name="FridayWeekDayTextBlock" TextAlignment="Center" Grid.Column="4" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+        <TextBlock x:Name="SaturdayWeekDayTextBlock" TextAlignment="Center" Grid.Column="5" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+        <TextBlock x:Name="SundayWeekDayTextBlock" TextAlignment="Center" Grid.Column="6" FontSize="14" FontWeight="Bold" Background="#35383f" Foreground="#949597"></TextBlock>
+
+
+    </Grid>
+</UserControl>
