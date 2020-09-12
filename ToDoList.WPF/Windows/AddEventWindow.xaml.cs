@@ -13,6 +13,7 @@ using ToDoList.ViewModel.ViewModels;
 using Microsoft.Graph;
 using DayOfWeek = Microsoft.Graph.DayOfWeek;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace ToDoList.WPF.Windows
 {
@@ -178,125 +179,127 @@ namespace ToDoList.WPF.Windows
         /// <returns>Is input valid</returns>
         private bool ValidateInput()
         {
-            SetTextBlocksForegroundsToDefault();
-
-            // Name
             bool isNameValid = true;
-            var name = NameTextBox.Text;
-            var listOfInvalidCharacters = new List<char>();
-            Regex regex = new Regex(@"^[A-Z0-9_-]+$", RegexOptions.IgnoreCase);
-
-            if (String.IsNullOrWhiteSpace(name) || !regex.IsMatch(name))
-            {
-                NameTextBlock.Foreground = Brushes.MediumOrchid;
-                isNameValid = false;
-            }
-
-            // Event Type
+            bool isAfterValid = true;
             bool isEventTypeValid = true;
-            var eventSelectedIndex = EventTypeComboBox.SelectedIndex;
-            
-            if(eventSelectedIndex == -1)
-            {
-                EventTypeTextBlock.Foreground = Brushes.MediumOrchid;
-                isEventTypeValid = false;
-            
-            }
-
-            // Difficulty
             bool isDifficultyValid = true;
-            var difficultySelectedIndex = DifficultyComboBox.SelectedIndex;
-
-            if(difficultySelectedIndex == -1)
-            {
-                DifficultyTextBlock.Foreground = Brushes.MediumOrchid;
-                isDifficultyValid = false;
-            }
-
-            // StartDate
             bool isStartDateValid = true;
-            var startDate = StartDatePicker.Value;
-
-            if(startDate.HasValue)
-            {
-                if(DateTime.Compare(startDate.Value, DateTime.Now) < 0)
-                {
-                    StartDateTextBlock.Foreground = Brushes.MediumOrchid;
-                    isStartDateValid = false;
-                }
-            }
-            else isStartDateValid = false;
-
-            // EndDate and allDay
             bool isEndDateValid = true;
-            var endDate = EndDatePicker.Value;
-            var allDay = AllDayCheckBox.IsChecked;
+            bool isIntervalValid = true;
+            bool isWeekDaysValid = true;
+            bool isIndexValid = true;
+            bool isMonthValid = true;
 
-            if(!allDay.Value && !endDate.HasValue)
+            Dispatcher.Invoke(() =>
             {
-                EndDateTextBlock.Foreground = Brushes.MediumOrchid;
-                isEndDateValid = false;
-            }
-            else if(!allDay.Value && endDate.HasValue)
-            {
-                if (DateTime.Compare(endDate.Value, DateTime.Now) < 0 || DateTime.Compare(endDate.Value, startDate.Value) < 0)
+                SetTextBlocksForegroundsToDefault();
+
+                // Name
+                var name = NameTextBox.Text;
+                Regex regex = new Regex(@"^[A-Z0-9_-]+$", RegexOptions.IgnoreCase);
+
+                if (String.IsNullOrWhiteSpace(name) || !regex.IsMatch(name))
+                {
+                    NameTextBlock.Foreground = Brushes.MediumOrchid;
+                    isNameValid = false;
+                }
+
+                // Event Type
+                var eventSelectedIndex = EventTypeComboBox.SelectedIndex;
+
+                if (eventSelectedIndex == -1)
+                {
+                    EventTypeTextBlock.Foreground = Brushes.MediumOrchid;
+                    isEventTypeValid = false;
+
+                }
+
+                // Difficulty
+                var difficultySelectedIndex = DifficultyComboBox.SelectedIndex;
+
+                if (difficultySelectedIndex == -1)
+                {
+                    DifficultyTextBlock.Foreground = Brushes.MediumOrchid;
+                    isDifficultyValid = false;
+                }
+
+                // StartDate
+                var startDate = StartDatePicker.Value;
+
+                if (startDate.HasValue)
+                {
+                    if (DateTime.Compare(startDate.Value, DateTime.Now) < 0)
+                    {
+                        StartDateTextBlock.Foreground = Brushes.MediumOrchid;
+                        isStartDateValid = false;
+                    }
+                }
+                else isStartDateValid = false;
+
+                // EndDate and allDay
+                var endDate = EndDatePicker.Value;
+                var allDay = AllDayCheckBox.IsChecked;
+
+                if (!allDay.Value && !endDate.HasValue)
                 {
                     EndDateTextBlock.Foreground = Brushes.MediumOrchid;
                     isEndDateValid = false;
                 }
-            }
+                else if (!allDay.Value && endDate.HasValue)
+                {
+                    if (DateTime.Compare(endDate.Value, DateTime.Now) < 0 || DateTime.Compare(endDate.Value, startDate.Value) < 0)
+                    {
+                        EndDateTextBlock.Foreground = Brushes.MediumOrchid;
+                        isEndDateValid = false;
+                    }
+                }
 
-            // Interval
-            bool isIntervalValid = true;
-
-            if(RepeatComboBox.SelectedIndex != -1 && RepeatEveryIntegerUpDown.Value < 1)
-            {
-                RepeatEveryTextBlock.Foreground = Brushes.MediumOrchid;
-                isIntervalValid = false;
-            }
+                // Interval
+                if (RepeatComboBox.SelectedIndex != -1 && RepeatEveryIntegerUpDown.Value < 1)
+                {
+                    RepeatEveryTextBlock.Foreground = Brushes.MediumOrchid;
+                    isIntervalValid = false;
+                }
 
 
-            // WeekDays
-            bool isWeekDaysValid = true;
+                // WeekDays
+                if (!MondayCheckBox.IsChecked.Value && !TuesdayCheckBox.IsChecked.Value && !WednesdayCheckBox.IsChecked.Value && !ThursdayCheckBox.IsChecked.Value &&
+                    !FridayCheckBox.IsChecked.Value && !SaturdayCheckBox.IsChecked.Value && !SundayCheckBox.IsChecked.Value && RepeatComboBox.SelectedIndex > 0)
+                {
+                    OnTextBlock.Foreground = Brushes.MediumOrchid;
+                    isWeekDaysValid = false;
+                }
 
-            if(!MondayCheckBox.IsChecked.Value && !TuesdayCheckBox.IsChecked.Value && !WednesdayCheckBox.IsChecked.Value && !ThursdayCheckBox.IsChecked.Value &&
-                !FridayCheckBox.IsChecked.Value && !SaturdayCheckBox.IsChecked.Value && !SundayCheckBox.IsChecked.Value && RepeatComboBox.SelectedIndex > 0)
-            {
-                OnTextBlock.Foreground = Brushes.MediumOrchid;
-                isWeekDaysValid = false;
-            }
+                // Index
+                if (WeekComboBox.SelectedIndex == -1 && RepeatComboBox.SelectedIndex > 1)
+                {
+                    EveryTextBlock.Foreground = Brushes.MediumOrchid;
+                    isIndexValid = false;
+                }
 
-            // Index
-            bool isIndexValid = true;
+                // Month
+                if (MonthComboBox.SelectedIndex == -1 && RepeatComboBox.SelectedIndex > 2)
+                {
+                    OfTextBlock.Foreground = Brushes.MediumOrchid;
+                    isMonthValid = false;
+                }
 
-            if(WeekComboBox.SelectedIndex == -1 && RepeatComboBox.SelectedIndex > 1)
-            {
-                EveryTextBlock.Foreground = Brushes.MediumOrchid;
-                isIndexValid = false;
-            }
+                // After
+                if (AfterRadioButton.IsChecked.Value && AfterIntegerUpDown.Value < 1)
+                {
+                    EndTextBlock.Foreground = Brushes.MediumOrchid;
+                    isAfterValid = false;
+                }
 
-            // Month
-            bool isMonthValid = true;
+            });
 
-            if(MonthComboBox.SelectedIndex == -1 && RepeatComboBox.SelectedIndex > 2)
-            {
-                OfTextBlock.Foreground = Brushes.MediumOrchid;
-                isMonthValid = false;
-            }
-
-            // After
-            bool isAfterValid = true;
-
-            if(AfterRadioButton.IsChecked.Value && AfterIntegerUpDown.Value < 1)
-            {
-                EndTextBlock.Foreground = Brushes.MediumOrchid;
-                isAfterValid = false;
-            }
-
-            if(!(isNameValid && isEventTypeValid && isDifficultyValid && isStartDateValid && isEndDateValid && isIntervalValid && isWeekDaysValid
+            if (!(isNameValid && isEventTypeValid && isDifficultyValid && isStartDateValid && isEndDateValid && isIntervalValid && isWeekDaysValid
                 && isIndexValid && isMonthValid && isAfterValid))
             {
-                InputInvalidTextBlock.Visibility = Visibility.Visible;
+                Dispatcher.Invoke(() =>
+                {
+                    InputInvalidTextBlock.Visibility = Visibility.Visible;
+                });
                 return false;
             }
             else return true;
@@ -319,42 +322,54 @@ namespace ToDoList.WPF.Windows
             InputInvalidTextBlock.Visibility = Visibility.Hidden;
         }
 
-        private async void FinishButton_Click(object sender, RoutedEventArgs e)
+        private void AddEvent()
         {
             if (!ValidateInput()) return;
 
-            var name = NameTextBox.Text;
-            var eventType = EventTypeComboBox.SelectedIndex;
-            var difficulty = DifficultyComboBox.SelectedIndex;
-            var startDateTime = StartDatePicker.Value;
-            bool allDay =  AllDayCheckBox.IsChecked.Value;
-            DateTime? endDateTime;
+            Dispatcher.Invoke(() =>
+            {
+                LoadIcon.Visibility = Visibility.Visible;
 
-            if (AllDayCheckBox.IsChecked.Value) endDateTime = null;
-            else endDateTime = EndDatePicker.Value;
+                var name = NameTextBox.Text;
+                var eventType = EventTypeComboBox.SelectedIndex;
+                var difficulty = DifficultyComboBox.SelectedIndex;
+                var startDateTime = StartDatePicker.Value;
+                bool allDay = AllDayCheckBox.IsChecked.Value;
+                DateTime? endDateTime;
 
-            var recurrenceType = RepeatComboBox.SelectedIndex;
-            var interval = RepeatEveryIntegerUpDown.Value;
-            var listOfDays = new List<DayOfWeek>();
+                if (AllDayCheckBox.IsChecked.Value) endDateTime = null;
+                else endDateTime = EndDatePicker.Value;
 
-            if (MondayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Monday);
-            if (TuesdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Tuesday);
-            if (WednesdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Wednesday);
-            if (ThursdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Thursday);
-            if (FridayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Friday);
-            if (SaturdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Saturday);
-            if (SundayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Sunday);
+                var recurrenceType = RepeatComboBox.SelectedIndex;
+                var interval = RepeatEveryIntegerUpDown.Value;
+                var listOfDays = new List<DayOfWeek>();
 
-            var index = WeekComboBox.SelectedIndex;
-            var month = MonthComboBox.SelectedIndex;
-            
-            int? occurrences = null;
+                if (MondayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Monday);
+                if (TuesdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Tuesday);
+                if (WednesdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Wednesday);
+                if (ThursdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Thursday);
+                if (FridayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Friday);
+                if (SaturdayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Saturday);
+                if (SundayCheckBox.IsChecked.Value) listOfDays.Add(DayOfWeek.Sunday);
 
-            if (AfterRadioButton.IsChecked.Value) occurrences = AfterIntegerUpDown.Value;
+                var index = WeekComboBox.SelectedIndex;
+                var month = MonthComboBox.SelectedIndex;
 
-            await (DataContext as IEventsCalendarViewModel).AddEventAsync(name, eventType, difficulty, startDateTime.Value, endDateTime, allDay, recurrenceType, interval.Value, listOfDays, index, month, occurrences);
+                int? occurrences = null;
 
-            this.Close();
+                if (AfterRadioButton.IsChecked.Value) occurrences = AfterIntegerUpDown.Value;
+
+                (DataContext as IEventsCalendarViewModel).AddEventAsync(name, eventType, difficulty, startDateTime.Value, endDateTime, allDay, recurrenceType, interval.Value, listOfDays, index, month, occurrences);
+
+                this.Close();
+            });
+
+        }
+
+        private async void FinishButton_Click(object sender, RoutedEventArgs e)
+        {  
+            await Task.Run(() => AddEvent());
+            LoadIcon.Visibility = Visibility.Hidden;
         }
     }
 }
