@@ -17,5 +17,7 @@ namespace ToDoList.Model.Repositories
         void RemoveRange(IEnumerable<T> entities);
 
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+
+        void Update(T entity);
     }
 }

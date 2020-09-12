@@ -67,5 +67,10 @@ namespace ToDoList.Model.Repositories
         {
             _context.Users.RemoveRange(entities);
         }
+
+        public void Update(User entity)
+        {
+            _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+        }
     }
 }

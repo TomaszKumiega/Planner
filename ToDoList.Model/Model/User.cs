@@ -33,6 +33,11 @@ namespace ToDoList.Model
         }
         #endregion
 
+        public User()
+        {
+
+        }
+
         /// <summary>
         /// Initializes new instance of <see cref="User"/> class
         /// </summary>

@@ -44,11 +44,29 @@ namespace ToDoList.ViewModel.ViewModels
         {
             _unitOfWorkFactory = unitOfWorkFactory;
             Observers = new List<IObserver>();
-            CurrentlyDisplayedMonth = DateTime.Now;
-            User = new User("DefaultUser");
+            CurrentlyDisplayedMonth = DateTime.Now;            
             NextMonthCommand = new NextMonthCommand(this);
             PreviousMonthCommand = new PreviousMonthCommand(this);
+            LoginUser();
+            User.PropertyChanged += UpdateUser;
             Task.Run(() => LoadScheduleAsync()).Wait();
+        }
+
+        private void UpdateUser(object sender, EventArgs e)
+        {
+            using(var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
+            {
+                unitOfWork.UserRepository.Update(User);
+                unitOfWork.SaveChanges();
+            }
+        }
+
+        private void LoginUser()
+        {
+            using (var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
+            {
+                User = unitOfWork.UserRepository.GetAll().ToList()[0];
+            }
         }
 
         /// <summary>
