@@ -29,6 +29,8 @@ namespace Planner.Model
     [Table("Events")]
     public class Event
     {
+        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         [Key()]
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -90,6 +92,7 @@ namespace Planner.Model
             _RecurrencePattern = null;
             DaysCompleted = new List<DateTime>();
             InitializeKarma();
+            _logger.Debug("Event: " + this.ToString() + " created");
         }
 
         /// <summary>
@@ -112,6 +115,7 @@ namespace Planner.Model
             AllDay = false;
             DaysCompleted = new List<DateTime>();
             InitializeKarma();
+            _logger.Debug("Event: " + this.ToString() + " created");
         }
 
         /// <summary>
@@ -137,6 +141,7 @@ namespace Planner.Model
             NumberOfOccurrences = null;
             DaysCompleted = new List<DateTime>();
             InitializeKarma();
+            _logger.Debug("Event: " + this.ToString() + " created");
         }
 
         /// <summary>
@@ -162,6 +167,7 @@ namespace Planner.Model
             NumberOfOccurrences = null;
             DaysCompleted = new List<DateTime>();
             InitializeKarma();
+            _logger.Debug("Event: " + this.ToString() + " created");
         }
 
         /// <summary>
@@ -188,6 +194,7 @@ namespace Planner.Model
             NumberOfOccurrences = numberOfOccurrences;
             DaysCompleted = new List<DateTime>();
             InitializeKarma();
+            _logger.Debug("Event: " + this.ToString() + " created");
         }
 
         /// <summary>
@@ -214,6 +221,7 @@ namespace Planner.Model
             NumberOfOccurrences = numberOfOccurrences;
             DaysCompleted = new List<DateTime>();
             InitializeKarma();
+            _logger.Debug("Event: " + this.ToString() + " created");
         }
         #endregion
 
@@ -330,6 +338,8 @@ namespace Planner.Model
                 }
 
             }
+
+            _logger.Info("Event: " + Id.ToString() + " completed");
         }
 
         /// <summary>
