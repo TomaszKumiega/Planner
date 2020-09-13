@@ -57,5 +57,17 @@ namespace Planner.Model
 
             Assert.True(@event.NumberOfOccurrences < numberOfOcurrences);
         }
+
+        [Fact]
+        public void CompleteEvent_ShouldAddBonusToCompletionKarma()
+        {
+            var @event = new Event("name", EventType.Voluntary, EventDifficulty.Hard, DateTime.Now, DateTime.Now, new RecurrencePattern());
+            var completionKarma = @event.CompletionKarma;
+            var user = new User();
+
+            @event.CompleteEvent(user);
+
+            Assert.True(@event.CompletionKarma > completionKarma);
+        }
     }
 }
