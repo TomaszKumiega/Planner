@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -75,7 +76,7 @@ namespace Planner.Model.Repositories
 
         public void Update(Event entity)
         {
-            _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
     }

@@ -1,9 +1,10 @@
 ﻿using Microsoft.Graph;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json;
+using System.Text;
 
 namespace Planner.Model
 {
@@ -33,25 +34,25 @@ namespace Planner.Model
         public EventDifficulty EventDifficulty { get; set; }
         public int CompletionKarma { get; private set; }
         public int FailureKarma { get; private set; }
-        public DateTime ?StartDateTime { get; set; }
-        public DateTime ?EndDateTime { get; set; }
+        public DateTime? StartDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
         public bool AllDay { get; set; }
         internal string _RecurrencePattern { get; set; }
-        public int ?NumberOfOccurrences { get; set; }
+        public int? NumberOfOccurrences { get; set; }
         internal string _DaysCompleted { get; set; }
-        
+
         [NotMapped]
-        public List<DateTime> DaysCompleted 
+        public List<DateTime> DaysCompleted
         {
-            get => _DaysCompleted == null ? null : JsonSerializer.Deserialize<List<DateTime>>(_DaysCompleted); 
-            set => _DaysCompleted = JsonSerializer.Serialize(value); 
+            get => _DaysCompleted == null ? null : JsonConvert.DeserializeObject<List<DateTime>>(_DaysCompleted);
+            set => _DaysCompleted = JsonConvert.SerializeObject(value);
         }
 
         [NotMapped]
         public RecurrencePattern RecurrencePattern
         {
-            get => _RecurrencePattern == null ? null : JsonSerializer.Deserialize<RecurrencePattern>(_RecurrencePattern);
-            set => _RecurrencePattern = JsonSerializer.Serialize(value);
+            get => _RecurrencePattern == null ? null : JsonConvert.DeserializeObject<RecurrencePattern>(_RecurrencePattern);
+            set => _RecurrencePattern = JsonConvert.SerializeObject(value);
         }
 
         public Event()
@@ -222,10 +223,10 @@ namespace Planner.Model
 
                         switch (EventDifficulty)
                         {
-                            case EventDifficulty.Easy: 
-                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionEasy);  
+                            case EventDifficulty.Easy:
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionEasy);
                                 break;
-                            case EventDifficulty.Medium: 
+                            case EventDifficulty.Medium:
                                 CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMedium);
                                 break;
                             case EventDifficulty.Hard:
@@ -248,19 +249,19 @@ namespace Planner.Model
                         switch (EventDifficulty)
                         {
                             case EventDifficulty.Easy:
-                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionEasy)/1.5)*2;
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionEasy) / 1.5) * 2;
                                 break;
                             case EventDifficulty.Medium:
-                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionMedium)/1.5)*2;
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionMedium) / 1.5) * 2;
                                 break;
                             case EventDifficulty.Hard:
-                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionHard)/1.5)*2;
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionHard) / 1.5) * 2;
                                 break;
                             case EventDifficulty.VeryHard:
-                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionVeryHard)/1.5)*2;
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionVeryHard) / 1.5) * 2;
                                 break;
                             case EventDifficulty.Impossible:
-                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionImpossible)/1.5)*2;
+                                CompletionKarma = (int)(Int32.Parse(KarmaEconomyResources.CompletionImpossible) / 1.5) * 2;
                                 break;
                         }
                     }
@@ -271,20 +272,20 @@ namespace Planner.Model
 
                         switch (EventDifficulty)
                         {
-                            case EventDifficulty.Easy: 
+                            case EventDifficulty.Easy:
                                 CompletionKarma = 0;
                                 break;
                             case EventDifficulty.Medium:
                                 CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo);
                                 break;
                             case EventDifficulty.Hard:
-                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo)*2;
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo) * 2;
                                 break;
                             case EventDifficulty.VeryHard:
-                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo)*4;
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo) * 4;
                                 break;
                             case EventDifficulty.Impossible:
-                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo)*8;
+                                CompletionKarma = Int32.Parse(KarmaEconomyResources.CompletionMustDo) * 8;
                                 break;
                         }
                     }
@@ -300,13 +301,16 @@ namespace Planner.Model
 
             if (RecurrencePattern != null)
             {
-                switch(EventType)
+                switch (EventType)
                 {
-                    case EventType.Obligatory: CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionObligatoryRecurringBonus);
+                    case EventType.Obligatory:
+                        CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionObligatoryRecurringBonus);
                         break;
-                    case EventType.Voluntary: CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionVoluntaryRecurringBonus);
+                    case EventType.Voluntary:
+                        CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionVoluntaryRecurringBonus);
                         break;
-                    case EventType.MustDo: CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionMustDoRecurringBonus);
+                    case EventType.MustDo:
+                        CompletionKarma += Int32.Parse(KarmaEconomyResources.CompletionMustDoRecurringBonus);
                         break;
                 }
 
@@ -336,7 +340,7 @@ namespace Planner.Model
                         var diff = Math.Abs((StartDateTime - dateTime).Value.Days) % (7 * RecurrencePattern.Interval);
 
                         if (diff == 0) return true;
-                        
+
                         int dayOfWeek;
                         if ((int)dateTime.DayOfWeek == 0) dayOfWeek = 7;
                         else dayOfWeek = (int)dateTime.DayOfWeek;
@@ -370,7 +374,7 @@ namespace Planner.Model
 
                         if (diff % RecurrencePattern.Interval == 0)
                         {
-                            foreach(var t in RecurrencePattern.DaysOfWeek)
+                            foreach (var t in RecurrencePattern.DaysOfWeek)
                             {
                                 if ((int)t == (int)dateTime.DayOfWeek && (dateTime.Day - 1) / 7 == (int)RecurrencePattern.Index.Value) return true;
                             }
@@ -381,9 +385,9 @@ namespace Planner.Model
                     {
                         var diff = dateTime.Year - StartDateTime.Value.Year;
 
-                        if(diff % RecurrencePattern.Interval == 0 && dateTime.Month == RecurrencePattern.Month)
+                        if (diff % RecurrencePattern.Interval == 0 && dateTime.Month == RecurrencePattern.Month)
                         {
-                            foreach(var t in RecurrencePattern.DaysOfWeek)
+                            foreach (var t in RecurrencePattern.DaysOfWeek)
                             {
                                 if ((int)t == (int)dateTime.DayOfWeek) return true;
                             }

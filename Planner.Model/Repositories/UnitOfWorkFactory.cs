@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace Planner.Model.Repositories
     {
         public IUnitOfWork GetUnitOfWork()
         {
-            return new UnitOfWork(new ScheduleDbContext());
+            return new UnitOfWork(new ScheduleDbContext(new DbContextOptionsBuilder().UseSqlServer("Server=.;Database=ToDoList;Trusted_Connection=true;").Options));
         }
     }
 }

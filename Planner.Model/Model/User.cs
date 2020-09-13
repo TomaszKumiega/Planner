@@ -14,9 +14,9 @@ namespace Planner.Model
         public Guid Id { get; set; }
         public string Name { get; set; }
         private int _karma;
-        public int Karma 
-        { 
-            get => _karma; 
+        public int Karma
+        {
+            get => _karma;
             set
             {
                 _karma = value;

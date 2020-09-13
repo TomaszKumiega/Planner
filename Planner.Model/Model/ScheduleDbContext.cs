@@ -1,21 +1,21 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Text;
 
 namespace Planner.Model
 {
     public class ScheduleDbContext : DbContext
     {
-        public ScheduleDbContext() : base("Server=.;Database=ToDoList;Integrated Security=true;")
+        public ScheduleDbContext(DbContextOptions options) : base(options)
         {
-
+           
         }
 
-        public System.Data.Entity.DbSet<Event> Events { get; set; }
-        public System.Data.Entity.DbSet<User> Users { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Event>()
                 .Property(x => x._RecurrencePattern).HasColumnName("RecurrencePattern");

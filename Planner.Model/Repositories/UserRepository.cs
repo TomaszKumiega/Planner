@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace Planner.Model.Repositories
 {
@@ -70,7 +71,7 @@ namespace Planner.Model.Repositories
 
         public void Update(User entity)
         {
-            _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }
