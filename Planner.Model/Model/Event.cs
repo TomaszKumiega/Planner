@@ -23,6 +23,9 @@ namespace Planner.Model
         Impossible
     }
 
+    /// <summary>
+    /// Describes User's event displayed on the planner
+    /// </summary>
     [Table("Events")]
     public class Event
     {
@@ -36,10 +39,12 @@ namespace Planner.Model
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
         public bool AllDay { get; set; }
-        internal string _RecurrencePattern { get; set; }
         public int? NumberOfOccurrences { get; set; }
+        
+        internal string _RecurrencePattern { get; set; }
         internal string _DaysCompleted { get; set; }
 
+        #region Serialize Complex Properties
         [NotMapped]
         public List<DateTime> DaysCompleted
         {
@@ -53,7 +58,13 @@ namespace Planner.Model
             get => _RecurrencePattern == null ? null : JsonConvert.DeserializeObject<RecurrencePattern>(_RecurrencePattern);
             set => _RecurrencePattern = JsonConvert.SerializeObject(value);
         }
+        #endregion
 
+        #region Constructors
+        /// <summary>
+        /// Initializes new instance of <see cref="Event"/> class.
+        /// Constructor for entity framework usage
+        /// </summary>
         public Event()
         {
             DaysCompleted = new List<DateTime>();
@@ -204,6 +215,7 @@ namespace Planner.Model
             DaysCompleted = new List<DateTime>();
             InitializeKarma();
         }
+        #endregion
 
         private void AddCompletedDay(DateTime day)
         {
@@ -292,6 +304,10 @@ namespace Planner.Model
             }
         }
 
+        /// <summary>
+        /// Adds completion karma to <see cref="User.Karma"/> and adds karma bonus to <see cref="CompletionKarma"/> if event is reccuring.
+        /// </summary>
+        /// <param name="user"></param>
         public void CompleteEvent(User user)
         {
             user.Karma += CompletionKarma;
@@ -316,13 +332,23 @@ namespace Planner.Model
             }
         }
 
+        /// <summary>
+        /// Adds dateTime to <see cref="DaysCompleted"/> collection. 
+        /// Adds completion karma to <see cref="User.Karma"/> and adds karma bonus to <see cref="CompletionKarma"/> if event is recurring.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="dateTime"></param>
         public void CompleteEvent(User user, DateTime dateTime)
         {
             AddCompletedDay(dateTime);
             CompleteEvent(user);
         }
 
-
+        /// <summary>
+        /// Checks if <see cref="DateTime"/> is matching <see cref="RecurrencePattern"/> of the event.
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
         public bool IsDateTimeMatchingRecurrencePattern(DateTime dateTime)
         {
             if (System.DateTime.Compare(dateTime, StartDateTime.Value) < 0) return false;
