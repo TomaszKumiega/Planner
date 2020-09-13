@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Schema;
+﻿using Microsoft.Graph;
+using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -18,6 +19,19 @@ namespace Planner.Model
             @event.DaysCompleted = daysList;
 
             Assert.True(@event.DaysCompleted[0].Equals(dateTime));
+        }
+
+        [Fact]
+        public void RecurrencePattern_ShouldBeAbleToRetrieveAddedValue()
+        {
+            var @event = new Event();
+            var recurrencePattern = new RecurrencePattern();
+            var interval = 1553;
+            recurrencePattern.Interval = interval;
+
+            @event.RecurrencePattern = recurrencePattern;
+
+            Assert.True(@event.RecurrencePattern.Interval == interval);
         }
     }
 }
