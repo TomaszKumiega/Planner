@@ -45,5 +45,17 @@ namespace Planner.Model
 
             Assert.True(user.Karma > 0);
         }
+
+        [Fact]
+        public void CompleteEvent_ShouldDecreseNumberOfOcurrences_WhenEventIsRecurringAndNumberOfOccurrencesIsntNull()
+        {
+            var numberOfOcurrences = 5;
+            var @event = new Event("name", EventType.Voluntary, EventDifficulty.Hard, DateTime.Now, DateTime.Now, new RecurrencePattern(), numberOfOcurrences);
+            var user = new User();
+
+            @event.CompleteEvent(user);
+
+            Assert.True(@event.NumberOfOccurrences < numberOfOcurrences);
+        }
     }
 }
