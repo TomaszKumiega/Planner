@@ -11,7 +11,9 @@ namespace Planner.Model
         [Key()]
         public Guid Id { get; set; }
         public string Name { get; set; }
+
         private int _karma;
+
         public int Karma
         {
             get => _karma;
@@ -31,6 +33,7 @@ namespace Planner.Model
         }
         #endregion
 
+        #region Constructors
         public User()
         {
 
@@ -46,6 +49,8 @@ namespace Planner.Model
             Name = name;
             Karma = 0;
         }
+        #endregion
 
     }
 }
+s
