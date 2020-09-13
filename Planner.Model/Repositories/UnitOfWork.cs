@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Planner.Model.Repositories
+﻿namespace Planner.Model.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

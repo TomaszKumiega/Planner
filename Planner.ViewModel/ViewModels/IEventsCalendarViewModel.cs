@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Planner.Model;
 using Planner.ViewModel.Commands;
 using Planner.ViewModel.ObserverPattern;
-using Microsoft.Graph;
 using DayOfWeek = Microsoft.Graph.DayOfWeek;
 using Event = Planner.Model.Event;
 using User = Planner.Model.User;

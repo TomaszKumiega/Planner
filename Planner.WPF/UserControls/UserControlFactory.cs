@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Planner.Model;
+﻿using Planner.Model;
 using Planner.ViewModel.ViewModels;
 
 namespace Planner.WPF.UserControls

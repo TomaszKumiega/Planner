@@ -1,10 +1,6 @@
 ﻿using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Planner.Model;
 using Planner.Model.Repositories;
-using Planner.ViewModel;
 using Planner.WPF.Windows;
 using Planner.ViewModel.ViewModels;
 using Planner.WPF.UserControls;
