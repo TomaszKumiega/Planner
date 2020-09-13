@@ -33,5 +33,17 @@ namespace Planner.Model
 
             Assert.True(@event.RecurrencePattern.Interval == interval);
         }
+
+        [Fact]
+        public void CompleteEvent_ShouldAddKarmaToUser()
+        {
+            var @event = new Event("name", EventType.Voluntary, EventDifficulty.Hard, DateTime.Now, true);
+            var user = new User();
+            user.Karma = 0;
+
+            @event.CompleteEvent(user);
+
+            Assert.True(user.Karma > 0);
+        }
     }
 }
