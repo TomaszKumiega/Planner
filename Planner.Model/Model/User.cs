@@ -8,6 +8,8 @@ namespace Planner.Model
     [Table("Users")]
     public class User : INotifyPropertyChanged
     {
+        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         [Key()]
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -30,6 +32,7 @@ namespace Planner.Model
         protected void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(name));
+            _logger.Debug(name + " property changed");
         }
         #endregion
 
@@ -48,6 +51,8 @@ namespace Planner.Model
             Id = Guid.NewGuid();
             Name = name;
             Karma = 0;
+
+            _logger.Debug("User: " + Id.ToString() + " created.");
         }
         #endregion
 
