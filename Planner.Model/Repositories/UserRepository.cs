@@ -8,10 +8,13 @@ namespace Planner.Model.Repositories
 {
     public class UserRepository : IRepository<User>
     {
+        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         private readonly ScheduleDbContext _context;
         public UserRepository(ScheduleDbContext context)
         {
             _context = context;
+            _logger.Debug("User repository created.");
         }
 
         public void Add(User entity)
@@ -19,6 +22,7 @@ namespace Planner.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Users.Add(entity);
+            _logger.Info("User: " + entity.Id + " added to the database");
         }
 
         public void AddRange(IEnumerable<User> entities)
@@ -27,6 +31,8 @@ namespace Planner.Model.Repositories
             if (!entities.Any()) throw new ArgumentException("No entities on the list");
 
             _context.Users.AddRange(entities);
+
+            foreach(var t in entities) _logger.Info("User: " + t.Id + " added to the database");
         }
 
         public void Remove(Guid id)
@@ -36,6 +42,7 @@ namespace Planner.Model.Repositories
             if (users.Count != 0)
             {
                 _context.Users.Remove(users[0]);
+                _logger.Info("User: " + id.ToString() + " removed from the database");
             }
         }
 
@@ -44,6 +51,8 @@ namespace Planner.Model.Repositories
             if (entity == null) throw new ArgumentNullException();
 
             _context.Users.Remove(entity);
+
+            _logger.Info("User: " + entity.Id.ToString() + " removed from the database");
         }
 
         public IEnumerable<User> Find(Expression<Func<User, bool>> predicate)
@@ -66,6 +75,7 @@ namespace Planner.Model.Repositories
         public void RemoveRange(IEnumerable<User> entities)
         {
             _context.Users.RemoveRange(entities);
+            foreach(var t in entities) _logger.Info("User: " + t.Id.ToString() + " removed from the database");
         }
 
         public void Update(User entity)
