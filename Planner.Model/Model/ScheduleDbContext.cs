@@ -4,9 +4,11 @@ namespace Planner.Model
 {
     public class ScheduleDbContext : DbContext
     {
+        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         public ScheduleDbContext(DbContextOptions options) : base(options)
         {
-           
+            _logger.Debug("ScheduleDbContext created");
         }
 
         public DbSet<Event> Events { get; set; }
