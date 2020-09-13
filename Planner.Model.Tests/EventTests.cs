@@ -69,5 +69,17 @@ namespace Planner.Model
 
             Assert.True(@event.CompletionKarma > completionKarma);
         }
+
+        [Fact]
+        public void CompleteEvent_ShouldAddDateToDaysCompletedList()
+        {
+            var @event = new Event();
+            var dateTime = DateTime.Now;
+            var user = new User();
+
+            @event.CompleteEvent(user, dateTime);
+
+            Assert.Contains(dateTime, @event.DaysCompleted);
+        }
     }
 }
