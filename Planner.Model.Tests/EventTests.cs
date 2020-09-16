@@ -81,5 +81,17 @@ namespace Planner.Model
 
             Assert.Contains(dateTime, @event.DaysCompleted);
         }
+
+        [Fact]
+        public void IsDateTimeMatchingRecurrencePattern_ShouldReturnFalse_WhenDateTimeIsBeforeStartDateTime()
+        {
+            var @event = new Event();
+            var dateTime = new DateTime(2020, 11, 15);
+            @event.StartDateTime = new DateTime(2021, 11, 15);
+
+            var result = @event.IsDateTimeMatchingRecurrencePattern(dateTime);
+
+            Assert.False(result);
+        }
     }
 }
