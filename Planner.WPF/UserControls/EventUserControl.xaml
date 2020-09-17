@@ -24,6 +24,6 @@
                 </Image.Source>
             </Image>
         </Button>
-        <TextBlock x:Name="EventNameTextBlock" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="14" VerticalAlignment="Center" Text="{Binding Name}"/>
+        <TextBlock x:Name="EventNameTextBlock" Foreground="WhiteSmoke" FontFamily="Segoe UI" FontSize="14" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Name}"/>
     </WrapPanel>
 </UserControl>
