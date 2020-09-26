@@ -21,7 +21,7 @@ namespace Planner.Model.Repositories
         public void Add(Event entity)
         {
             if (entity == null) throw new ArgumentNullException();
-            if (entity.Id != null) throw new ArgumentException("Entity doesnt have Id");
+            if (entity.Id == null) throw new ArgumentException("Entity doesnt have Id");
 
             _context.Events.Add(entity);
 
