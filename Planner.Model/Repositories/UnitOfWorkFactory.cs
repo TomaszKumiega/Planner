@@ -9,7 +9,7 @@ namespace Planner.Model.Repositories
         public IUnitOfWork GetUnitOfWork()
         {
             _logger.Debug("Unit of work object is created");
-            return new UnitOfWork(new ScheduleDbContext(new DbContextOptionsBuilder().UseSqlServer("Server=.;Database=ToDoList;Trusted_Connection=true;").Options));
+            return new UnitOfWork(new ScheduleDbContext(new DbContextOptionsBuilder().UseSqlServer("Server=localhost;Database=ToDoList;Trusted_Connection=true;").Options));
         }
     }
 }
