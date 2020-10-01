@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planner.Model", "Planner.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planner.ViewModel", "Planner.ViewModel\Planner.ViewModel.csproj", "{81D58507-B4F8-4BB9-B27A-3E9054E70D77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planner.Model.Tests", "Planner.Model.Tests\Planner.Model.Tests.csproj", "{A597CE0A-BD7B-4DB6-9741-43609DB13B67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planner.Model.Tests", "Planner.Model.Tests\Planner.Model.Tests.csproj", "{A597CE0A-BD7B-4DB6-9741-43609DB13B67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planner.API", "Planner.API\Planner.API.csproj", "{FF0FFCFB-B1F0-415C-A15E-C7838FC9FF7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A597CE0A-BD7B-4DB6-9741-43609DB13B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A597CE0A-BD7B-4DB6-9741-43609DB13B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A597CE0A-BD7B-4DB6-9741-43609DB13B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF0FFCFB-B1F0-415C-A15E-C7838FC9FF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF0FFCFB-B1F0-415C-A15E-C7838FC9FF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF0FFCFB-B1F0-415C-A15E-C7838FC9FF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF0FFCFB-B1F0-415C-A15E-C7838FC9FF7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
