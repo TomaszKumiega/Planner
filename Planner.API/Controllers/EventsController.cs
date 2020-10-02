@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Planner.Model;
+using Planner.Model.Repositories;
 
 namespace Planner.API.Controllers
 {
@@ -13,10 +15,21 @@ namespace Planner.API.Controllers
     public class EventsController : ControllerBase
     {
         private readonly ILogger<EventsController> _logger;
+        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
-        public EventsController(ILogger<EventsController> logger)
+        public EventsController(ILogger<EventsController> logger, IUnitOfWorkFactory unitOfWorkFactory)
         {
             _logger = logger;
+            _unitOfWorkFactory = unitOfWorkFactory;
+        }
+
+        [HttpGet]
+        public IEnumerable<Event> GetAll()
+        {
+            using(var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
+            {
+                return unitOfWork.EventRepository.GetAll();
+            }
         }
     }
 }
