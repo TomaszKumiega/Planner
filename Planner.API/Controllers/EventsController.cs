@@ -31,5 +31,21 @@ namespace Planner.API.Controllers
                 return unitOfWork.EventRepository.GetAll();
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Event>> Get(Guid id)
+        {
+            using(var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
+            {
+                try
+                {
+                    return unitOfWork.EventRepository.GetById(id);
+                }
+                catch(ArgumentNullException e)
+                {
+                    return NotFound();
+                }
+            }
+        }
     }
 }
