@@ -15,37 +15,29 @@ namespace Planner.API.Controllers
     public class EventsController : ControllerBase
     {
         private readonly ILogger<EventsController> _logger;
-        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EventsController(ILogger<EventsController> logger, IUnitOfWorkFactory unitOfWorkFactory)
+        public EventsController(ILogger<EventsController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
-            _unitOfWorkFactory = unitOfWorkFactory;
+            _unitOfWork = unitOfWork;
+        }
+
+        ~EventsController()
+        {
+            _unitOfWork.Dispose();
         }
 
         [HttpGet]
-        public IEnumerable<Event> GetAll()
+        public async Task<IEnumerable<Event>> GetAll()
         {
-            using(var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
-            {
-                return unitOfWork.EventRepository.GetAll();
-            }
+            return await Task.Run(() => _unitOfWork.EventRepository.GetAll());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Event>> Get(Guid id)
         {
-            using(var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
-            {
-                try
-                {
-                    return unitOfWork.EventRepository.GetById(id);
-                }
-                catch(ArgumentNullException e)
-                {
-                    return NotFound();
-                }
-            }
+            return await Task.Run(() => _unitOfWork.EventRepository.GetById(id));
         }
     }
 }
