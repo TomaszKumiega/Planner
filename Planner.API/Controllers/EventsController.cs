@@ -11,7 +11,7 @@ using Planner.Model.Repositories;
 namespace Planner.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/")]
     public class EventsController : ControllerBase
     {
         private readonly ILogger<EventsController> _logger;
@@ -38,6 +38,13 @@ namespace Planner.API.Controllers
         public async Task<ActionResult<Event>> Get(Guid id)
         {
             return await Task.Run(() => _unitOfWork.EventRepository.GetById(id));
+        }
+
+        [HttpPost]
+        [Route("Add")]
+        public async Task AddEvent(IEnumerable<Event> events)
+        {
+            await Task.Run(() => _unitOfWork.EventRepository.AddRange(events));
         }
     }
 }
