@@ -66,5 +66,16 @@ namespace Planner.API.Controllers
 
             return Ok(@event);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Event>> RemoveEventById(Guid id)
+        {
+            var @event = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.Id == id));
+
+            await Task.Run(() =>_unitOfWork.EventRepository.Remove(id));
+            _unitOfWork.SaveChanges();
+
+            return Ok(@event);
+        }
     }
 }
