@@ -57,5 +57,14 @@ namespace Planner.API.Controllers
 
             return Created(HttpContext.Request.GetDisplayUrl(), @event);
         }
+
+        [HttpDelete("/remove")]
+        public async Task<ActionResult<Event>> RemoveEvent([FromBody] Event @event)
+        {
+            await Task.Run(() => _unitOfWork.EventRepository.Remove(@event));
+            _unitOfWork.SaveChanges();
+
+            return Ok(@event);
+        }
     }
 }
