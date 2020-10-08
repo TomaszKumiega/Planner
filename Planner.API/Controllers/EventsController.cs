@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Planner.Model;
@@ -31,13 +32,21 @@ namespace Planner.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetAll()
         {
-            return Ok(await Task.Run(() => _unitOfWork.EventRepository.GetAll()));
+            var events = await Task.Run(() => _unitOfWork.EventRepository.GetAll());
+            
+            if(events?.Any() != true) return NotFound();
+            
+            return Ok(events);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Event>> Get(Guid id)
         {
-            return Ok(await Task.Run(() => _unitOfWork.EventRepository.GetById(id)));
+            var @event = await Task.Run(() => _unitOfWork.EventRepository.GetById(id));
+
+            if (@event == null) return NotFound();
+
+            return Ok(@event);
         }
 
         [HttpPost]
@@ -46,7 +55,7 @@ namespace Planner.API.Controllers
             await Task.Run(() => _unitOfWork.EventRepository.Add(@event));
             _unitOfWork.SaveChanges();
 
-            return Ok(@event);
+            return Created(HttpContext.Request.GetDisplayUrl(), @event);
         }
     }
 }
