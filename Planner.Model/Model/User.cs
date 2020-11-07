@@ -13,6 +13,7 @@ namespace Planner.Model
         [Key()]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string Password { get; set; }
 
         private int _karma;
 
