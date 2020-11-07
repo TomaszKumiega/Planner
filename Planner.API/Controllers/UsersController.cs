@@ -1,23 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using Planner.API.Helpers;
 using Planner.Model;
+using Planner.Model.Model;
 
 namespace Planner.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly ScheduleDbContext _context;
+        private readonly AppSettings _appSettings;
 
-        public UsersController(ScheduleDbContext context)
+        public UsersController(ScheduleDbContext context, IOptions<AppSettings> appSettings)
         {
             _context = context;
+            _appSettings = appSettings.Value;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody]AuthenticateModel authData)
+        {
+            var users = _context.Users.Where(x => x.Name == authData.UserName && x.Password == authData.Password);
+
+            if (!users.Any()) return BadRequest(new { message = "Username or password is incorrect" });
+
+            var user = users.ToList()[0];
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+
+            return Ok(new
+            {
+                Id = user.Id,
+                Username = user.Name,
+                Token = tokenString
+            });
+
         }
 
         // GET: api/Users
