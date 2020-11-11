@@ -12,8 +12,10 @@ namespace Planner.Model
 
         [Key()]
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         private int _karma;
 
@@ -47,10 +49,12 @@ namespace Planner.Model
         /// Initializes new instance of <see cref="User"/> class
         /// </summary>
         /// <param name="name"></param>
-        public User(string name)
+        public User(string username, string firstName, string lastName)
         {
             Id = Guid.NewGuid();
-            Name = name;
+            Username = username;
+            FirstName = firstName;
+            LastName = lastName;
             Karma = 0;
 
             _logger.Debug("User: " + Id.ToString() + " created.");
