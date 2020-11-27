@@ -22,10 +22,32 @@ namespace Planner.Model.Services
         public async Task CompleteEventAsync(Event @event, int displayedDay)
         {
             //TODO: Update event through API
+            //Code from viewmodel:
+            /*
+             * var events = unitOfWork.EventRepository.Find(x => x.Id == @event.Id).ToList();
+
+                if (events.Any())
+                {
+                    var actualEvent = events[0];
+
+                    if (actualEvent.RecurrencePattern == null)
+                    {
+                        actualEvent.CompleteEvent(User);
+                        await RemoveEventAsync(actualEvent);
+                    }
+                    else
+                    {
+                        var day = Schedule.ElementAt(displayedDay).Key;
+                        actualEvent.CompleteEvent(User, day);
+                        unitOfWork.SaveChanges();
+                        await LoadScheduleAsync();
+                    }
+
+                }*/
         }
 
         public Event BuildEvent(string name, int eventType, int eventDifficulty, DateTime startDateTime, DateTime? endDateTime, bool allDay,
-            int recurrenceType, int interval, List<Microsoft.Graph.DayOfWeek> daysOfWeek, int index, int month, int? occurrences)
+                int recurrenceType, int interval, List<Microsoft.Graph.DayOfWeek> daysOfWeek, int index, int month, int? occurrences)
         {
             RecurrencePattern recurrencePattern = null;
 
