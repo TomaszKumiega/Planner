@@ -18,7 +18,7 @@ namespace Planner.Model.Services
         
         public async Task AddEventAsync(Event @event)
         {
-            var jsonEvent = JsonConvert.SerializeObject(@event);
+            var jsonEvent = new JavaScriptSerializer().Serialize(@event);
             var data = new StringContent(jsonEvent, Encoding.UTF8, "application/json");
 
             HttpClientHandler clientHandler = new HttpClientHandler();
@@ -66,7 +66,7 @@ namespace Planner.Model.Services
 
                 using (var client = new HttpClient(clientHandler))
                 {
-                    var jsonEvent = JsonConvert.SerializeObject(@event);
+                    var jsonEvent = new JavaScriptSerializer().Serialize(@event);
 
                     var content = new StringContent(jsonEvent.ToString(), Encoding.UTF8, "application/json");
 
