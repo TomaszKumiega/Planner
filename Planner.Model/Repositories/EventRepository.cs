@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Planner.Model.Repositories
 {
@@ -85,6 +86,7 @@ namespace Planner.Model.Repositories
 
         public void Update(Event entity)
         {
+            _context.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }
 
