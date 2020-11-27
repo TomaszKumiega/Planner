@@ -32,34 +32,40 @@ namespace Planner.Model.Services
 
         public async Task RemoveEventAsync(Event @event)
         {
-            //TODO: Remove event through API
+            using(var client = new HttpClient())
+            {
+                var response = await client.DeleteAsync(BaseURL + "Events/" + @event.Id.ToString());
+
+                string result = response.Content.ReadAsStringAsync().Result;
+
+                Console.WriteLine(result);
+            }
         }
 
-        public async Task CompleteEventAsync(Event @event, int displayedDay)
+        public async Task CompleteEventAsync(Event @event, int displayedDay, User user, Dictionary<DateTime, List<Event>> schedule)
         {
-            //TODO: Update event through API
-            //Code from viewmodel:
-            /*
-             * var events = unitOfWork.EventRepository.Find(x => x.Id == @event.Id).ToList();
+            if (@event.RecurrencePattern == null)
+            {
+                await RemoveEventAsync(@event);
+            }
+            else
+            {
+                var day = schedule.ElementAt(displayedDay).Key;
+                @event.CompleteEvent(user, day);
 
-                if (events.Any())
+                using(var client = new HttpClient())
                 {
-                    var actualEvent = events[0];
+                    var jsonEvent = JsonConvert.SerializeObject(@event);
 
-                    if (actualEvent.RecurrencePattern == null)
-                    {
-                        actualEvent.CompleteEvent(User);
-                        await RemoveEventAsync(actualEvent);
-                    }
-                    else
-                    {
-                        var day = Schedule.ElementAt(displayedDay).Key;
-                        actualEvent.CompleteEvent(User, day);
-                        unitOfWork.SaveChanges();
-                        await LoadScheduleAsync();
-                    }
+                    var content = new StringContent(jsonEvent.ToString(), Encoding.UTF8, "application/json");
 
-                }*/
+                    var response = await client.PutAsync(BaseURL + "Events/" + @event.Id.ToString(), content);
+
+                    string result = response.Content.ReadAsStringAsync().Result;
+
+                    Console.WriteLine(result);
+                }
+            }
         }
 
         public Event BuildEvent(string name, int eventType, int eventDifficulty, DateTime startDateTime, DateTime? endDateTime, bool allDay,
