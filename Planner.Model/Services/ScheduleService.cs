@@ -112,7 +112,7 @@ namespace Planner.Model.Services
             else return null;
         }
 
-        private async Task<Dictionary<DateTime, List<Event>>> GetScheduleAsync(DateTime CurrentlyDisplayedDate)
+        public async Task<Dictionary<DateTime, List<Event>>> GetScheduleAsync(DateTime CurrentlyDisplayedDate)
         {
             var Schedule = new Dictionary<DateTime, List<Event>>();
             var days = await Task.Run(() => GetCurrentlyDisplayedDays(CurrentlyDisplayedDate));
