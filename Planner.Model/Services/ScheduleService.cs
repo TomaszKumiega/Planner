@@ -68,7 +68,7 @@ namespace Planner.Model.Services
                 {
                     var jsonEvent = new JavaScriptSerializer().Serialize(@event);
 
-                    var content = new StringContent(jsonEvent.ToString(), Encoding.UTF8, "application/json");
+                    var content = new StringContent(jsonEvent, Encoding.UTF8, "application/json");
 
                     var response = await client.PutAsync(BaseURL + "Events/" + @event.Id.ToString(), content);
 
