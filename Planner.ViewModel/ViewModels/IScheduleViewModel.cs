@@ -15,13 +15,13 @@ namespace Planner.ViewModel.ViewModels
         DateTime CurrentlySelectedDay { get; }
         Dictionary<DateTime, List<Event>> Schedule { get; }
         User User { get; }
-        NextMonthCommand NextMonthCommand { get; }
-        PreviousMonthCommand PreviousMonthCommand { get; }
+        NextCommand NextCommand { get; }
+        PreviousCommand PreviousCommand { get; }
 
         Task CompleteEventAsync(Event @event, int displayedDay);
         Task LoadScheduleAsync();
-        void NextMonth();
-        void PreviousMonth();
+        void Next();
+        void Previous();
         Task RemoveEventAsync(Event @event);
         Task AddEventAsync(string name, int eventType, int eventDifficulty, DateTime startDateTime, DateTime ?endDateTime, bool allDay, int recurrenceType, int interval, List<DayOfWeek> daysOfWeek, int index, int month, int? occurrences);
     }

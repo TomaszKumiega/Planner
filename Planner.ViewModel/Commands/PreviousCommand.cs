@@ -4,13 +4,13 @@ using Planner.ViewModel.ViewModels;
 
 namespace Planner.ViewModel.Commands
 {
-    public class NextMonthCommand : ICommand
+    public class PreviousCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly IEventsCalendarViewModel _viewModel;
+        private readonly IScheduleViewModel _viewModel;
 
-        public NextMonthCommand(IEventsCalendarViewModel viewModel)
+        public PreviousCommand(IScheduleViewModel viewModel)
         {
             _viewModel = viewModel;
         }
@@ -22,7 +22,7 @@ namespace Planner.ViewModel.Commands
 
         public async void Execute(object parameter)
         {
-            _viewModel.NextMonth();
+            _viewModel.Previous();
             await _viewModel.LoadScheduleAsync();
             _viewModel.NotifyObservers();
         }

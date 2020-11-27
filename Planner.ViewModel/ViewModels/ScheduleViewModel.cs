@@ -22,8 +22,8 @@ namespace Planner.ViewModel.ViewModels
         public Dictionary<DateTime, List<Event>> Schedule { get; private set; }
         public DateTime CurrentlySelectedDay { get; private set; }
         public List<IObserver> Observers { get; }
-        public NextMonthCommand NextMonthCommand { get; }
-        public PreviousMonthCommand PreviousMonthCommand { get; }
+        public NextCommand NextCommand { get; }
+        public PreviousCommand PreviousCommand { get; }
 
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
@@ -44,8 +44,8 @@ namespace Planner.ViewModel.ViewModels
             _unitOfWorkFactory = unitOfWorkFactory;
             Observers = new List<IObserver>();
             CurrentlyDisplayedMonth = DateTime.Now;            
-            NextMonthCommand = new NextMonthCommand(this);
-            PreviousMonthCommand = new PreviousMonthCommand(this);
+            NextCommand = new NextCommand(this);
+            PreviousCommand = new PreviousCommand(this);
             LoginUser();
             User.PropertyChanged += UpdateUser;
             Task.Run(() => LoadScheduleAsync()).Wait();
@@ -71,7 +71,7 @@ namespace Planner.ViewModel.ViewModels
         /// <summary>
         /// Changes <see cref="CurrentlyDisplayedMonth"/> to the next month
         /// </summary>
-        public void NextMonth()
+        public void Next()
         {
             CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month < 12 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month + 1, 1) :
                 new DateTime(CurrentlyDisplayedMonth.Year + 1, 1, 1);
@@ -80,7 +80,7 @@ namespace Planner.ViewModel.ViewModels
         /// <summary>
         /// Changes <see cref="CurrentlyDisplayedMonth"/> to the previous month
         /// </summary>
-        public void PreviousMonth()
+        public void Previous()
         {
             CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month > 1 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month - 1, 1) :
                 new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 1);
