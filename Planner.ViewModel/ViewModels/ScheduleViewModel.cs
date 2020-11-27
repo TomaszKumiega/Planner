@@ -59,25 +59,13 @@ namespace Planner.ViewModel.ViewModels
             NextCommand = new NextCommand(this);
             PreviousCommand = new PreviousCommand(this);
             LoginUser();
-            User.PropertyChanged += UpdateUser;
-            Task.Run(() => LoadScheduleAsync()).Wait();
-        }
 
-        private void UpdateUser(object sender, EventArgs e)
-        {
-            using(var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
-            {
-                unitOfWork.UserRepository.Update(User);
-                unitOfWork.SaveChanges();
-            }
+            Task.Run(() => LoadScheduleAsync()).Wait();
         }
 
         private void LoginUser()
         {
-            using (var unitOfWork = _unitOfWorkFactory.GetUnitOfWork())
-            {
-                User = unitOfWork.UserRepository.GetAll().ToList()[0];
-            }
+            User = new User("Grewor", "Tomek", "Kumiega");
         }
 
         /// <summary>
