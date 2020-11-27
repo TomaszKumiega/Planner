@@ -1,4 +1,5 @@
 ﻿using Microsoft.Graph;
+using Nancy.Json;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,17 @@ namespace Planner.Model.Services
 {
     public class ScheduleService : IScheduleService
     {
-        private string BaseURL = "https://localhost:44349/";
+        private string BaseURL = "https://localhost:5001/api/";
         
         public async Task AddEventAsync(Event @event)
         {
             var jsonEvent = JsonConvert.SerializeObject(@event);
             var data = new StringContent(jsonEvent, Encoding.UTF8, "application/json");
 
-            using(var client = new HttpClient())
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+            using (var client = new HttpClient(clientHandler))
             {
                 var response = await client.PostAsync(BaseURL + "Events", data);
 
@@ -32,7 +36,10 @@ namespace Planner.Model.Services
 
         public async Task RemoveEventAsync(Event @event)
         {
-            using(var client = new HttpClient())
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+            using (var client = new HttpClient(clientHandler))
             {
                 var response = await client.DeleteAsync(BaseURL + "Events/" + @event.Id.ToString());
 
@@ -53,7 +60,11 @@ namespace Planner.Model.Services
                 var day = schedule.ElementAt(displayedDay).Key;
                 @event.CompleteEvent(user, day);
 
-                using(var client = new HttpClient())
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+
+                using (var client = new HttpClient(clientHandler))
                 {
                     var jsonEvent = JsonConvert.SerializeObject(@event);
 
@@ -162,8 +173,16 @@ namespace Planner.Model.Services
             var days = await Task.Run(() => GetCurrentlyDisplayedDays(CurrentlyDisplayedDate));
             var events = new List<Event>();
 
-            //Load Events from API
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
 
+
+            using (var client = new HttpClient(clientHandler))
+            {
+                var response = await client.GetAsync(BaseURL + "Events");
+
+                events = new JavaScriptSerializer().Deserialize<List<Event>>(response.Content.ReadAsStringAsync().Result);
+            }
 
             var repetetiveEvents = await Task.Run(() => events.Where(x => x.RecurrencePattern != null).ToList());
 
