@@ -1,7 +1,11 @@
 ﻿using Microsoft.Graph;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,9 +13,21 @@ namespace Planner.Model.Services
 {
     public class ScheduleService : IScheduleService
     {
+        private string BaseURL = "https://localhost:44349/";
+        
         public async Task AddEventAsync(Event @event)
         {
-            //TODO: Add event through API
+            var jsonEvent = JsonConvert.SerializeObject(@event);
+            var data = new StringContent(jsonEvent, Encoding.UTF8, "application/json");
+
+            using(var client = new HttpClient())
+            {
+                var response = await client.PostAsync(BaseURL + "Events", data);
+
+                string result = response.Content.ReadAsStringAsync().Result;
+
+                Console.WriteLine(result);
+            }
         }
 
         public async Task RemoveEventAsync(Event @event)
