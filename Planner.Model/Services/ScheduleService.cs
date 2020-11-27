@@ -193,7 +193,7 @@ namespace Planner.Model.Services
                 //Finds all repetetive events that are going to happen on the day t
                 foreach (var k in repetetiveEvents)
                 {
-                    if (k.IsDateTimeMatchingRecurrencePattern(t) && k.DaysCompleted.Find(x => x.Date.Equals(t.Date)) == default(DateTime)) listOfEvents.Add(k);
+                    if (k.IsDateTimeMatchingRecurrencePattern(t) && !k.DaysCompleted.Where(x => x.Date == t.Date).ToList().Any()) listOfEvents.Add(k);
                 }
 
                 // Finds all disposable events that are going to happen on the day t
