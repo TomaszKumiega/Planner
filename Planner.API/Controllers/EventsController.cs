@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Nancy.Json;
 using Planner.Model;
 using Planner.Model.Repositories;
 
@@ -46,8 +47,11 @@ namespace Planner.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvent(Guid id, [FromBody] Event @event)
+        public async Task<IActionResult> PutEvent(Guid id, [FromBody] Object ev)
         {
+            var jsonString = ev.ToString();
+            var @event = new JavaScriptSerializer().Deserialize<Event>(jsonString);
+
             if (id != @event.Id)
             {
                 return BadRequest();
@@ -78,8 +82,11 @@ namespace Planner.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Event>> PostEvent([FromBody]Event @event)
+        public async Task<ActionResult<Event>> PostEvent([FromBody] Object ev)
         {
+            var jsonString = ev.ToString();
+            var @event = new JavaScriptSerializer().Deserialize<Event>(jsonString);
+
             _unitOfWork.EventRepository.Add(@event);
             await Task.Run(() => _unitOfWork.SaveChanges());
 
