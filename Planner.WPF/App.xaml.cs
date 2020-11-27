@@ -2,6 +2,7 @@
 using System.Windows;
 using Planner.WPF.Windows;
 using Planner.WPF.DIContainer;
+using System.Net;
 
 namespace Planner
 {
@@ -14,9 +15,25 @@ namespace Planner
         {
             base.OnStartup(e);
 
+            CheckForInternetConnection();
             var container = ContainerConfig.Configure();
             this.MainWindow = container.Resolve<MainWindow>();
             MainWindow.Show();
+        }
+
+        private void CheckForInternetConnection()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://google.com/generate_204"))
+                    return;
+                    
+            }
+            catch
+            {
+                this.Shutdown();
+            }
         }
     }
 }
