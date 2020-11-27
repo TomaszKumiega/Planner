@@ -4,6 +4,7 @@ using Planner.Model.Repositories;
 using Planner.WPF.Windows;
 using Planner.ViewModel.ViewModels;
 using Planner.WPF.UserControls;
+using Planner.Model.Services;
 
 namespace Planner.WPF.DIContainer
 {
@@ -19,6 +20,7 @@ namespace Planner.WPF.DIContainer
             builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>();
             builder.RegisterType<ScheduleDbContext>().AsSelf();
             builder.RegisterType<UserControlFactory>().As<IUserControlFactory>();
+            builder.RegisterType<ScheduleService>().As<IScheduleService>();
 
             return builder.Build();
         }
