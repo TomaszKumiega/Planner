@@ -46,7 +46,7 @@ namespace Planner.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvent(Guid id, Event @event)
+        public async Task<IActionResult> PutEvent(Guid id, [FromBody] Event @event)
         {
             if (id != @event.Id)
             {
@@ -78,7 +78,7 @@ namespace Planner.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Event>> PostEvent(Event @event)
+        public async Task<ActionResult<Event>> PostEvent([FromBody]Event @event)
         {
             _unitOfWork.EventRepository.Add(@event);
             await Task.Run(() => _unitOfWork.SaveChanges());
