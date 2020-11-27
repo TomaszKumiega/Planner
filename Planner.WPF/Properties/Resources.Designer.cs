@@ -115,6 +115,24 @@ namespace Planner.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No internet connection. Connect and try again..
+        /// </summary>
+        public static string connectionError {
+            get {
+                return ResourceManager.GetString("connectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection Error.
+        /// </summary>
+        public static string connectionErrorCaption {
+            get {
+                return ResourceManager.GetString("connectionErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daily.
         /// </summary>
         public static string daily {

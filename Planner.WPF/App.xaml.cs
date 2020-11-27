@@ -32,6 +32,7 @@ namespace Planner
             }
             catch
             {
+                var result = MessageBox.Show(Planner.WPF.Properties.Resources.connectionError, Planner.WPF.Properties.Resources.connectionErrorCaption);
                 this.Shutdown();
             }
         }

@@ -135,6 +135,12 @@
   <data name="august" xml:space="preserve">
     <value>August</value>
   </data>
+  <data name="connectionError" xml:space="preserve">
+    <value>No internet connection. Connect and try again.</value>
+  </data>
+  <data name="connectionErrorCaption" xml:space="preserve">
+    <value>Connection Error</value>
+  </data>
   <data name="daily" xml:space="preserve">
     <value>Daily</value>
   </data>
