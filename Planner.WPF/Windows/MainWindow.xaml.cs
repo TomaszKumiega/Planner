@@ -78,7 +78,7 @@ namespace Planner.WPF.Windows
         /// </summary>
         private void SetMonth()
         {
-            switch((DataContext as IScheduleViewModel).CurrentlyDisplayedMonth.Month)
+            switch((DataContext as IScheduleViewModel).CurrentlyDisplayedDate.Month)
             {
                 case 1: 
                     MonthTextBlock.Text = Planner.WPF.Properties.Resources.january;

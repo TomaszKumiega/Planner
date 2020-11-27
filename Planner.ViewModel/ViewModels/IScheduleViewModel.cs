@@ -11,7 +11,8 @@ namespace Planner.ViewModel.ViewModels
 {
     public interface IScheduleViewModel : IObservable
     {
-        DateTime CurrentlyDisplayedMonth { get; }
+        DisplayMode DisplayMode { get; }
+        DateTime CurrentlyDisplayedDate { get; }
         DateTime CurrentlySelectedDay { get; }
         Dictionary<DateTime, List<Event>> Schedule { get; }
         User User { get; }

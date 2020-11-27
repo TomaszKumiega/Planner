@@ -15,9 +15,18 @@ using User = Planner.Model.User;
 
 namespace Planner.ViewModel.ViewModels
 {
+    public enum DisplayMode
+    {
+        Day,
+        Week,
+        Month,
+        Year
+    }
+
     public class ScheduleViewModel : IScheduleViewModel, INotifyPropertyChanged
     {
-        private DateTime _currentlyDisplayedMonth;
+        private DateTime _currentlyDisplayedDate;
+        public DisplayMode DisplayMode { get; set; }
         public User User { get; private set; }
         public Dictionary<DateTime, List<Event>> Schedule { get; private set; }
         public DateTime CurrentlySelectedDay { get; private set; }
@@ -27,13 +36,13 @@ namespace Planner.ViewModel.ViewModels
 
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
-        public DateTime CurrentlyDisplayedMonth 
+        public DateTime CurrentlyDisplayedDate 
         { 
-            get => _currentlyDisplayedMonth;
+            get => _currentlyDisplayedDate;
             
             private set
             {
-                _currentlyDisplayedMonth = value;
+                _currentlyDisplayedDate = value;
                 OnPropertyChanged("CurrentlyDisplayedMonth");
             }
         }
@@ -42,8 +51,10 @@ namespace Planner.ViewModel.ViewModels
         public ScheduleViewModel(IUnitOfWorkFactory unitOfWorkFactory)
         {
             _unitOfWorkFactory = unitOfWorkFactory;
+            DisplayMode = DisplayMode.Month;
             Observers = new List<IObserver>();
-            CurrentlyDisplayedMonth = DateTime.Now;            
+            CurrentlySelectedDay = DateTime.Now;
+            CurrentlyDisplayedDate = DateTime.Now;            
             NextCommand = new NextCommand(this);
             PreviousCommand = new PreviousCommand(this);
             LoginUser();
@@ -69,21 +80,51 @@ namespace Planner.ViewModel.ViewModels
         }
 
         /// <summary>
-        /// Changes <see cref="CurrentlyDisplayedMonth"/> to the next month
+        /// Changes <see cref="CurrentlyDisplayedDate"/> to the next month
         /// </summary>
         public void Next()
         {
-            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month < 12 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month + 1, 1) :
-                new DateTime(CurrentlyDisplayedMonth.Year + 1, 1, 1);
+            switch(DisplayMode)
+            {
+                case DisplayMode.Day: CurrentlyDisplayedDate.AddDays(1);
+                    break;
+
+                case DisplayMode.Week: CurrentlyDisplayedDate.AddDays(7);
+                    break;
+
+                case DisplayMode.Month:
+                    CurrentlyDisplayedDate = CurrentlyDisplayedDate.AddMonths(1);
+                    break;
+
+                case DisplayMode.Year:
+                    CurrentlyDisplayedDate.AddYears(1);
+                    break;
+            } 
         }
 
         /// <summary>
-        /// Changes <see cref="CurrentlyDisplayedMonth"/> to the previous month
+        /// Changes <see cref="CurrentlyDisplayedDate"/> to the previous month
         /// </summary>
         public void Previous()
         {
-            CurrentlyDisplayedMonth = CurrentlyDisplayedMonth.Month > 1 ? new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month - 1, 1) :
-                new DateTime(CurrentlyDisplayedMonth.Year - 1, 12, 1);
+            switch (DisplayMode)
+            {
+                case DisplayMode.Day:
+                    CurrentlyDisplayedDate.AddDays(-1);
+                    break;
+
+                case DisplayMode.Week:
+                    CurrentlyDisplayedDate.AddDays(-7);
+                    break;
+
+                case DisplayMode.Month:
+                    CurrentlyDisplayedDate = CurrentlyDisplayedDate.AddMonths(-1);
+                    break;
+
+                case DisplayMode.Year:
+                    CurrentlyDisplayedDate.AddYears(-1);
+                    break;
+            }
         }
 
 
@@ -217,7 +258,7 @@ namespace Planner.ViewModel.ViewModels
         private List<DateTime> GetCurrentlyDisplayedDays()
         {
             var listOfDays = new List<DateTime>();
-            var date = new DateTime(CurrentlyDisplayedMonth.Year, CurrentlyDisplayedMonth.Month, 1);
+            var date = new DateTime(CurrentlyDisplayedDate.Year, CurrentlyDisplayedDate.Month, 1);
 
             // Generate days from previous months to fill a gap at the begining of the calendar
             int numberOfDaysFromPreviousMonth;
