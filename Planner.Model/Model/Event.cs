@@ -1,4 +1,5 @@
 ﻿using Microsoft.Graph;
+using Nancy.Json;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -50,15 +51,15 @@ namespace Planner.Model
         [NotMapped]
         public List<DateTime> DaysCompleted
         {
-            get => _DaysCompleted == null ? null : JsonConvert.DeserializeObject<List<DateTime>>(_DaysCompleted);
-            set => _DaysCompleted = JsonConvert.SerializeObject(value);
+            get => _DaysCompleted == null ? null : new JavaScriptSerializer().Deserialize<List<DateTime>>(_DaysCompleted);
+            set => _DaysCompleted = new JavaScriptSerializer().Serialize(value);
         }
 
         [NotMapped]
         public RecurrencePattern RecurrencePattern
         {
-            get => _RecurrencePattern == null ? null : JsonConvert.DeserializeObject<RecurrencePattern>(_RecurrencePattern);
-            set => _RecurrencePattern = JsonConvert.SerializeObject(value);
+            get => _RecurrencePattern == null ? null : new JavaScriptSerializer().Deserialize<RecurrencePattern>(_RecurrencePattern);
+            set => _RecurrencePattern = new JavaScriptSerializer().Serialize(value);
         }
         #endregion
 
