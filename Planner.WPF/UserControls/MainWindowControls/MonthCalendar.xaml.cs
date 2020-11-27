@@ -16,7 +16,7 @@ namespace Planner.WPF
     {
         private readonly IUserControlFactory _controlFactory;
         private List<ItemsControl> _itemsControls;
-        public MonthCalendar(IEventsCalendarViewModel viewModel, IUserControlFactory userControlFactory)
+        public MonthCalendar(IScheduleViewModel viewModel, IUserControlFactory userControlFactory)
         {
             InitializeComponent();
 
@@ -77,15 +77,15 @@ namespace Planner.WPF
 
         private void LoadEvents()
         {
-            var viewModel = (DataContext as IEventsCalendarViewModel);
+            var viewModel = (DataContext as IScheduleViewModel);
             
             for(int i=0; i<35; i++)
             {
-                var events = (DataContext as IEventsCalendarViewModel).Schedule.ElementAt(i).Value;
+                var events = (DataContext as IScheduleViewModel).Schedule.ElementAt(i).Value;
 
                 foreach (var e in events)
                 {
-                    var eventsControl = _controlFactory.GetEventUserControl((DataContext as IEventsCalendarViewModel), e);
+                    var eventsControl = _controlFactory.GetEventUserControl((DataContext as IScheduleViewModel), e);
 
                     foreach (var itemsControl in _itemsControls)
                     {
@@ -100,7 +100,7 @@ namespace Planner.WPF
 
         private void InitializeDayTextBlocks()
         {
-            var viewModel = (DataContext as IEventsCalendarViewModel);
+            var viewModel = (DataContext as IScheduleViewModel);
             
             for (int i = 0; i < 5; i++)
             {

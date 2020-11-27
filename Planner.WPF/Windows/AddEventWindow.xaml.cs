@@ -15,7 +15,7 @@ namespace Planner.WPF.Windows
     /// </summary>
     public partial class AddEventWindow : Window
     {
-        public AddEventWindow(IEventsCalendarViewModel viewModel)
+        public AddEventWindow(IScheduleViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
@@ -352,7 +352,7 @@ namespace Planner.WPF.Windows
 
                 if (AfterRadioButton.IsChecked.Value) occurrences = AfterIntegerUpDown.Value;
 
-                (DataContext as IEventsCalendarViewModel).AddEventAsync(name, eventType, difficulty, startDateTime.Value, endDateTime, allDay, recurrenceType, interval.Value, listOfDays, index, month, occurrences);
+                (DataContext as IScheduleViewModel).AddEventAsync(name, eventType, difficulty, startDateTime.Value, endDateTime, allDay, recurrenceType, interval.Value, listOfDays, index, month, occurrences);
 
                 this.Close();
             });

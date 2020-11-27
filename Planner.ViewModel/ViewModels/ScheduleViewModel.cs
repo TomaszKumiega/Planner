@@ -15,7 +15,7 @@ using User = Planner.Model.User;
 
 namespace Planner.ViewModel.ViewModels
 {
-    public class EventsCalendarViewModel : IEventsCalendarViewModel, INotifyPropertyChanged
+    public class ScheduleViewModel : IScheduleViewModel, INotifyPropertyChanged
     {
         private DateTime _currentlyDisplayedMonth;
         public User User { get; private set; }
@@ -39,7 +39,7 @@ namespace Planner.ViewModel.ViewModels
         }
 
 
-        public EventsCalendarViewModel(IUnitOfWorkFactory unitOfWorkFactory)
+        public ScheduleViewModel(IUnitOfWorkFactory unitOfWorkFactory)
         {
             _unitOfWorkFactory = unitOfWorkFactory;
             Observers = new List<IObserver>();

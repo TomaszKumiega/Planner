@@ -10,8 +10,8 @@ namespace Planner.WPF.UserControls
     /// </summary>
     public partial class EventUserControl : UserControl
     {
-        private IEventsCalendarViewModel _viewModel;
-        public EventUserControl(IEventsCalendarViewModel viewModel, Event @event)
+        private IScheduleViewModel _viewModel;
+        public EventUserControl(IScheduleViewModel viewModel, Event @event)
         {
             InitializeComponent();
             _viewModel = viewModel;

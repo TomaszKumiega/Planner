@@ -9,7 +9,7 @@ using User = Planner.Model.User;
 
 namespace Planner.ViewModel.ViewModels
 {
-    public interface IEventsCalendarViewModel : IObservable
+    public interface IScheduleViewModel : IObservable
     {
         DateTime CurrentlyDisplayedMonth { get; }
         DateTime CurrentlySelectedDay { get; }

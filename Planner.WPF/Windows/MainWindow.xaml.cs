@@ -14,7 +14,7 @@ namespace Planner.WPF.Windows
     public partial class MainWindow : Window, IObserver
     {
         private MonthCalendar MonthCalendar { get; }
-        public MainWindow(IEventsCalendarViewModel viewModel, IUserControlFactory controlFactory)
+        public MainWindow(IScheduleViewModel viewModel, IUserControlFactory controlFactory)
         {
             InitializeComponent();
 
@@ -66,7 +66,7 @@ namespace Planner.WPF.Windows
 
         private void AddEvent(object sender, EventArgs e)
         {
-            var addEventWindow = new AddEventWindow(DataContext as IEventsCalendarViewModel);
+            var addEventWindow = new AddEventWindow(DataContext as IScheduleViewModel);
             this.IsEnabled = false;
             addEventWindow.Show();
 
@@ -78,7 +78,7 @@ namespace Planner.WPF.Windows
         /// </summary>
         private void SetMonth()
         {
-            switch((DataContext as IEventsCalendarViewModel).CurrentlyDisplayedMonth.Month)
+            switch((DataContext as IScheduleViewModel).CurrentlyDisplayedMonth.Month)
             {
                 case 1: 
                     MonthTextBlock.Text = Planner.WPF.Properties.Resources.january;

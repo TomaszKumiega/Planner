@@ -15,7 +15,7 @@ namespace Planner.WPF.DIContainer
             var builder = new ContainerBuilder();
 
             builder.RegisterType<MainWindow>().AsSelf();
-            builder.RegisterType<EventsCalendarViewModel>().As<IEventsCalendarViewModel>();
+            builder.RegisterType<ScheduleViewModel>().As<IScheduleViewModel>();
             builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>();
             builder.RegisterType<ScheduleDbContext>().AsSelf();
             builder.RegisterType<UserControlFactory>().As<IUserControlFactory>();

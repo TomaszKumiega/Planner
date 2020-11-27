@@ -5,7 +5,7 @@ namespace Planner.WPF.UserControls
 {
     public interface IUserControlFactory
     {
-        EventUserControl GetEventUserControl(IEventsCalendarViewModel viewModel, Event @event);
-        MonthCalendar GetMonthCalendar(IEventsCalendarViewModel viewModel);
+        EventUserControl GetEventUserControl(IScheduleViewModel viewModel, Event @event);
+        MonthCalendar GetMonthCalendar(IScheduleViewModel viewModel);
     }
 }
