@@ -35,7 +35,6 @@ namespace Planner.ViewModel.ViewModels
         public NextCommand NextCommand { get; }
         public PreviousCommand PreviousCommand { get; }
 
-        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IScheduleService _scheduleService;
 
         public DateTime CurrentlyDisplayedDate 
