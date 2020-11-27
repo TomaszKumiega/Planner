@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Planner.Model.Services
 {
-    public class ScheduleService
-    { 
+    public class ScheduleService : IScheduleService
+    {
         public async Task AddEventAsync(Event @event)
         {
             //TODO: Add event through API
