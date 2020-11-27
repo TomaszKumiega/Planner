@@ -16,7 +16,7 @@ namespace Planner.Model.Repositories
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
 
-        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> Find(System.Predicate<T> predicate);
 
         void Update(T entity);
     }

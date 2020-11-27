@@ -39,10 +39,10 @@ namespace Planner.Model.Repositories
             foreach (var t in entities) _logger.Info("Entity: " + t.Id.ToString() + "was added to the database");
         }
 
-        public IEnumerable<Event> Find(Expression<Func<Event, bool>> predicate)
+        public Event Find(System.Predicate<Event> predicate)
         {
             var items = _context.Events.ToList();
-            return items.AsQueryable<Event>().Where<Event>(predicate).ToList();
+            return items.Find(predicate);
         }
 
         public IEnumerable<Event> GetAll()
