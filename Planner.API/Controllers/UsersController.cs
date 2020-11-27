@@ -36,7 +36,7 @@ namespace Planner.API.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody]AuthenticateModel authData)
         {
-            var users = _context.Users.Where(x => x.Name == authData.UserName && x.Password == authData.Password);
+            var users = _context.Users.Where(x => x.Username == authData.UserName && x.Password == authData.Password);
 
             if (!users.Any()) return BadRequest(new { message = "Username or password is incorrect" });
 
@@ -60,7 +60,7 @@ namespace Planner.API.Controllers
             return Ok(new
             {
                 Id = user.Id,
-                Username = user.Name,
+                Username = user.Username,
                 Token = tokenString
             });
 
