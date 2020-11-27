@@ -85,7 +85,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="BackButton" Grid.Column="0" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Command="{Binding Path=PreviousMonthCommand}">
+            <Button x:Name="BackButton" Grid.Column="0" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Command="{Binding Path=PreviousCommand}">
                 <Image>
                     <Image.Source>
                         <BitmapImage UriSource="pack://application:,,,/Planner.WPF;component/Icons/BackIcon.png"/>
@@ -101,7 +101,7 @@
                 </Image>
             </Button>
 
-            <Button x:Name="ForwardButton" Grid.Column="2" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Command="{Binding Path=NextMonthCommand}">
+            <Button x:Name="ForwardButton" Grid.Column="2" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Command="{Binding Path=NextCommand}">
                 <Image>
                     <Image.Source>
                         <BitmapImage UriSource="pack://application:,,,/Planner.WPF;component/Icons/ForwardIcon.png"/>
@@ -110,7 +110,7 @@
             </Button>
 
             <TextBlock x:Name="MonthTextBlock" Margin="8,0,8,3" Grid.Column="3" VerticalAlignment="Bottom" FontSize="22" Foreground="#CDCDCD"/>
-            <TextBlock x:Name="YearTextBlock" Margin="0,0,8,3" Grid.Column="4" VerticalAlignment="Bottom" FontSize="22" Foreground="#CDCDCD" Text="{Binding Path=CurrentlyDisplayedMonth.Year}"/>
+            <TextBlock x:Name="YearTextBlock" Margin="0,0,8,3" Grid.Column="4" VerticalAlignment="Bottom" FontSize="22" Foreground="#CDCDCD" Text="{Binding Path=CurrentlyDisplayedDate.Year}"/>
         </Grid>
 
         <!--Karma Points TextBlocks-->
