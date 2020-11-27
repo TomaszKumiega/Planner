@@ -59,13 +59,10 @@ namespace Planner.Model.Repositories
 
         public void Remove(Guid id)
         {
-            var events = this.Find(x => x.Id == id).ToList();
-
-            if (events.Count != 0)
-            {
-                _context.Events.Remove(events[0]);
-                _logger.Info("Event: " + id.ToString() + " was removed from database");
-            }
+            var @event = this.Find(x => x.Id == id);
+            
+            _context.Events.Remove(@event);
+            _logger.Info("Event: " + id.ToString() + " was removed from database");
         }
 
         public void Remove(Event entity)
