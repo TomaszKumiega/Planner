@@ -17,8 +17,6 @@ namespace Planner.WPF.DIContainer
 
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<ScheduleViewModel>().As<IScheduleViewModel>();
-            builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>();
-            builder.RegisterType<ScheduleDbContext>().AsSelf();
             builder.RegisterType<UserControlFactory>().As<IUserControlFactory>();
             builder.RegisterType<ScheduleService>().As<IScheduleService>();
 
