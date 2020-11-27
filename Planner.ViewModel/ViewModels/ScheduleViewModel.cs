@@ -152,7 +152,8 @@ namespace Planner.ViewModel.ViewModels
 
         public async Task CompleteEventAsync(Event @event, int displayedDay)
         {
-            await _scheduleService.CompleteEventAsync(@event, displayedDay);
+            await _scheduleService.CompleteEventAsync(@event, displayedDay, User, Schedule);
+            await LoadScheduleAsync();
         }
 
         #region IObservable members
