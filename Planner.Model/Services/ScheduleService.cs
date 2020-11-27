@@ -9,6 +9,20 @@ namespace Planner.Model.Services
 {
     public class ScheduleService
     { 
+        public async Task AddEventAsync(Event @event)
+        {
+            //TODO: Add event through API
+        }
+
+        public async Task RemoveEventAsync(Event @event)
+        {
+            //TODO: Remove event through API
+        }
+
+        public async Task CompleteEventAsync(Event @event, int displayedDay)
+        {
+            //TODO: Update event through API
+        }
 
         public Event BuildEvent(string name, int eventType, int eventDifficulty, DateTime startDateTime, DateTime? endDateTime, bool allDay,
             int recurrenceType, int interval, List<Microsoft.Graph.DayOfWeek> daysOfWeek, int index, int month, int? occurrences)
