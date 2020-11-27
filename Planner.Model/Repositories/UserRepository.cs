@@ -37,13 +37,10 @@ namespace Planner.Model.Repositories
 
         public void Remove(Guid id)
         {
-            var users = this.Find(x => x.Id == id).ToList();
+            var users = this.Find(x => x.Id == id);
 
-            if (users.Count != 0)
-            {
-                _context.Users.Remove(users[0]);
-                _logger.Info("User: " + id.ToString() + " removed from the database");
-            }
+            _context.Users.Remove(users);
+            _logger.Info("User: " + id.ToString() + " removed from the database");
         }
 
         public void Remove(User entity)
@@ -55,9 +52,9 @@ namespace Planner.Model.Repositories
             _logger.Info("User: " + entity.Id.ToString() + " removed from the database");
         }
 
-        public IEnumerable<User> Find(Expression<Func<User, bool>> predicate)
+        public User Find(System.Predicate<User> predicate)
         {          
-            return _context.Users.Where(predicate).ToList();
+            return _context.Users.Find(predicate);
         }
 
         public IEnumerable<User> GetAll()
