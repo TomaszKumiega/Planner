@@ -51,8 +51,30 @@ namespace Planner.Model
         [NotMapped]
         public List<DateTime> DaysCompleted
         {
-            get => _DaysCompleted == null ? null : new JavaScriptSerializer().Deserialize<List<DateTime>>(_DaysCompleted);
-            set => _DaysCompleted = new JavaScriptSerializer().Serialize(value);
+            get
+            {
+                var utcDates = _DaysCompleted == null ? null : new JavaScriptSerializer().Deserialize<List<DateTime>>(_DaysCompleted);
+                var actualDates = new List<DateTime>();
+
+                foreach(var t in utcDates)
+                {
+                    actualDates.Add(t.ToLocalTime());
+                }
+
+                return actualDates;
+            }
+            set
+            {
+                var localDates = value;
+                var utcDates = new List<DateTime>();
+
+                foreach(var t in localDates)
+                {
+                    utcDates.Add(t.ToUniversalTime());
+                }
+
+                _DaysCompleted = new JavaScriptSerializer().Serialize(utcDates);
+            }
         }
 
         [NotMapped]
