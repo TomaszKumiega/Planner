@@ -122,6 +122,7 @@ namespace Planner.ViewModel.ViewModels
             var @event = await Task.Run(() => _scheduleService.BuildEvent(name, eventType, eventDifficulty, startDateTime, endDateTime, allDay, recurrenceType, interval,
                 daysOfWeek, index, month, occurrences));
             await _scheduleService.AddEventAsync(@event);
+            await LoadScheduleAsync();
         }
 
         public async Task LoadScheduleAsync()
