@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Planner.Model;
+using Planner.Model.Repositories;
 
 namespace Planner.API.Controllers
 {
@@ -13,25 +14,25 @@ namespace Planner.API.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        private readonly ScheduleDbContext _context;
 
-        public EventsController(ScheduleDbContext context)
+        private readonly IUnitOfWork _unitOfWork;
+        public EventsController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: api/Events
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {
-            return await _context.Events.ToListAsync();
+            return Ok(await Task.Run(() => _unitOfWork.EventRepository.GetAll()));
         }
 
         // GET: api/Events/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Event>> GetEvent(Guid id)
         {
-            var @event = await _context.Events.FindAsync(id);
+            var @event = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.Id == id));
 
             if (@event == null)
             {
@@ -52,11 +53,11 @@ namespace Planner.API.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(@event).State = EntityState.Modified;
+            _unitOfWork.EventRepository.Update(@event);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await Task.Run(() => _unitOfWork.SaveChanges());
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -79,8 +80,8 @@ namespace Planner.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Event>> PostEvent(Event @event)
         {
-            _context.Events.Add(@event);
-            await _context.SaveChangesAsync();
+            _unitOfWork.EventRepository.Add(@event);
+            await Task.Run(() => _unitOfWork.SaveChanges());
 
             return CreatedAtAction("GetEvent", new { id = @event.Id }, @event);
         }
@@ -89,21 +90,21 @@ namespace Planner.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Event>> DeleteEvent(Guid id)
         {
-            var @event = await _context.Events.FindAsync(id);
+            var @event = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.Id == id));
             if (@event == null)
             {
                 return NotFound();
             }
 
-            _context.Events.Remove(@event);
-            await _context.SaveChangesAsync();
+            _unitOfWork.EventRepository.Remove(@event);
+            await Task.Run(() => _unitOfWork.SaveChanges());
 
             return @event;
         }
 
         private bool EventExists(Guid id)
         {
-            return _context.Events.Any(e => e.Id == id);
+            return _unitOfWork.EventRepository.Find(x => x.Id == id) != null;
         }
     }
 }
