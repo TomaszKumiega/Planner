@@ -135,6 +135,9 @@
   <data name="august" xml:space="preserve">
     <value>Sierpień</value>
   </data>
+  <data name="back" xml:space="preserve">
+    <value>Wstecz</value>
+  </data>
   <data name="connectionError" xml:space="preserve">
     <value>Brak połączenia z internetem. Połącz się i spróbuj ponownie.</value>
   </data>

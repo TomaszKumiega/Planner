@@ -115,6 +115,15 @@ namespace Planner.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string back {
+            get {
+                return ResourceManager.GetString("back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No internet connection. Connect and try again..
         /// </summary>
         public static string connectionError {
