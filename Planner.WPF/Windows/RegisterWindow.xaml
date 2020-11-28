@@ -53,9 +53,13 @@
         <TextBlock x:Name="TextBlockPasswordRepeat" Text="{x:Static res:Resources.repeatPassword}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Margin="0,0,25,0" FontSize="16" Foreground="WhiteSmoke" VerticalAlignment="Bottom"/>
         <PasswordBox x:Name="TextBoxPasswordRepeat" ToolTip="Password" PasswordChar="*" FontFamily="Segoe UI" Grid.Column="2" Grid.Row="7" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" VerticalAlignment="Bottom" Width="136"/>
 
-        <!--Username-->
+        <!--Email-->
         <TextBlock x:Name="TextBlockEmail" Text="{x:Static res:Resources.email}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Margin="0,0,25,0" FontSize="16" Foreground="WhiteSmoke" VerticalAlignment="Bottom" />
         <TextBox x:Name="TextBoxEmail" FontFamily="Segoe UI" Grid.Column="2" Grid.Row="9" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" VerticalAlignment="Bottom" Width="136"/>
+
+        <!--First Name-->
+        <TextBlock x:Name="TextBlockFirstName" Text="{x:Static res:Resources.firstName}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="11" HorizontalAlignment="Right" Margin="0,0,25,0" FontSize="16" Foreground="WhiteSmoke" VerticalAlignment="Bottom" />
+        <TextBox x:Name="TextBoxFirstName" FontFamily="Segoe UI" Grid.Column="2" Grid.Row="11" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" VerticalAlignment="Bottom" Width="136"/>
 
         <!--Register-->
         <Button x:Name="ButtonRegister" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="15" Width="100" BorderThickness="0" Background="#260f30">
