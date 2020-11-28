@@ -41,5 +41,10 @@
 
         <!--Title-->
         <TextBlock x:Name="TextBlockTitle" Text="{x:Static res:Resources.register}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="26" Foreground="WhiteSmoke" VerticalAlignment="Bottom" />
+
+        <!--Username-->
+        <TextBlock x:Name="TextBlockUsername" Text="{x:Static res:Resources.username}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,25,0" FontSize="18" Foreground="WhiteSmoke" VerticalAlignment="Bottom" />
+        <TextBox x:Name="TextBoxUsername" FontFamily="Segoe UI" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Bottom" Width="136"/>
+
     </Grid>
 </Window>
