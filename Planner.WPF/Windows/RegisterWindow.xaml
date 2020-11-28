@@ -31,7 +31,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="15"/>
             <RowDefinition Height="25"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="15"/>
             <RowDefinition Height="25"/>
@@ -53,5 +53,9 @@
         <TextBlock x:Name="TextBlockPasswordRepeat" Text="{x:Static res:Resources.repeatPassword}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Margin="0,0,25,0" FontSize="16" Foreground="WhiteSmoke" VerticalAlignment="Bottom"/>
         <PasswordBox x:Name="TextBoxPasswordRepeat" ToolTip="Password" PasswordChar="*" FontFamily="Segoe UI" Grid.Column="2" Grid.Row="7" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" VerticalAlignment="Bottom" Width="136"/>
 
+        <!--Register-->
+        <Button x:Name="ButtonRegister" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="15" Width="100" BorderThickness="0" Background="#260f30">
+            <TextBlock Text="{x:Static res:Resources.register}" FontFamily="Segoe UI" FontSize="14" Foreground="#e3d3eb"/>
+        </Button>
     </Grid>
 </Window>
