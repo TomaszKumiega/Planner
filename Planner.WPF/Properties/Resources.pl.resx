@@ -273,6 +273,9 @@
   <data name="repeatEvery" xml:space="preserve">
     <value>Powtarzaj co:</value>
   </data>
+  <data name="repeatPassword" xml:space="preserve">
+    <value>Powtórz hasło:</value>
+  </data>
   <data name="sat" xml:space="preserve">
     <value>sob</value>
   </data>

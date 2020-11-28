@@ -273,6 +273,9 @@
   <data name="repeatEvery" xml:space="preserve">
     <value>Repeat Every:</value>
   </data>
+  <data name="repeatPassword" xml:space="preserve">
+    <value>Repeat password:</value>
+  </data>
   <data name="sat" xml:space="preserve">
     <value>Sat</value>
   </data>

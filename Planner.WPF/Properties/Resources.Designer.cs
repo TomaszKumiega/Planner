@@ -529,6 +529,15 @@ namespace Planner.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Repeat password:.
+        /// </summary>
+        public static string repeatPassword {
+            get {
+                return ResourceManager.GetString("repeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sat.
         /// </summary>
         public static string sat {
