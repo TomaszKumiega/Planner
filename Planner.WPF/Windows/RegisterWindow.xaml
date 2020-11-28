@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:res="clr-namespace:Planner.WPF.Properties"
         xmlns:local="clr-namespace:Planner.WPF.Windows"
         mc:Ignorable="d"
         Title="RegisterWindow" Height="450" Width="350" BorderThickness="0" WindowStyle="None" WindowStartupLocation="CenterScreen"
@@ -37,5 +38,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
+
+        <!--Title-->
+        <TextBlock x:Name="TextBlockTitle" Text="{x:Static res:Resources.register}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="26" Foreground="WhiteSmoke" VerticalAlignment="Bottom" />
     </Grid>
 </Window>
