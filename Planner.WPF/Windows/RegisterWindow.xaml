@@ -6,7 +6,7 @@
         xmlns:res="clr-namespace:Planner.WPF.Properties"
         xmlns:local="clr-namespace:Planner.WPF.Windows"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="350" BorderThickness="0" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="RegisterWindow" Height="500" Width="400" BorderThickness="0" WindowStyle="None" WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Background="#37393f">
 
     <Grid>
