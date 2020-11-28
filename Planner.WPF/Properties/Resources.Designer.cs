@@ -205,6 +205,15 @@ namespace Planner.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string exit {
+            get {
+                return ResourceManager.GetString("exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to February.
         /// </summary>
         public static string february {
@@ -322,6 +331,15 @@ namespace Planner.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string login {
+            get {
+                return ResourceManager.GetString("login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to March.
         /// </summary>
         public static string march {
@@ -412,6 +430,15 @@ namespace Planner.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t have an account yet?  Sign Up.
+        /// </summary>
+        public static string notregistered {
+            get {
+                return ResourceManager.GetString("notregistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         public static string november {
@@ -462,6 +489,24 @@ namespace Planner.WPF.Properties {
         public static string on {
             get {
                 return ResourceManager.GetString("on", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password:.
+        /// </summary>
+        public static string password {
+            get {
+                return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string register {
+            get {
+                return ResourceManager.GetString("register", resourceCulture);
             }
         }
         
@@ -588,6 +633,15 @@ namespace Planner.WPF.Properties {
         public static string tuesday {
             get {
                 return ResourceManager.GetString("tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username:.
+        /// </summary>
+        public static string username {
+            get {
+                return ResourceManager.GetString("username", resourceCulture);
             }
         }
         

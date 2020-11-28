@@ -165,6 +165,9 @@
   <data name="every" xml:space="preserve">
     <value>W każdy:</value>
   </data>
+  <data name="exit" xml:space="preserve">
+    <value>Wyjście</value>
+  </data>
   <data name="february" xml:space="preserve">
     <value>Luty</value>
   </data>
@@ -204,6 +207,9 @@
   <data name="last" xml:space="preserve">
     <value>Ostatni</value>
   </data>
+  <data name="login" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
   <data name="march" xml:space="preserve">
     <value>Marzec</value>
   </data>
@@ -234,6 +240,9 @@
   <data name="never" xml:space="preserve">
     <value>Nigdy</value>
   </data>
+  <data name="notregistered" xml:space="preserve">
+    <value>Nie masz konta? Zarejestruj się.</value>
+  </data>
   <data name="november" xml:space="preserve">
     <value>Listopad</value>
   </data>
@@ -251,6 +260,12 @@
   </data>
   <data name="on" xml:space="preserve">
     <value>W</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Hasło:</value>
+  </data>
+  <data name="register" xml:space="preserve">
+    <value>Zarejestruj się</value>
   </data>
   <data name="repeat" xml:space="preserve">
     <value>Powtarzaj:</value>
@@ -293,6 +308,9 @@
   </data>
   <data name="tue" xml:space="preserve">
     <value>wt</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>Nazwa użytkownika:</value>
   </data>
   <data name="veryHard" xml:space="preserve">
     <value>Bardzo Trudne</value>
