@@ -156,6 +156,9 @@
   <data name="easy" xml:space="preserve">
     <value>Easy</value>
   </data>
+  <data name="email" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
   <data name="end" xml:space="preserve">
     <value>End:</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="first" xml:space="preserve">
     <value>First</value>
+  </data>
+  <data name="firstName" xml:space="preserve">
+    <value>First name:</value>
   </data>
   <data name="fourth" xml:space="preserve">
     <value>Fourth</value>
@@ -206,6 +212,9 @@
   </data>
   <data name="last" xml:space="preserve">
     <value>Last</value>
+  </data>
+  <data name="lastName" xml:space="preserve">
+    <value>Last name:</value>
   </data>
   <data name="login" xml:space="preserve">
     <value>Log in</value>

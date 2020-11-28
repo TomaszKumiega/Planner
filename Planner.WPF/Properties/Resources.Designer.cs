@@ -178,6 +178,15 @@ namespace Planner.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail:.
+        /// </summary>
+        public static string email {
+            get {
+                return ResourceManager.GetString("email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End:.
         /// </summary>
         public static string end {
@@ -228,6 +237,15 @@ namespace Planner.WPF.Properties {
         public static string first {
             get {
                 return ResourceManager.GetString("first", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name:.
+        /// </summary>
+        public static string firstName {
+            get {
+                return ResourceManager.GetString("firstName", resourceCulture);
             }
         }
         
@@ -327,6 +345,15 @@ namespace Planner.WPF.Properties {
         public static string last {
             get {
                 return ResourceManager.GetString("last", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name:.
+        /// </summary>
+        public static string lastName {
+            get {
+                return ResourceManager.GetString("lastName", resourceCulture);
             }
         }
         

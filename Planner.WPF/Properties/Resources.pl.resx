@@ -156,6 +156,9 @@
   <data name="easy" xml:space="preserve">
     <value>Łatwe</value>
   </data>
+  <data name="email" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
   <data name="end" xml:space="preserve">
     <value>Zakończ:</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="first" xml:space="preserve">
     <value>Pierwszy</value>
+  </data>
+  <data name="firstName" xml:space="preserve">
+    <value>Imię:</value>
   </data>
   <data name="fourth" xml:space="preserve">
     <value>Czwarty</value>
@@ -206,6 +212,9 @@
   </data>
   <data name="last" xml:space="preserve">
     <value>Ostatni</value>
+  </data>
+  <data name="lastName" xml:space="preserve">
+    <value>Nazwisko:</value>
   </data>
   <data name="login" xml:space="preserve">
     <value>Zaloguj się</value>
