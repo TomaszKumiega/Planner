@@ -103,5 +103,10 @@ namespace Planner.Model.Services
                 Console.WriteLine(result);
             }
         }
+
+        public async Task<Guid> ReLoginAsync()
+        {
+            return await LoginAsync(User.Username, User.Password);
+        }
     }
 }

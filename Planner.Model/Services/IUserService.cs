@@ -14,5 +14,6 @@ namespace Planner.Model.Services
         Task RegisterAsync(string username, string password, string email, string firstName, string lastName);
         Task UpdateUserAsync(User user);
         Task<User> GetUserAsync(Guid id);
+        Task<Guid> ReLoginAsync();
     }
 }
