@@ -89,6 +89,8 @@ namespace Planner.Model.Services
 
                     Console.WriteLine(result);
                 }
+
+                await _userService.UpdateUserAsync();
             }
         }
 
