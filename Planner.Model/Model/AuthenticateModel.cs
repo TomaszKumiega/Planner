@@ -12,6 +12,11 @@ namespace Planner.Model.Model
         [Required]
         public string Password { get; set; }
 
+        public AuthenticateModel()
+        {
+
+        }
+
         public AuthenticateModel(string username, string password)
         {
             Username = username;
