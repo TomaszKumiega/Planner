@@ -29,7 +29,8 @@ namespace Planner.Model.Services
                 var response = await client.PostAsync(BaseURL + "Users", data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
-
+                
+                //TODO: fix reading result
                 Token = result;
 
                 Console.WriteLine(result);
@@ -48,6 +49,7 @@ namespace Planner.Model.Services
 
             using (var client = new HttpClient(clientHandler))
             {
+                //TODO: Add token
                 var response = await client.PostAsync(BaseURL + "Users", data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
@@ -67,6 +69,7 @@ namespace Planner.Model.Services
 
             using(var client = new HttpClient(clientHandler))
             {
+                //TODO: Add token
                 var response = await client.PutAsync(BaseURL + "Users/" + user.Id.ToString(), data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
