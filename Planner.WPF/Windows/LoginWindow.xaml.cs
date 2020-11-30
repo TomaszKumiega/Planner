@@ -37,9 +37,13 @@ namespace Planner.WPF.Windows
             Application.Current.Shutdown();
         }
 
-        private void TextBlockRegister_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void HyperlinkRegister_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: implement
+            var registrationWindow = new RegisterWindow(DataContext as IUserViewModel);
+            this.Visibility = Visibility.Hidden;
+            registrationWindow.Show();
+            registrationWindow.ButtonBack.Click += (s, e) => { this.Visibility = Visibility.Visible; };
+            registrationWindow.Closed += (s, e) => { this.Visibility = Visibility.Visible; };
         }
     }
 }

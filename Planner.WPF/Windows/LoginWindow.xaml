@@ -52,6 +52,8 @@
         </Button>
         
         <!--Register-->
-        <TextBlock x:Name="TextBlockRegister" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="{x:Static res:Resources.notregistered}" Foreground="#260f30" PreviewMouseDown="TextBlockRegister_PreviewMouseDown"/>
+        <TextBlock x:Name="TextBlockRegister" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="{x:Static res:Resources.notregistered}" Foreground="#260f30">
+            <Hyperlink x:Name="HyperlinkRegister" Click="HyperlinkRegister_Click"/>
+        </TextBlock>
     </Grid>
 </Window>
