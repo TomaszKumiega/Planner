@@ -47,7 +47,7 @@ namespace Planner.Model.Services
 
             using (var client = new HttpClient(clientHandler))
             {
-                var response = await client.PostAsync(BaseURL + "Users", data);
+                var response = await client.PostAsync(BaseURL + "Users/authenticate", data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
                 
