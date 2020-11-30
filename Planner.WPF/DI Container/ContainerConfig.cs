@@ -21,6 +21,7 @@ namespace Planner.WPF.DIContainer
             builder.RegisterType<ScheduleService>().As<IScheduleService>();
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<LoginWindow>().AsSelf();
+            builder.RegisterType<UserViewModel>().As<IUserViewModel>();
 
             return builder.Build();
         }
