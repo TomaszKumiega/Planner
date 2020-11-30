@@ -23,5 +23,15 @@ namespace Planner.ViewModel.ViewModels
             User = await _userService.GetUserAsync(id);
         }
 
+        public async Task<bool> RegisterAsync(string username, string password, string repeatedPassword, string email, string firstName, string lastName)
+        {
+            if (password != repeatedPassword) return false;
+            else
+            {
+                await _userService.RegisterAsync(username, password, email, firstName, lastName);
+                return true;
+            }
+        }
+
     }
 }
