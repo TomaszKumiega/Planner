@@ -4,11 +4,11 @@ WORKDIR /app
 COPY *.sln .
 COPY Planner.Model/*.csproj ./Planner.Model/
 COPY Planner.API/*.csproj ./Planner.API
-RUN dotnet restore Planner.API/Planner.API.csproj
+RUN dotnet restore ./Planner.API/Planner.API.csproj
 
 COPY . .
 WORKDIR /app/Planner.Model
-RUN dotnet build -c Release -o /app
+RUN dotnet build Planner.Model.csproj -c Release -o /app
 
 WORKDIR /app/Planner.API
 RUN dotnet build Planner.API.csproj -c Release -o /app/build
