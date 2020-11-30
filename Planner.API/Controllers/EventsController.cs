@@ -13,7 +13,7 @@ using Planner.Model.Repositories;
 namespace Planner.API.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class EventsController : ControllerBase
     {
