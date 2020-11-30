@@ -79,8 +79,6 @@ namespace Planner.WPF.Windows
                 return false;
             }
 
-            regex = new Regex(@"/ ^[a - z,.'-]+$/i", RegexOptions.IgnoreCase);
-
             // First name validation
             if (String.IsNullOrWhiteSpace(TextBoxFirstName.Text) || !regex.IsMatch(TextBoxFirstName.Text))
             {
