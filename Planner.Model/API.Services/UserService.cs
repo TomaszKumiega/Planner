@@ -20,6 +20,7 @@ namespace Planner.Model.API.Services
     public class UserService : IUserService
     {
         private IUnitOfWork _unitOfWork;
+        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
 
         public UserService(IUnitOfWork unitOfWork)
         {
@@ -41,6 +42,7 @@ namespace Planner.Model.API.Services
             if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 return null;
 
+            _logger.Debug("User: " + user.Id + " authenticated successfully");
             // authentication successful
             return user;
         }
@@ -73,6 +75,7 @@ namespace Planner.Model.API.Services
             _unitOfWork.UserRepository.Add(user);
             _unitOfWork.SaveChanges();
 
+            _logger.Debug("User: " + user.Id + " created");
             return user;
         }
 
@@ -112,6 +115,8 @@ namespace Planner.Model.API.Services
 
             _unitOfWork.UserRepository.Update(user);
             _unitOfWork.SaveChanges();
+
+            _logger.Debug("User: " + user.Id + " updated");
         }
 
         public void Delete(Guid id)
@@ -122,6 +127,8 @@ namespace Planner.Model.API.Services
                 _unitOfWork.UserRepository.Remove(user);
                 _unitOfWork.SaveChanges();
             }
+
+            _logger.Debug("User: " + user.Id + " deleted");
         }
 
         // private helper methods
