@@ -80,9 +80,9 @@ namespace Planner.Model.Services
             }
         }
 
-        public async Task UpdateUserAsync(UserModel user)
+        public async Task UpdateUserAsync()
         {
-            var userJson = new JavaScriptSerializer().Serialize(user);
+            var userJson = new JavaScriptSerializer().Serialize(User);
 
             var data = new StringContent(userJson, Encoding.UTF8, "application/json");
 
@@ -93,7 +93,7 @@ namespace Planner.Model.Services
             {
                 client.DefaultRequestHeaders.Authorization =
                         new AuthenticationHeaderValue("Bearer", Token);
-                var response = await client.PutAsync(BaseURL + "Users/" + user.Id.ToString(), data);
+                var response = await client.PutAsync(BaseURL + "Users/" + User.Id.ToString(), data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
 
