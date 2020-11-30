@@ -19,6 +19,7 @@ namespace Planner.WPF.DIContainer
             builder.RegisterType<ScheduleViewModel>().As<IScheduleViewModel>();
             builder.RegisterType<UserControlFactory>().As<IUserControlFactory>();
             builder.RegisterType<ScheduleService>().As<IScheduleService>();
+            builder.RegisterType<UserService>().As<IUserService>();
 
             return builder.Build();
         }
