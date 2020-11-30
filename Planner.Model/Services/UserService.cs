@@ -35,7 +35,7 @@ namespace Planner.Model.Services
             }
         }
 
-        public async Task<Guid> LoginAsync(string username, string password)
+        public async Task LoginAsync(string username, string password)
         {
             var authModel = new AuthenticateModel(username, password);
             var authJson = new JavaScriptSerializer().Serialize(authModel);
@@ -50,16 +50,13 @@ namespace Planner.Model.Services
                 var response = await client.PostAsync(BaseURL + "Users/authenticate", data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
+
+                var authResult = new JavaScriptSerializer().Deserialize<AuthenticationResult>(result);
                 
-                var s = JArray.Parse(result);
-                var userId = new JavaScriptSerializer().Deserialize<Guid>(s[1].ToString());
-                Token = new JavaScriptSerializer().Deserialize<string>(s[3].ToString());
-
                 Console.WriteLine(result);
-
-                User = await GetUserAsync(userId);
-
-                return userId;
+                
+                Token = authResult.Token;
+                User = new UserModel(authResult.Username, authResult.FirstName, authResult.LastName, authResult.Email);
             }
         }
 
@@ -104,9 +101,9 @@ namespace Planner.Model.Services
             }
         }
 
-        public async Task<Guid> ReLoginAsync()
+        public async Task ReLoginAsync()
         {
-            return await LoginAsync(User.Username, User.Password);
+            await LoginAsync(User.Username, User.Password);
         }
     }
 }
