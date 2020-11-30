@@ -5,6 +5,7 @@ using Planner.WPF.DIContainer;
 using System.Net;
 using Planner.Model.Services;
 using Planner.ViewModel.ViewModels;
+using Planner.Model;
 
 namespace Planner
 {
@@ -29,7 +30,7 @@ namespace Planner
             { 
                 this.MainWindow = container.Resolve<MainWindow>(new TypedParameter(typeof(IScheduleViewModel),
                     container.Resolve<IScheduleViewModel>(new TypedParameter(typeof(IScheduleService), 
-                    container.Resolve<IScheduleService>(new TypedParameter(typeof(IUserService), userService))))));
+                    container.Resolve<IScheduleService>(new TypedParameter(typeof(IUserService), userService))), new TypedParameter(typeof(User), userService.User))));
                 MainWindow.Show();
             };
         }
