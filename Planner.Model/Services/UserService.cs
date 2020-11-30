@@ -35,7 +35,7 @@ namespace Planner.Model.Services
             }
         }
 
-        public async Task LoginAsync(string username, string password)
+        public async Task<Guid> LoginAsync(string username, string password)
         {
             var authModel = new AuthenticateModel(username, password);
             var authJson = new JavaScriptSerializer().Serialize(authModel);
@@ -56,6 +56,8 @@ namespace Planner.Model.Services
                 Token = new JavaScriptSerializer().Deserialize<string>(s[3].ToString());
 
                 Console.WriteLine(result);
+
+                return userId;
             }
         }
 
