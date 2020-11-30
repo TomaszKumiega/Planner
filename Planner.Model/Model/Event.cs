@@ -336,10 +336,10 @@ namespace Planner.Model
         }
 
         /// <summary>
-        /// Adds completion karma to <see cref="User.Karma"/> and adds karma bonus to <see cref="CompletionKarma"/> if event is reccuring.
+        /// Adds completion karma to <see cref="UserModel.Karma"/> and adds karma bonus to <see cref="CompletionKarma"/> if event is reccuring.
         /// </summary>
         /// <param name="user"></param>
-        public void CompleteEvent(User user)
+        public void CompleteEvent(UserModel user)
         {
             user.Karma += CompletionKarma;
 
@@ -367,11 +367,11 @@ namespace Planner.Model
 
         /// <summary>
         /// Adds dateTime to <see cref="DaysCompleted"/> collection. 
-        /// Adds completion karma to <see cref="User.Karma"/> and adds karma bonus to <see cref="CompletionKarma"/> if event is recurring.
+        /// Adds completion karma to <see cref="UserModel.Karma"/> and adds karma bonus to <see cref="CompletionKarma"/> if event is recurring.
         /// </summary>
         /// <param name="user"></param>
         /// <param name="dateTime"></param>
-        public void CompleteEvent(User user, DateTime dateTime)
+        public void CompleteEvent(UserModel user, DateTime dateTime)
         {
             AddCompletedDay(dateTime);
             CompleteEvent(user);

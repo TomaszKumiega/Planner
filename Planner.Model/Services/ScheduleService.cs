@@ -60,7 +60,7 @@ namespace Planner.Model.Services
             }
         }
 
-        public async Task CompleteEventAsync(Event @event, int displayedDay, User user, Dictionary<DateTime, List<Event>> schedule)
+        public async Task CompleteEventAsync(Event @event, int displayedDay, UserModel user, Dictionary<DateTime, List<Event>> schedule)
         {
             if (@event.RecurrencePattern == null)
             {

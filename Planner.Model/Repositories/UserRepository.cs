@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Planner.Model.Model;
 
 namespace Planner.Model.Repositories
 {

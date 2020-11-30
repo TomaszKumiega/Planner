@@ -7,13 +7,13 @@ namespace Planner.Model.Services
 {
     public interface IUserService
     {
-        User User { get; }
+        UserModel User { get; }
         string Token { get; }
 
         Task<Guid> LoginAsync(string username, string password);
         Task RegisterAsync(string username, string password, string email, string firstName, string lastName);
-        Task UpdateUserAsync(User user);
-        Task<User> GetUserAsync(Guid id);
+        Task UpdateUserAsync(UserModel user);
+        Task<UserModel> GetUserAsync(Guid id);
         Task<Guid> ReLoginAsync();
     }
 }

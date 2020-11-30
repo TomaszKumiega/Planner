@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Planner.Model.Model;
+using System;
 
 namespace Planner.Model.Repositories
 {

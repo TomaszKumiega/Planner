@@ -10,7 +10,7 @@ namespace Planner.ViewModel.ViewModels
     public class UserViewModel : IUserViewModel
     {
         private IUserService _userService;
-        public User User
+        public UserModel User
         {
             get => _userService.User;
         }

@@ -13,10 +13,10 @@ namespace Planner.Model.Services
     public class UserService : IUserService
     {
         private string BaseURL = "https://localhost:5001/api/";
-        public User User { get; private set; }
+        public UserModel User { get; private set; }
         public string Token { get; private set; }
 
-        public async Task<User> GetUserAsync(Guid id)
+        public async Task<UserModel> GetUserAsync(Guid id)
         {
             HttpClientHandler clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
@@ -31,7 +31,7 @@ namespace Planner.Model.Services
 
                 Console.WriteLine(result);
 
-                return new JavaScriptSerializer().Deserialize<User>(result);
+                return new JavaScriptSerializer().Deserialize<UserModel>(result);
             }
         }
 
@@ -83,7 +83,7 @@ namespace Planner.Model.Services
             }
         }
 
-        public async Task UpdateUserAsync(User user)
+        public async Task UpdateUserAsync(UserModel user)
         {
             var userJson = new JavaScriptSerializer().Serialize(user);
 

@@ -5,7 +5,7 @@ using Planner.ViewModel.Commands;
 using Planner.ViewModel.ObserverPattern;
 using DayOfWeek = Microsoft.Graph.DayOfWeek;
 using Event = Planner.Model.Event;
-using User = Planner.Model.User;
+using UserModel = Planner.Model.UserModel;
 
 namespace Planner.ViewModel.ViewModels
 {
@@ -15,7 +15,7 @@ namespace Planner.ViewModel.ViewModels
         DateTime CurrentlyDisplayedDate { get; }
         DateTime CurrentlySelectedDay { get; }
         Dictionary<DateTime, List<Event>> Schedule { get; }
-        User User { get; }
+        UserModel User { get; }
         NextCommand NextCommand { get; }
         PreviousCommand PreviousCommand { get; }
 

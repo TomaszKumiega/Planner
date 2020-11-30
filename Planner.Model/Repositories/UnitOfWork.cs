@@ -1,4 +1,6 @@
-﻿namespace Planner.Model.Repositories
+﻿using Planner.Model.Model;
+
+namespace Planner.Model.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

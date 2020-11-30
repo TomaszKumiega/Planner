@@ -30,7 +30,7 @@ namespace Planner
             { 
                 this.MainWindow = container.Resolve<MainWindow>(new TypedParameter(typeof(IScheduleViewModel),
                     container.Resolve<IScheduleViewModel>(new TypedParameter(typeof(IScheduleService), 
-                    container.Resolve<IScheduleService>(new TypedParameter(typeof(IUserService), userService))), new TypedParameter(typeof(User), userService.User))));
+                    container.Resolve<IScheduleService>(new TypedParameter(typeof(IUserService), userService))), new TypedParameter(typeof(UserModel), userService.User))));
                 MainWindow.Show();
             };
         }

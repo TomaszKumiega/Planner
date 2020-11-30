@@ -38,7 +38,7 @@ namespace Planner.Model
         public void CompleteEvent_ShouldAddKarmaToUser()
         {
             var @event = new Event("name", EventType.Voluntary, EventDifficulty.Hard, DateTime.Now, true);
-            var user = new User();
+            var user = new UserModel();
             user.Karma = 0;
 
             @event.CompleteEvent(user);
@@ -51,7 +51,7 @@ namespace Planner.Model
         {
             var numberOfOcurrences = 5;
             var @event = new Event("name", EventType.Voluntary, EventDifficulty.Hard, DateTime.Now, DateTime.Now, new RecurrencePattern(), numberOfOcurrences);
-            var user = new User();
+            var user = new UserModel();
 
             @event.CompleteEvent(user);
 
@@ -63,7 +63,7 @@ namespace Planner.Model
         {
             var @event = new Event("name", EventType.Voluntary, EventDifficulty.Hard, DateTime.Now, DateTime.Now, new RecurrencePattern());
             var completionKarma = @event.CompletionKarma;
-            var user = new User();
+            var user = new UserModel();
 
             @event.CompleteEvent(user);
 
@@ -75,7 +75,7 @@ namespace Planner.Model
         {
             var @event = new Event();
             var dateTime = DateTime.Now;
-            var user = new User();
+            var user = new UserModel();
 
             @event.CompleteEvent(user, dateTime);
 

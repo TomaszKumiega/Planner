@@ -11,7 +11,7 @@ using Planner.ViewModel.ObserverPattern;
 using DayOfWeek = Microsoft.Graph.DayOfWeek;
 using Event = Planner.Model.Event;
 using EventType = Planner.Model.EventType;
-using User = Planner.Model.User;
+using UserModel = Planner.Model.UserModel;
 using Planner.Model.Services;
 
 namespace Planner.ViewModel.ViewModels
@@ -28,7 +28,7 @@ namespace Planner.ViewModel.ViewModels
     {
         private DateTime _currentlyDisplayedDate;
         public DisplayMode DisplayMode { get; set; }
-        public User User { get; }
+        public UserModel User { get; }
         public Dictionary<DateTime, List<Event>> Schedule { get; private set; }
         public DateTime CurrentlySelectedDay { get; private set; }
         public List<IObserver> Observers { get; }
@@ -49,7 +49,7 @@ namespace Planner.ViewModel.ViewModels
         }
 
 
-        public ScheduleViewModel(IScheduleService scheduleService, User user)
+        public ScheduleViewModel(IScheduleService scheduleService, UserModel user)
         {
             _scheduleService = scheduleService;
             DisplayMode = DisplayMode.Month;
