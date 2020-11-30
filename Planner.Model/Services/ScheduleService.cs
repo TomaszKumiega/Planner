@@ -199,6 +199,12 @@ namespace Planner.Model.Services
                 events = new JavaScriptSerializer().Deserialize<List<Event>>(response.Content.ReadAsStringAsync().Result);
             }
 
+            if(events == null)
+            {
+                foreach (var t in days) Schedule.Add(t, new List<Event>());
+                return Schedule;
+            }
+
             var repetetiveEvents = await Task.Run(() => events.Where(x => x.RecurrencePattern != null).ToList());
 
             foreach (var t in days)
