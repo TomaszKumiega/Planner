@@ -24,4 +24,4 @@ jobs:
           buildArg: |
             VERSION=${{github.ref}}
             COMMIT=${{github.sha}}
-          context: ./Planner.API/
+          context: Planner/Planner.API/
