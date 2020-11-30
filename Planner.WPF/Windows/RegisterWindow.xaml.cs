@@ -23,5 +23,18 @@ namespace Planner.WPF.Windows
             DataContext = viewModel;
             InitializeComponent();
         }
+
+        private async void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            var viewmodel = DataContext as IUserViewModel;
+            await viewmodel.RegisterAsync(this.TextBoxUsername.Text, this.TextBoxPassword.Password, this.TextBoxPasswordRepeat.Password,
+                this.TextBoxEmail.Text, this.TextBoxFirstName.Text, this.TextBoxLastName.Text);
+            this.Close();
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
