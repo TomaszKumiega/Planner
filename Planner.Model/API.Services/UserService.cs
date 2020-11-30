@@ -1,5 +1,6 @@
 ﻿using Planner.Model;
 using Planner.Model.Model;
+using Planner.Model.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,11 @@ namespace Planner.Model.API.Services
 
     public class UserService : IUserService
     {
-        private ScheduleDbContext _context;
+        private IUnitOfWork _unitOfWork;
 
-        public UserService(ScheduleDbContext context)
+        public UserService(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
 
         public User Authenticate(string username, string password)
@@ -30,7 +31,7 @@ namespace Planner.Model.API.Services
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.Username == username);
+            var user = _unitOfWork.UserRepository.Find(x => x.Username == username);
 
             // check if username exists
             if (user == null)
@@ -46,12 +47,12 @@ namespace Planner.Model.API.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            return _unitOfWork.UserRepository.GetAll();
         }
 
         public User GetById(Guid id)
         {
-            return _context.Users.Find(id);
+            return _unitOfWork.UserRepository.GetById(id);
         }
 
         public User Create(User user, string password)
@@ -60,7 +61,7 @@ namespace Planner.Model.API.Services
             if (string.IsNullOrWhiteSpace(password))
                 throw new Exception("Password is required");
 
-            if (_context.Users.Any(x => x.Username == user.Username))
+            if (_unitOfWork.UserRepository.Find(x =>x.Username==user.Username) != null)
                 throw new Exception("Username \"" + user.Username + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
@@ -69,15 +70,15 @@ namespace Planner.Model.API.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            _unitOfWork.UserRepository.Add(user);
+            _unitOfWork.SaveChanges();
 
             return user;
         }
 
         public void Update(User userParam, string password = null)
         {
-            var user = _context.Users.Find(userParam.Id);
+            var user = _unitOfWork.UserRepository.Find(x => x.Id==userParam.Id);
 
             if (user == null)
                 throw new Exception("User not found");
@@ -86,7 +87,7 @@ namespace Planner.Model.API.Services
             if (!string.IsNullOrWhiteSpace(userParam.Username) && userParam.Username != user.Username)
             {
                 // throw error if the new username is already taken
-                if (_context.Users.Any(x => x.Username == userParam.Username))
+                if (_unitOfWork.UserRepository.Find(x => x.Username == userParam.Username) != null)
                     throw new Exception("Username " + userParam.Username + " is already taken");
 
                 user.Username = userParam.Username;
@@ -109,17 +110,17 @@ namespace Planner.Model.API.Services
                 user.PasswordSalt = passwordSalt;
             }
 
-            _context.Users.Update(user);
-            _context.SaveChanges();
+            _unitOfWork.UserRepository.Update(user);
+            _unitOfWork.SaveChanges();
         }
 
         public void Delete(Guid id)
         {
-            var user = _context.Users.Find(id);
+            var user = _unitOfWork.UserRepository.Find(x=> x.Id == id);
             if (user != null)
             {
-                _context.Users.Remove(user);
-                _context.SaveChanges();
+                _unitOfWork.UserRepository.Remove(user);
+                _unitOfWork.SaveChanges();
             }
         }
 
