@@ -20,6 +20,7 @@ namespace Planner.WPF.DIContainer
             builder.RegisterType<UserControlFactory>().As<IUserControlFactory>();
             builder.RegisterType<ScheduleService>().As<IScheduleService>();
             builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<LoginWindow>().AsSelf();
 
             return builder.Build();
         }
