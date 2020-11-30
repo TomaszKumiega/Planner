@@ -73,7 +73,7 @@
         </Button>
         
         <!--Exit-->
-        <Button x:Name="ButtonBack" Grid.Column="1" x:FieldModifier="Public" Grid.ColumnSpan="2" Grid.Row="18" Width="100" BorderThickness="0" Background="#260f30">
+        <Button x:Name="ButtonBack" Grid.Column="1" x:FieldModifier="public" Grid.ColumnSpan="2" Grid.Row="18" Width="100" BorderThickness="0" Background="#260f30">
             <TextBlock Text="{x:Static res:Resources.back}" FontFamily="Segoe UI" FontSize="14" Foreground="#e3d3eb"/>
         </Button>
         
