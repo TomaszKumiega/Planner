@@ -4,6 +4,7 @@ using Planner.Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,7 +52,6 @@ namespace Planner.Model.Services
 
             using (var client = new HttpClient(clientHandler))
             {
-                //TODO: Add token
                 var response = await client.PostAsync(BaseURL + "Users", data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
@@ -71,7 +71,8 @@ namespace Planner.Model.Services
 
             using(var client = new HttpClient(clientHandler))
             {
-                //TODO: Add token
+                client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", Token);
                 var response = await client.PutAsync(BaseURL + "Users/" + user.Id.ToString(), data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
