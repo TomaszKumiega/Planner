@@ -12,7 +12,6 @@ namespace Planner.Model.Services
     {
         private string BaseURL = "https://localhost:5001/api/";
         public User User { get; private set; }
-
         public string Token { get; private set; }
 
         public async Task LoginAsync(string username, string password)
@@ -39,7 +38,22 @@ namespace Planner.Model.Services
 
         public async Task RegisterAsync(string username, string password, string email, string firstName, string lastName)
         {
-            throw new NotImplementedException();
+            var registerModel = new RegisterModel(username, password, email, firstName, lastName);
+            var registerJson = new JavaScriptSerializer().Serialize(registerModel);
+
+            var data = new StringContent(registerJson, Encoding.UTF8, "application/json");
+
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+            using (var client = new HttpClient(clientHandler))
+            {
+                var response = await client.PostAsync(BaseURL + "Users", data);
+
+                string result = response.Content.ReadAsStringAsync().Result;
+
+                Console.WriteLine(result);
+            }
         }
 
         public async Task UpdateUserAsync(User user)
