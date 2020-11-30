@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Planner.ViewModel.ViewModels
 {
-    public class UserViewModel
+    public class UserViewModel : IUserViewModel
     {
         private IUserService _userService;
         public User User { get; private set; }
