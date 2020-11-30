@@ -10,10 +10,10 @@ namespace Planner.Model.API.Services
     {
         User Authenticate(string username, string password);
         IEnumerable<User> GetAll();
-        User GetById(int id);
+        User GetById(Guid id);
         User Create(User user, string password);
         void Update(User user, string password = null);
-        void Delete(int id);
+        void Delete(Guid id);
     }
 
     public class UserService : IUserService
@@ -49,7 +49,7 @@ namespace Planner.Model.API.Services
             return _context.Users;
         }
 
-        public User GetById(int id)
+        public User GetById(Guid id)
         {
             return _context.Users.Find(id);
         }
@@ -113,7 +113,7 @@ namespace Planner.Model.API.Services
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var user = _context.Users.Find(id);
             if (user != null)
