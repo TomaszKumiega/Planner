@@ -18,6 +18,9 @@ namespace Planner.WPF.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
+        public delegate void LoginFinishedHandler(object sender, EventArgs e);
+        public event LoginFinishedHandler LoginFinished;
+
         public LoginWindow(IUserViewModel viewModel)
         {
             DataContext = viewModel;
@@ -29,6 +32,7 @@ namespace Planner.WPF.Windows
             //TODO: validate input
             var viewmodel = DataContext as IUserViewModel;
             await viewmodel.LoginAsync(this.TextBoxUsername.Text, this.TextBoxPassword.Password);
+            LoginFinished(this, new EventArgs());
             this.Close();
         }
 

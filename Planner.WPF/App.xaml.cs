@@ -24,15 +24,15 @@ namespace Planner
             var loginWindow = container.Resolve<LoginWindow>(new TypedParameter(typeof(IUserViewModel), 
                 container.Resolve<IUserViewModel>(new TypedParameter(typeof(IUserService), userService))));
 
-            loginWindow.Show();
-
-            loginWindow.Closed += (s, e) => 
+            loginWindow.LoginFinished += (s, e) => 
             { 
                 this.MainWindow = container.Resolve<MainWindow>(new TypedParameter(typeof(IScheduleViewModel),
                     container.Resolve<IScheduleViewModel>(new TypedParameter(typeof(IScheduleService), 
                     container.Resolve<IScheduleService>(new TypedParameter(typeof(IUserService), userService))), new TypedParameter(typeof(UserModel), userService.User))));
                 MainWindow.Show();
             };
+
+            loginWindow.Show();
         }
 
         private void CheckForInternetConnection()
