@@ -22,7 +22,7 @@ namespace Planner.ViewModel.ViewModels
 
         public async Task LoginAsync(string username, string password)
         {
-            var id = await _userService.LoginAsync(username, password);
+            await _userService.LoginAsync(username, password);
         }
 
         public async Task<bool> RegisterAsync(string username, string password, string repeatedPassword, string email, string firstName, string lastName)
