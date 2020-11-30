@@ -10,8 +10,8 @@ namespace Planner.Model.Services
         User User { get; }
         string Token { get; }
 
-        Task LoginAsync();
-        Task RegisterAsync();
-        Task UpdateUserAsync();
+        Task LoginAsync(string username, string password);
+        Task RegisterAsync(string username, string password, string email, string firstName, string lastName);
+        Task UpdateUserAsync(User user);
     }
 }
