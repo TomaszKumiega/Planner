@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Planner.ViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,28 @@ namespace Planner.WPF.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+        public LoginWindow(IUserViewModel viewModel)
         {
+            DataContext = viewModel;
             InitializeComponent();
+        }
+
+        private async void ButtonLogIn_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: validate input
+            var viewmodel = DataContext as IUserViewModel;
+            await viewmodel.LoginAsync(this.TextBoxUsername.Text, this.TextBoxPassword.Password);
+            this.Close();
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void TextBlockRegister_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //TODO: implement
         }
     }
 }

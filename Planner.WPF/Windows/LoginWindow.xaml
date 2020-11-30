@@ -42,16 +42,16 @@
         <PasswordBox x:Name="TextBoxPassword" ToolTip="Password" PasswordChar="*" FontFamily="Segoe UI" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" VerticalAlignment="Bottom" Width="136"/>
 
         <!--Log in-->
-        <Button x:Name="ButtonLogIn" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Width="100" BorderThickness="0" Background="#260f30">
+        <Button x:Name="ButtonLogIn" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Width="100" BorderThickness="0" Background="#260f30" Click="ButtonLogIn_Click">
             <TextBlock Text="{x:Static res:Resources.login}" FontFamily="Segoe UI" FontSize="14" Foreground="#e3d3eb"/>
         </Button>
 
         <!--Exit-->
-        <Button x:Name="ButtonExit" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9" Width="100" BorderThickness="0" Background="#260f30">
+        <Button x:Name="ButtonExit" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9" Width="100" BorderThickness="0" Background="#260f30" Click="ButtonExit_Click">
             <TextBlock Text="{x:Static res:Resources.exit}" FontFamily="Segoe UI" FontSize="14" Foreground="#e3d3eb"/>
         </Button>
         
         <!--Register-->
-        <TextBlock x:Name="TextBlockRegister" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="{x:Static res:Resources.notregistered}" Foreground="#260f30"/>
+        <TextBlock x:Name="TextBlockRegister" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="{x:Static res:Resources.notregistered}" Foreground="#260f30" PreviewMouseDown="TextBlockRegister_PreviewMouseDown"/>
     </Grid>
 </Window>
