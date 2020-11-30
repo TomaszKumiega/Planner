@@ -37,16 +37,16 @@ namespace Planner.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
             services.AddDbContext<ScheduleDbContext>(options =>
             {
-                options.UseSqlServer("Server=localhost;Database=ToDoList;Trusted_Connection=true;");
+                options.UseSqlServer(appSettingsSection.GetConnectionString("WebApiDatabase"));
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-            // configure strongly typed settings objects
-            var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
 
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
