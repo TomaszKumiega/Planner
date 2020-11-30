@@ -19,6 +19,11 @@ namespace Planner.Model.Model
         [Required]
         public string Email { get; set; }
 
+        public RegisterModel()
+        {
+
+        }
+
         public RegisterModel(string username, string password, string email, string firstName, string lastName)
         {
             Username = username;
