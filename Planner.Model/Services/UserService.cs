@@ -58,7 +58,21 @@ namespace Planner.Model.Services
 
         public async Task UpdateUserAsync(User user)
         {
-            throw new NotImplementedException();
+            var userJson = new JavaScriptSerializer().Serialize(user);
+
+            var data = new StringContent(userJson, Encoding.UTF8, "application/json");
+
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+            using(var client = new HttpClient(clientHandler))
+            {
+                var response = await client.PutAsync(BaseURL + "Users/" + user.Id.ToString(), data);
+
+                string result = response.Content.ReadAsStringAsync().Result;
+
+                Console.WriteLine(result);
+            }
         }
     }
 }
