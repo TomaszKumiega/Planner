@@ -28,7 +28,7 @@ namespace Planner.ViewModel.ViewModels
     {
         private DateTime _currentlyDisplayedDate;
         public DisplayMode DisplayMode { get; set; }
-        public User User { get; private set; }
+        public User User { get; }
         public Dictionary<DateTime, List<Event>> Schedule { get; private set; }
         public DateTime CurrentlySelectedDay { get; private set; }
         public List<IObserver> Observers { get; }
@@ -49,7 +49,7 @@ namespace Planner.ViewModel.ViewModels
         }
 
 
-        public ScheduleViewModel(IScheduleService scheduleService)
+        public ScheduleViewModel(IScheduleService scheduleService, User user)
         {
             _scheduleService = scheduleService;
             DisplayMode = DisplayMode.Month;
@@ -58,14 +58,9 @@ namespace Planner.ViewModel.ViewModels
             CurrentlyDisplayedDate = DateTime.Now;            
             NextCommand = new NextCommand(this);
             PreviousCommand = new PreviousCommand(this);
-            LoginUser();
+            User = user;
 
             Task.Run(() => LoadScheduleAsync()).Wait();
-        }
-
-        private void LoginUser()
-        {
-            User = new User("Grewor", "Tomek", "Kumiega");
         }
 
         /// <summary>
