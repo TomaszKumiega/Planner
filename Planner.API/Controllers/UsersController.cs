@@ -73,18 +73,15 @@ namespace WebApi.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody]RegisterModel model)
         {
-            // map model to entity
             var user = _mapper.Map<User>(model);
 
             try
             {
-                // create user
                 _userService.Create(user, model.Password);
                 return Ok();
             }
             catch (Exception ex)
             {
-                // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
         }
@@ -108,19 +105,16 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(Guid id, [FromBody]UpdateModel model)
         {
-            // map model to entity and set id
             var user = _mapper.Map<User>(model);
             user.Id = id;
 
             try
             {
-                // update user 
                 _userService.Update(user, model.Password);
                 return Ok();
             }
             catch (Exception ex)
             {
-                // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
         }
