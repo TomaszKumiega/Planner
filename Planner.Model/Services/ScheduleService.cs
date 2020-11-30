@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace Planner.Model.Services
 
             using (var client = new HttpClient(clientHandler))
             {
+                client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", _userService.Token);
                 var response = await client.PostAsync(BaseURL + "Events", data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
@@ -47,6 +50,8 @@ namespace Planner.Model.Services
 
             using (var client = new HttpClient(clientHandler))
             {
+                client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", _userService.Token);
                 var response = await client.DeleteAsync(BaseURL + "Events/" + @event.Id.ToString());
 
                 string result = response.Content.ReadAsStringAsync().Result;
@@ -72,6 +77,8 @@ namespace Planner.Model.Services
 
                 using (var client = new HttpClient(clientHandler))
                 {
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", _userService.Token);
                     var jsonEvent = new JavaScriptSerializer().Serialize(@event);
 
                     var content = new StringContent(jsonEvent, Encoding.UTF8, "application/json");
@@ -185,6 +192,8 @@ namespace Planner.Model.Services
 
             using (var client = new HttpClient(clientHandler))
             {
+                client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", _userService.Token);
                 var response = await client.GetAsync(BaseURL + "Events");
 
                 events = new JavaScriptSerializer().Deserialize<List<Event>>(response.Content.ReadAsStringAsync().Result);
