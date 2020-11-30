@@ -3,6 +3,8 @@ using System.Windows;
 using Planner.WPF.Windows;
 using Planner.WPF.DIContainer;
 using System.Net;
+using Planner.Model.Services;
+using Planner.ViewModel.ViewModels;
 
 namespace Planner
 {
@@ -17,8 +19,19 @@ namespace Planner
 
             CheckForInternetConnection();
             var container = ContainerConfig.Configure();
-            this.MainWindow = container.Resolve<MainWindow>();
-            MainWindow.Show();
+            var userService = container.Resolve<IUserService>();
+            var loginWindow = container.Resolve<LoginWindow>(new TypedParameter(typeof(IUserViewModel), 
+                container.Resolve<IUserViewModel>(new TypedParameter(typeof(IUserService), userService))));
+
+            loginWindow.Show();
+
+            loginWindow.Closed += (s, e) => 
+            { 
+                this.MainWindow = container.Resolve<MainWindow>(new TypedParameter(typeof(IScheduleViewModel),
+                    container.Resolve<IScheduleViewModel>(new TypedParameter(typeof(IScheduleService), 
+                    container.Resolve<IScheduleService>(new TypedParameter(typeof(IUserService), userService))))));
+                MainWindow.Show();
+            };
         }
 
         private void CheckForInternetConnection()
