@@ -12,7 +12,7 @@ namespace Planner.Model.Services
 {
     public class UserService : IUserService
     {
-        private string BaseURL = "https://localhost:5001/api/";
+        private string BaseURL = "https://localhost:5001/";
         public UserModel User { get; private set; }
         public string Token { get; private set; }
 
@@ -75,7 +75,7 @@ namespace Planner.Model.Services
 
             using (var client = new HttpClient(clientHandler))
             {
-                var response = await client.PostAsync(BaseURL + "Users", data);
+                var response = await client.PostAsync(BaseURL + "Users/register", data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
 

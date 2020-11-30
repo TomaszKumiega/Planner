@@ -15,7 +15,7 @@ namespace Planner.Model.Services
 {
     public class ScheduleService : IScheduleService
     {
-        private string BaseURL = "https://localhost:5001/api/";
+        private string BaseURL = "https://localhost:5001/";
         private IUserService _userService;
 
         public ScheduleService(IUserService userService)
