@@ -16,6 +16,25 @@ namespace Planner.Model.Services
         public User User { get; private set; }
         public string Token { get; private set; }
 
+        public async Task<User> GetUserAsync(Guid id)
+        {
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+            using (var client = new HttpClient(clientHandler))
+            {
+                client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", Token);
+                var response = await client.GetAsync(BaseURL + "Users/" + id.ToString());
+
+                string result = response.Content.ReadAsStringAsync().Result;
+
+                Console.WriteLine(result);
+
+                return new JavaScriptSerializer().Deserialize<User>(result);
+            }
+        }
+
         public async Task LoginAsync(string username, string password)
         {
             var authModel = new AuthenticateModel(username, password);
