@@ -57,6 +57,8 @@ namespace Planner.Model.Services
 
                 Console.WriteLine(result);
 
+                User = await GetUserAsync(userId);
+
                 return userId;
             }
         }
