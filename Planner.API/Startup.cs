@@ -43,7 +43,10 @@ namespace Planner.API
 
             services.AddDbContext<ScheduleDbContext>(options =>
             {
-                options.UseSqlServer(appSettingsSection.GetConnectionString("WebApiDatabase"));
+                options.UseSqlServer(Microsoft
+                            .Extensions
+                            .Configuration
+                            .ConfigurationExtensions.GetConnectionString(this.Configuration, "WebApiDatabase"));
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -88,13 +91,8 @@ namespace Planner.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ScheduleDbContext context)
+        public void Configure(IApplicationBuilder app, ScheduleDbContext context)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             context.Database.Migrate();
 
             app.UseCors(x => x

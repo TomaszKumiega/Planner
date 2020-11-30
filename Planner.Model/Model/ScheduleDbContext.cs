@@ -20,9 +20,6 @@ namespace Planner.Model
             _logger.Debug("ScheduleDbContext created");
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Server=localhost;Database=ToDoList;Trusted_Connection=true;");
-
         public DbSet<Event> Events { get; set; }
         public DbSet<User> Users { get; set; }
 
