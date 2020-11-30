@@ -1,4 +1,5 @@
 ﻿using Nancy.Json;
+using Newtonsoft.Json.Linq;
 using Planner.Model.Model;
 using System;
 using System.Collections.Generic;
@@ -30,8 +31,9 @@ namespace Planner.Model.Services
 
                 string result = response.Content.ReadAsStringAsync().Result;
                 
-                //TODO: fix reading result
-                Token = result;
+                var s = JArray.Parse(result);
+                var userId = new JavaScriptSerializer().Deserialize<Guid>(s[1].ToString());
+                Token = new JavaScriptSerializer().Deserialize<string>(s[3].ToString());
 
                 Console.WriteLine(result);
             }
