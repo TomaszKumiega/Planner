@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Planner.ViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,8 +18,9 @@ namespace Planner.WPF.Windows
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        public RegisterWindow()
+        public RegisterWindow(IUserViewModel viewModel)
         {
+            DataContext = viewModel;
             InitializeComponent();
         }
     }
