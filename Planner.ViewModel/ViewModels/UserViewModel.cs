@@ -10,7 +10,10 @@ namespace Planner.ViewModel.ViewModels
     public class UserViewModel : IUserViewModel
     {
         private IUserService _userService;
-        public User User { get; private set; }
+        public User User
+        {
+            get => _userService.User;
+        }
 
         public UserViewModel(IUserService userService)
         {
@@ -20,7 +23,6 @@ namespace Planner.ViewModel.ViewModels
         public async Task LoginAsync(string username, string password)
         {
             var id = await _userService.LoginAsync(username, password);
-            User = await _userService.GetUserAsync(id);
         }
 
         public async Task<bool> RegisterAsync(string username, string password, string repeatedPassword, string email, string firstName, string lastName)
