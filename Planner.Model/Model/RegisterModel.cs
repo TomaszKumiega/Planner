@@ -16,5 +16,16 @@ namespace Planner.Model.Model
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public string Email { get; set; }
+
+        public RegisterModel(string username, string password, string email, string firstName, string lastName)
+        {
+            Username = username;
+            Password = password;
+            Email = email;
+            LastName = lastName;
+            FirstName = firstName;
+        }
     }
 }
