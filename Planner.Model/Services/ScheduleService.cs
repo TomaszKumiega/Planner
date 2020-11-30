@@ -15,7 +15,13 @@ namespace Planner.Model.Services
     public class ScheduleService : IScheduleService
     {
         private string BaseURL = "https://localhost:5001/api/";
-        
+        private IUserService _userService;
+
+        public ScheduleService(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         public async Task AddEventAsync(Event @event)
         {
             var jsonEvent = new JavaScriptSerializer().Serialize(@event);
