@@ -54,8 +54,9 @@ namespace Planner.Model.Repositories
         }
 
         public User Find(System.Predicate<User> predicate)
-        {          
-            return _context.Users.Find(predicate);
+        {
+            var users = _context.Users.ToList();
+            return users.Find(predicate);
         }
 
         public IEnumerable<User> GetAll()
