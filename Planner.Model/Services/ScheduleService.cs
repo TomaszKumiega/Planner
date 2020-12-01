@@ -64,6 +64,7 @@ namespace Planner.Model.Services
         {
             if (@event.RecurrencePattern == null)
             {
+                @event.CompleteEvent(user);
                 await RemoveEventAsync(@event);
             }
             else
@@ -90,7 +91,7 @@ namespace Planner.Model.Services
                     Console.WriteLine(result);
                 }
 
-                await _userService.UpdateUserAsync();
+                await _userService.UpdateUserAsync(user);
             }
         }
 
