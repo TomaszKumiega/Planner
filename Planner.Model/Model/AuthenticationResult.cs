@@ -12,5 +12,6 @@ namespace Planner.Model.Model
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Token { get; set; }
+        public int Karma { get; set; }
     }
 }
