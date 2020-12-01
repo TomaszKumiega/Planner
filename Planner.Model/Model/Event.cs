@@ -38,8 +38,8 @@ namespace Planner.Model
         public string Name { get; set; }
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
-        public int CompletionKarma { get; private set; }
-        public int FailureKarma { get; private set; }
+        public int CompletionKarma { get; set; }
+        public int FailureKarma { get; set; }
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
         public bool AllDay { get; set; }
