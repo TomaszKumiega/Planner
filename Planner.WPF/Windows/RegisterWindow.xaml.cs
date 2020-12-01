@@ -105,5 +105,10 @@ namespace Planner.WPF.Windows
             TextBlockFirstName.Foreground = Brushes.WhiteSmoke;
             TextBlockLastName.Foreground = Brushes.WhiteSmoke;
         }
+
+        private void RectangleTopBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
