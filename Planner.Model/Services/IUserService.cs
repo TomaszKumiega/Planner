@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Graph;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Planner.Model.Services
 
         Task LoginAsync(string username, string password);
         Task RegisterAsync(string username, string password, string email, string firstName, string lastName);
-        Task UpdateUserAsync();
+        Task UpdateUserAsync(UserModel user);
         Task<UserModel> GetUserAsync(Guid id);
         Task ReLoginAsync();
     }

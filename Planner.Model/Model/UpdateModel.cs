@@ -12,5 +12,20 @@ namespace Planner.Model.Model
         public string Password { get; set; }
         public string Email { get; set; }
         public int Karma { get; set; }
+
+        public UpdateModel()
+        {
+
+        }
+
+        public UpdateModel(string firstName, string lastName, string username, string password, string email, int karma)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Username = username;
+            Password = password;
+            Email = email;
+            Karma = karma;
+        }
     }
 }

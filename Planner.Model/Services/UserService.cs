@@ -80,9 +80,11 @@ namespace Planner.Model.Services
             }
         }
 
-        public async Task UpdateUserAsync()
+        public async Task UpdateUserAsync(UserModel u)
         {
-            var userJson = new JavaScriptSerializer().Serialize(User);
+
+            var updateModel = new UpdateModel(u.FirstName, u.LastName, u.Username, u.Password, u.Email, u.Karma);
+            var userJson = new JavaScriptSerializer().Serialize(updateModel);
 
             var data = new StringContent(userJson, Encoding.UTF8, "application/json");
 
