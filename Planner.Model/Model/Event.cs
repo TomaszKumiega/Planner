@@ -107,6 +107,7 @@ namespace Planner.Model
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, Guid userId)
         {
             Id = Guid.NewGuid();
+            UserId = userId;
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -131,6 +132,7 @@ namespace Planner.Model
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, Guid userId)
         {
             Id = Guid.NewGuid();
+            UserId = userId;
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -155,6 +157,7 @@ namespace Planner.Model
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern, Guid userId)
         {
             Id = Guid.NewGuid();
+            UserId = userId;
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -181,6 +184,7 @@ namespace Planner.Model
         public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern, Guid userId)
         {
             Id = Guid.NewGuid();
+            UserId = userId;
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -209,6 +213,7 @@ namespace Planner.Model
             RecurrencePattern recurrencePattern, int numberOfOccurrences, Guid userId)
         {
             Id = Guid.NewGuid();
+            UserId = userId;
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
@@ -237,6 +242,7 @@ namespace Planner.Model
             RecurrencePattern recurrencePattern, int numberOfOccurrences, Guid userId)
         {
             Id = Guid.NewGuid();
+            UserId = userId;
             Name = name;
             EventType = eventType;
             EventDifficulty = eventDifficulty;
