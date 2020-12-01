@@ -59,6 +59,18 @@ namespace Planner.Model
 
             _logger.Debug("User: " + Id.ToString() + " created.");
         }
+
+        public UserModel(Guid id, string username, string firstName, string lastName, string email, int karma)
+        {
+            Id = id;
+            Username = username;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Karma = karma;
+
+            _logger.Debug("User: " + Id.ToString() + " created.");
+        }
         #endregion
 
     }
