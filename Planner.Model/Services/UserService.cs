@@ -56,7 +56,7 @@ namespace Planner.Model.Services
                 Console.WriteLine(result);
                 
                 Token = authResult.Token;
-                User = new UserModel(authResult.Username, authResult.FirstName, authResult.LastName, authResult.Email);
+                User = new UserModel(authResult.Id, authResult.Username, authResult.FirstName, authResult.LastName, authResult.Email, authResult.Karma);
             }
         }
 
