@@ -54,5 +54,33 @@ namespace Planner.WPF.Windows
         {
             this.DragMove();
         }
+
+        private void TextBoxUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                this.TextBoxPassword.Focus();
+            }
+        }
+
+        private void TextBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) this.ButtonLogIn_Click(this, e);
+        }
+
+        private void ButtonLogIn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) this.ButtonLogIn_Click(this, e);
+        }
+
+        private void ButtonExit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) this.ButtonExit_Click(this, e);
+        }
+
+        private void TextBlockRegister_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) this.HyperlinkRegister_Click(this, e);
+        }
     }
 }
