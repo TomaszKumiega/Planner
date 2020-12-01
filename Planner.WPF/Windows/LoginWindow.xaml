@@ -29,6 +29,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
+
+        <!--Top bar-->
+        <Rectangle x:Name="RectangleTopBar" Fill="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" MouseDown="RectangleTopBar_MouseDown"/>
         
         <!--Title-->
         <TextBlock x:Name="TextBlockTitle" Text="{x:Static res:Resources.login}" FontFamily="Segoe UI" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="26" Foreground="WhiteSmoke" VerticalAlignment="Bottom" />

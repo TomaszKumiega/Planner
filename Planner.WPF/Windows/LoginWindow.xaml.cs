@@ -49,5 +49,10 @@ namespace Planner.WPF.Windows
             registrationWindow.ButtonBack.Click += (s, e) => { this.Visibility = Visibility.Visible; };
             registrationWindow.Closed += (s, e) => { this.Visibility = Visibility.Visible; };
         }
+
+        private void RectangleTopBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
