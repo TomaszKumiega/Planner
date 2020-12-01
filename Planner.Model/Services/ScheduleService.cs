@@ -157,27 +157,27 @@ namespace Planner.Model.Services
 
             if (endDateTime == null && recurrencePattern == null)
             {
-                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay);
+                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay, _userService.User.Id);
             }
             else if (endDateTime.HasValue && recurrencePattern == null)
             {
-                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value);
+                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value, _userService.User.Id);
             }
             else if (endDateTime == null && recurrencePattern != null && occurrences == null)
             {
-                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay, recurrencePattern);
+                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay, recurrencePattern, _userService.User.Id);
             }
             else if (endDateTime.HasValue && recurrencePattern != null && occurrences == null)
             {
-                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value, recurrencePattern);
+                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value, recurrencePattern, _userService.User.Id);
             }
             else if (endDateTime == null && recurrencePattern != null && occurrences.HasValue)
             {
-                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay, recurrencePattern, occurrences.Value);
+                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, allDay, recurrencePattern, occurrences.Value, _userService.User.Id);
             }
             else if (endDateTime.HasValue && recurrencePattern != null && occurrences.HasValue)
             {
-                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value, recurrencePattern, occurrences.Value);
+                return new Event(name, (EventType)eventType, (EventDifficulty)eventDifficulty, startDateTime, endDateTime.Value, recurrencePattern, occurrences.Value, _userService.User.Id);
             }
             else return null;
         }
