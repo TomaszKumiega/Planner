@@ -34,6 +34,7 @@ namespace Planner.Model
 
         [Key()]
         public Guid Id { get; set; }
+        public Guid UserId { get; set; }
         public string Name { get; set; }
         public EventType EventType { get; set; }
         public EventDifficulty EventDifficulty { get; set; }
