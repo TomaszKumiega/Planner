@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -28,7 +29,11 @@ namespace Planner.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {
-            return Ok(await Task.Run(() => _unitOfWork.EventRepository.GetAll()));
+            // Identity check
+            var userId = User?.Identity.Name;
+            var guid = Guid.Parse(userId);
+
+            return Ok(await Task.Run(() => _unitOfWork.EventRepository.GetAll().Where(x=>x.UserId==guid)));
         }
 
         // GET: api/Events/5
@@ -36,6 +41,12 @@ namespace Planner.API.Controllers
         public async Task<ActionResult<Event>> GetEvent(Guid id)
         {
             var @event = await Task.Run(() => _unitOfWork.EventRepository.Find(x => x.Id == id));
+
+            // Identity check
+            var userId = User?.Identity.Name;
+            var guid = Guid.Parse(userId);
+
+            if (@event.UserId != guid) Unauthorized();
 
             if (@event == null)
             {
@@ -53,6 +64,12 @@ namespace Planner.API.Controllers
         {
             var jsonString = ev.ToString();
             var @event = new JavaScriptSerializer().Deserialize<Event>(jsonString);
+
+            // Identity check
+            var userId = User?.Identity.Name;
+            var guid = Guid.Parse(userId);
+
+            if (@event.UserId != guid) Unauthorized();
 
             if (id != @event.Id)
             {
@@ -89,6 +106,12 @@ namespace Planner.API.Controllers
             var jsonString = ev.ToString();
             var @event = new JavaScriptSerializer().Deserialize<Event>(jsonString);
 
+            // Identity check
+            var userId = User?.Identity.Name;
+            var guid = Guid.Parse(userId);
+
+            if (@event.UserId != guid) Unauthorized();
+
             _unitOfWork.EventRepository.Add(@event);
             await Task.Run(() => _unitOfWork.SaveChanges());
 
@@ -104,6 +127,12 @@ namespace Planner.API.Controllers
             {
                 return NotFound();
             }
+
+            // Identity check
+            var userId = User?.Identity.Name;
+            var guid = Guid.Parse(userId);
+
+            if (@event.UserId != guid) Unauthorized();
 
             _unitOfWork.EventRepository.Remove(@event);
             await Task.Run(() => _unitOfWork.SaveChanges());
