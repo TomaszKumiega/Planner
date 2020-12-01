@@ -104,7 +104,7 @@ namespace Planner.Model
         /// <param name="eventType">Event type specified in <see cref="Planner.Model.EventType"/></param>
         /// <param name="eventDifficulty"/>Event difficulty specified in <see cref="Planner.Model.EventDifficulty"></param>
         /// <param name="startDateTime">Date and time of an event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, Guid userId)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -128,7 +128,7 @@ namespace Planner.Model
         /// <param name="eventDifficulty">Event difficulty specified in <see cref="Planner.Model.EventDifficulty"/></param>
         /// <param name="startDateTime">Starting date and time of the event</param>
         /// <param name="endDateTime">Ending date and time of the event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, Guid userId)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -152,7 +152,7 @@ namespace Planner.Model
         /// <param name="startDateTime">Starting date and time of the event</param>
         /// <param name="allDay">Specifies if event should ignore startDateTime's time component</param>
         /// <param name="recurrencePattern">Specifies when event should recur</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern, Guid userId)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -178,7 +178,7 @@ namespace Planner.Model
         /// <param name="startDateTime">Starting date and time of the event</param>
         /// <param name="endDateTime">Ending date and time of the event</param>
         /// <param name="recurrencePattern">/// <param name="recurrencePattern">Specifies when event should recur</param></param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern, Guid userId)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -205,7 +205,8 @@ namespace Planner.Model
         /// <param name="allDay">Specifies if event should ignore startDateTime's time component</param>
         /// <param name="recurrencePattern">Specifies when event should recur</param>
         /// <param name="numberOfOccurrences">Number of ocurrences of the event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, RecurrencePattern recurrencePattern, int numberOfOccurrences)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, bool allDay, 
+            RecurrencePattern recurrencePattern, int numberOfOccurrences, Guid userId)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -232,7 +233,8 @@ namespace Planner.Model
         /// <param name="endDateTime">Ending date and time of the event</param>
         /// <param name="recurrencePattern">Specifies when event should recur</param>
         /// <param name="numberOfOccurrences">Number of ocurrences of the event</param>
-        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime, RecurrencePattern recurrencePattern, int numberOfOccurrences)
+        public Event(string name, EventType eventType, EventDifficulty eventDifficulty, DateTime startDateTime, DateTime endDateTime,
+            RecurrencePattern recurrencePattern, int numberOfOccurrences, Guid userId)
         {
             Id = Guid.NewGuid();
             Name = name;
