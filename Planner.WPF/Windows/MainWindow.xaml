@@ -27,7 +27,7 @@
 
         <!--Title Bar-->
         <Rectangle x:Name="RectangleTitleBarBackground" Fill="#202225" Grid.ColumnSpan="3" MouseDown="RectangleTitleBarBackground_MouseDown"/>
-        <TextBlock x:Name="TextBlockTitleBar" Text="ToDoList" FontFamily="Segoe UI" Grid.Column="0" FontSize="22" Foreground="#949597" VerticalAlignment="Bottom" />
+        <TextBlock x:Name="TextBlockTitleBar" Text="Planner" FontFamily="Segoe UI" Grid.Column="0" FontSize="22" Foreground="#949597" VerticalAlignment="Bottom" />
 
         <!--Title Bar Shadow-->
         <Rectangle x:Name="RectangleTitleBarShadow" Fill="#161719" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" />
